@@ -1,4 +1,4 @@
-package agent
+package doctor
 
 import "sync"
 
@@ -15,7 +15,7 @@ func NewDoctor(id int, specialized map[string]bool, usable bool, ability int) *d
 	return &doctor{
 		ID:          id,
 		Specialized: specialized,
-		Usable:      usable,
+		Usable:      true,
 		Ability:     ability,
 	}
 }

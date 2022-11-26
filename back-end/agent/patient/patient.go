@@ -1,18 +1,8 @@
-package agent
+package patient
 
 import "sync"
 
-type patient_status int8
-
-const (
-	Waiting_for_nurse      patient_status = 1
-	Waiting_for_register   patient_status = 2
-	Waiting_for_treat      patient_status = 3
-	Being_treated_now      patient_status = 4
-	Being_treated_urgently patient_status = 5
-)
-
-type patient struct {
+type Patient struct {
 	sync.Mutex
 	ID           int            // 病人唯一ID
 	Age          int            // 年龄
@@ -25,8 +15,8 @@ type patient struct {
 }
 
 // 构造函数
-func NewPatient(id int, age int, gender bool, symptom string, severity int, tolerance int, timeForTreate int, status patient_status) *patient {
-	return &patient{
+func NewPatient(id int, age int, gender bool, symptom string, severity int, tolerance int, timeForTreate int, status patient_status) *Patient {
+	return &Patient{
 		ID:           id,
 		Age:          age,
 		Gender:       gender,
@@ -38,19 +28,19 @@ func NewPatient(id int, age int, gender bool, symptom string, severity int, tole
 	}
 }
 
-func (p *patient) SetSeverity(s int) {
+func (p *Patient) SetSeverity(s int) {
 	p.Lock()
 	p.Severity = s
 	p.Unlock()
 }
 
-func (p *patient) SetTimeForTreat(s int) {
+func (p *Patient) SetTimeForTreat(s int) {
 	p.Lock()
 	p.TimeForTreat = s
 	p.Unlock()
 }
 
-func (p *patient) SetStatus(s patient_status) {
+func (p *Patient) SetStatus(s patient_status) {
 	p.Lock()
 	p.Status = s
 	p.Unlock()
