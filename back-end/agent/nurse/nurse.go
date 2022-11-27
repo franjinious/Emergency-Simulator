@@ -4,6 +4,7 @@ import (
 	"errors"
 	"gitlab.utc.fr/wanhongz/emergency-simulator/agent/patient"
 	"sync"
+	"time"
 )
 
 type nurse struct {
@@ -11,18 +12,18 @@ type nurse struct {
 	ID     int              // 护士的唯一ID
 	Usable bool             // 当前是否空闲
 	p      *patient.Patient // 当前正在判断情况的病人
-	manager *nurse_manager   // 管理类
-	msg_send    chan *nurse  // 给管理类发送消息的信道
+	manager *Nurse_manager  // 管理类
+	msg_send    chan *nurse // 给管理类发送消息的信道
 }
 
 // 构造函数
-func NewNurse(id int,m *nurse_manager) *nurse {
+func NewNurse(id int,m *Nurse_manager) *nurse {
 	return &nurse{
 		ID:     id,
 		Usable: false,
 		p:      nil,
 		manager: m,
-		msg_send: m.msg_recv,
+		msg_send: m.msg_nurse,
 	}
 }
 
@@ -37,6 +38,10 @@ func (n *nurse) TreatNewPatient(p *patient.Patient) error {
 		n.Unlock()
 		return nil
 	}
+}
+
+func (n *nurse) SetPatient(patient2 *patient.Patient){
+	n.p = patient2
 }
 
 // 设置是否空闲
@@ -57,4 +62,19 @@ func (n *nurse) SetPatientStatus(gravite int, time int) {
 // 通知管理器 自己空闲 要求分配任务
 func (n *nurse) ticket(){
 	n.msg_send <- n
+}
+
+// 诊断病人
+func (n *nurse) judge(patient2 *patient.Patient){
+	// 判断算法
+
+	// sleep模拟处理时间
+	patient2.SetStatus(patient.Being_judged_by_nurse)
+
+	time.Sleep(5*time.Second)
+	n.SetPatientStatus(5,10)
+
+	patient2.Lock()
+	patient2.Msg_nurse <- "ticket"
+	patient2.Unlock()
 }

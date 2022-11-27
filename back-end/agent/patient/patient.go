@@ -12,10 +12,11 @@ type Patient struct {
 	Tolerance    int            // 最大等待时间(超过离开/死亡)
 	TimeForTreat int            // 预计需要处理的时间(分钟)
 	Status       patient_status // 病人当前的状态和进度
+	Msg_nurse    chan string    // 接受护士消息的信道
 }
 
 // 构造函数
-func NewPatient(id int, age int, gender bool, symptom string, severity int, tolerance int, timeForTreate int, status patient_status) *Patient {
+func NewPatient(id int, age int, gender bool, symptom string, severity int, tolerance int, timeForTreate int) *Patient {
 	return &Patient{
 		ID:           id,
 		Age:          age,
@@ -24,7 +25,8 @@ func NewPatient(id int, age int, gender bool, symptom string, severity int, tole
 		Severity:     severity,
 		Tolerance:    tolerance,
 		TimeForTreat: timeForTreate,
-		Status:       status,
+		Status:       Waiting_for_nurse,
+		Msg_nurse:    make(chan string,10),
 	}
 }
 
