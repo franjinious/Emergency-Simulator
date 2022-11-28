@@ -3,6 +3,7 @@ package nurse
 import (
 	"gitlab.utc.fr/wanhongz/emergency-simulator/agent/patient"
 	"log"
+	"strconv"
 	"sync"
 	"time"
 )
@@ -46,7 +47,9 @@ func GetInstance(n int) *Nurse_manager {
 		}
 		i := 1
 		for i <= n {
-			instance.nurse_pool_usable = append(instance.nurse_pool_usable, NewNurse(instance.now_id,instance))
+			a := NewNurse(instance.now_id,instance)
+			instance.nurse_pool_usable = append(instance.nurse_pool_usable, a)
+			go a.Run()
 			instance.now_id++
 			i++
 		}
@@ -55,7 +58,7 @@ func GetInstance(n int) *Nurse_manager {
 }
 
 func (nm *Nurse_manager) handler_nurse_request(n *nurse){
-	log.Println("get a new nurse free request")
+	log.Println("Nurse center gets a nurse " + strconv.FormatInt(int64(n.ID), 10) +  " free request")
 	// 处理nurse的请求
 	nm.Lock()
 	for i:=0; i < len(nm.nurse_pool_busy); i++ {
@@ -73,7 +76,7 @@ func (nm *Nurse_manager) handler_nurse_request(n *nurse){
 }
 
 func (nm *Nurse_manager) handler_patient_request(n *patient.Patient){
-	log.Println("get a new patient request")
+	log.Println("Nurse center gets a new patient " + strconv.FormatInt(int64(n.ID), 10) + " request")
 	// 处理patient的请求
 
 	// 申请nurse资源
@@ -85,14 +88,11 @@ func (nm *Nurse_manager) handler_patient_request(n *patient.Patient){
 
 			nm.nurse_pool_usable = nm.nurse_pool_usable[1:]
 			nm.nurse_pool_busy = append(nm.nurse_pool_busy,nur)
-			nur.SetPatient(n)
-			nur.SetUsable(false)
-			// 调用nurse的函数 设置patient的状态
-			nur.judge(n)
+
+			nur.msg_recv <- n
 
 			// 结束
 			nm.Unlock()
-			nur.ticket()
 			break;
 		}
 		nm.Unlock()
@@ -101,13 +101,13 @@ func (nm *Nurse_manager) handler_patient_request(n *patient.Patient){
 }
 
 func (nm *Nurse_manager) Run(){
-	log.Println("nurse center listing")
+	log.Println("Nurse center starting")
 	for {
 		select {
 		case n := <-nm.msg_nurse:
-			nm.handler_nurse_request(n)
+			go nm.handler_nurse_request(n)
 		case m := <-nm.msg_patient:
-			nm.handler_patient_request(m)
+			go nm.handler_patient_request(m)
 		default:
 			time.Sleep(1*time.Second)
 		}

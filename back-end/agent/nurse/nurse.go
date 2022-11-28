@@ -3,6 +3,8 @@ package nurse
 import (
 	"errors"
 	"gitlab.utc.fr/wanhongz/emergency-simulator/agent/patient"
+	"log"
+	"strconv"
 	"sync"
 	"time"
 )
@@ -14,6 +16,7 @@ type nurse struct {
 	p      *patient.Patient // 当前正在判断情况的病人
 	manager *Nurse_manager  // 管理类
 	msg_send    chan *nurse // 给管理类发送消息的信道
+	msg_recv    chan *patient.Patient // 接受管理类的请求
 }
 
 // 构造函数
@@ -24,6 +27,7 @@ func NewNurse(id int,m *Nurse_manager) *nurse {
 		p:      nil,
 		manager: m,
 		msg_send: m.msg_nurse,
+		msg_recv: make(chan *patient.Patient,10),
 	}
 }
 
@@ -77,4 +81,24 @@ func (n *nurse) judge(patient2 *patient.Patient){
 	patient2.Lock()
 	patient2.Msg_nurse <- "ticket"
 	patient2.Unlock()
+}
+
+func (nur *nurse) treat(n *patient.Patient){
+	nur.SetPatient(n)
+	nur.SetUsable(false)
+	// 调用nurse的函数 设置patient的状态
+	nur.judge(n)
+	nur.ticket()
+}
+
+func (nur *nurse) Run(){
+	log.Println("Nurse " + strconv.FormatInt(int64(nur.ID), 10) + " start")
+	for {
+		select {
+		case n := <-nur.msg_recv:
+			go nur.treat(n)
+		default:
+			time.Sleep(1*time.Second)
+		}
+	}
 }
