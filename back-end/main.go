@@ -1,9 +1,7 @@
 package main
 
-import (
-	"gitlab.utc.fr/wanhongz/emergency-simulator/test"
-)
+import "gitlab.utc.fr/wanhongz/emergency-simulator/test"
 
 func main() {
-	test.Test()
+	test.Test2()
 }
