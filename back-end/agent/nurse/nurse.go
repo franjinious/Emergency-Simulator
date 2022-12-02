@@ -77,7 +77,7 @@ func (n *nurse) judge(patient2 *patient.Patient) {
 	patient2.SetStatus(patient.Being_judged_by_nurse)
 
 	time.Sleep(5 * time.Second)
-	n.SetPatientStatus(5, 10)
+	n.SetPatientStatus(4, 10)
 
 	patient2.Lock()
 	patient2.Msg_nurse <- "ticket"

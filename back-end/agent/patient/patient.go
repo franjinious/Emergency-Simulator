@@ -21,10 +21,11 @@ type Patient struct {
 	Msg_request_nurse     chan *Patient  // 请求护士的信道
 	Msg_request_reception chan *Patient  // 请求挂号的信道
 	Msg_receive_reception chan string    // 接受挂号的信道
+	Msg_request_waiting   chan *Patient  // 请求加入等待室候诊队列的信道
 }
 
 // 构造函数
-func NewPatient(id int, age int, gender bool, symptom string, severity int, tolerance int, timeForTreate int, c chan *Patient, d chan *Patient) *Patient {
+func NewPatient(id int, age int, gender bool, symptom string, severity int, tolerance int, timeForTreate int, c chan *Patient, d chan *Patient, c_w chan *Patient) *Patient {
 	return &Patient{
 		ID:                    id,
 		Age:                   age,
@@ -38,6 +39,7 @@ func NewPatient(id int, age int, gender bool, symptom string, severity int, tole
 		Msg_request_nurse:     c,
 		Msg_request_reception: d,
 		Msg_receive_reception: make(chan string, 10),
+		Msg_request_waiting:   c_w,
 	}
 }
 
@@ -77,6 +79,7 @@ func (p *Patient) Run() {
 			if m == "ticket" {
 				log.Println("Patient " + strconv.FormatInt(int64(p.ID), 10) + " get reception")
 				p.SetStatus(Waiting_for_treat)
+				p.Msg_request_waiting <- p
 			}
 
 		default:

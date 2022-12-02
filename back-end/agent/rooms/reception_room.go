@@ -62,7 +62,7 @@ func (rr *ReceptionRoom) Run() {
 		case m := <-rr.MsgDoctor:
 			go rr.HandlerDoctor(m)
 		default:
-			time.Sleep( 1 * time.Second)
+			time.Sleep(1 * time.Second)
 		}
 	}
 }
@@ -78,7 +78,6 @@ func (rr *ReceptionRoom) HandlerDoctor(r *ReceptionDoctor) {
 func (rd *ReceptionDoctor) HandlerPatientRequest(patient2 *patient.Patient) {
 	rd.status = 1
 	log.Println("ReceptionDoctor" + strconv.FormatInt(int64(rd.ID), 10) + " start dealing with patient " + strconv.FormatInt(int64(patient2.ID), 10))
-
 
 	// 模拟挂号时间 加入随机
 	time.Sleep(5 * time.Second)

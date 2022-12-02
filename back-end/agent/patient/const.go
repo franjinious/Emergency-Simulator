@@ -9,4 +9,5 @@ const (
 	Waiting_for_treat      patient_status = 4
 	Being_treated_now      patient_status = 5
 	Being_treated_urgently patient_status = 6
+	Finish                 patient_status = 7
 )

@@ -78,7 +78,6 @@ func (nm *Nurse_manager) handler_nurse_request(n *nurse) {
 func (nm *Nurse_manager) handler_patient_request(n *patient.Patient) {
 	log.Println("Nurse center gets a new patient " + strconv.FormatInt(int64(n.ID), 10) + " request")
 	// 处理patient的请求
-
 	// 申请nurse资源
 	for {
 		nm.Lock()

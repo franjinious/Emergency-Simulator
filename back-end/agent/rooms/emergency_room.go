@@ -30,6 +30,7 @@ func (erm *EmergencyRoomManager) Run() {
 	for {
 		select {
 		case i := <-erm.MsgRequest:
+			log.Println("EmergencyRoomCenter get a new request of level " + strconv.FormatInt(int64(i), 10))
 			// 不能用协程
 			erm.check(i)
 		default:
@@ -70,20 +71,10 @@ func (erm *EmergencyRoomManager) check(LevelNeed int) {
 		r := erm.RoomList["EmergencyRoom"+strconv.FormatInt(int64(i), 10)]
 		r.Lock()
 		if r.Status == 0 {
-			// if ans != nil {
-			//	ans.Lock()
-			//	ans.Status = 0
-			//	ans.Unlock()
-			// }
-			// r.Status = 1
 			ans = r
 		}
 		r.Unlock()
 	}
-	ans.Lock()
-	ans.Status = 1
-	ans.Unlock()
 	erm.MsgReponse <- ans
-	log.Println("EmergencyRoom" + strconv.FormatInt(int64(ans.ID), 10) + " has been used")
 	erm.Unlock()
 }
