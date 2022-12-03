@@ -1,7 +1,10 @@
 package main
 
-import "gitlab.utc.fr/wanhongz/emergency-simulator/test"
+import (
+	"gitlab.utc.fr/wanhongz/emergency-simulator/agent"
+)
 
 func main() {
-	test.Test()
+	var h *agent.Hospital = agent.CreateHospital()
+	h.Start()
 }
