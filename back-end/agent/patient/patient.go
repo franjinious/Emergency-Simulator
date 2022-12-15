@@ -72,7 +72,7 @@ func (p *Patient) Run() {
 		case n := <-p.Msg_nurse:
 			if n == "ticket" {
 				p.SetStatus(Waiting_for_register)
-				log.Println("Patient " + strconv.FormatInt(int64(p.ID), 10) + " get a status and go to get a reception")
+				log.Println("Patient " + strconv.FormatInt(int64(p.ID), 10) + " get a status: gravity " + strconv.FormatInt(int64(p.Severity), 10) + ", need time " + strconv.FormatInt(int64(p.TimeForTreat), 10) + ", and go to get a reception")
 				p.Msg_request_reception <- p
 			}
 		case m := <-p.Msg_receive_reception:

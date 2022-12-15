@@ -12,6 +12,7 @@ import (
 // 管理所有的nurse
 type Nurse_manager struct {
 	sync.Mutex
+	PatientWaiting      int                   // 等待的病人数量
 	now_id              int
 	nurse_number        int
 	busy_nurse_number   int                   // 空闲护士数量
@@ -36,6 +37,7 @@ var (
 func GetInstance(n int) *Nurse_manager {
 	once.Do(func() {
 		instance = &Nurse_manager{
+			PatientWaiting:      0,
 			now_id:              0,
 			nurse_number:        n,
 			busy_nurse_number:   0,
@@ -61,6 +63,7 @@ func (nm *Nurse_manager) handler_nurse_request(n *nurse) {
 	log.Println("Nurse center gets a nurse " + strconv.FormatInt(int64(n.ID), 10) + " free request")
 	// 处理nurse的请求
 	nm.Lock()
+	nm.PatientWaiting--
 	for i := 0; i < len(nm.nurse_pool_busy); i++ {
 		// 增加可用队列 减少忙碌队列
 		if nm.nurse_pool_busy[i] == n {
@@ -76,9 +79,13 @@ func (nm *Nurse_manager) handler_nurse_request(n *nurse) {
 }
 
 func (nm *Nurse_manager) handler_patient_request(n *patient.Patient) {
-	log.Println("Nurse center gets a new patient " + strconv.FormatInt(int64(n.ID), 10) + " request")
+	nm.Lock()
+	nm.PatientWaiting++
+	nm.Unlock()
+	log.Println("Nurse center gets a new patient " + strconv.FormatInt(int64(n.ID), 10) + " request, now there are totally " + strconv.FormatInt(int64(nm.PatientWaiting), 10) + " waiting")
 	// 处理patient的请求
 	// 申请nurse资源
+
 	for {
 		nm.Lock()
 		if nm.usable_nurse_number > 0 {

@@ -3,9 +3,12 @@ package nurse
 import (
 	"errors"
 	"log"
+	"math/big"
 	"strconv"
 	"sync"
 	"time"
+
+	"crypto/rand"
 
 	"gitlab.utc.fr/wanhongz/emergency-simulator/agent/patient"
 )
@@ -75,9 +78,17 @@ func (n *nurse) judge(patient2 *patient.Patient) {
 
 	// sleep模拟处理时间
 	patient2.SetStatus(patient.Being_judged_by_nurse)
+	timee, _ := rand.Int(rand.Reader, big.NewInt(5))
+	tt := int(timee.Int64())
+	tt += 3
+	time.Sleep(time.Duration(tt) * time.Second)
 
-	time.Sleep(5 * time.Second)
-	n.SetPatientStatus(4, 10)
+	// 严重程度 随机1-5
+	gra, _ := rand.Int(rand.Reader, big.NewInt(4))
+
+	// 时间 随机1-10
+	tim, _ := rand.Int(rand.Reader, big.NewInt(10))
+	n.SetPatientStatus(int(gra.Int64()+1), 10+int(tim.Int64()))
 
 	patient2.Lock()
 	patient2.Msg_nurse <- "ticket"
