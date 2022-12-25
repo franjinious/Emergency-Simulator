@@ -24,6 +24,53 @@ type Nurse_manager struct {
 
 }
 
+func (n *Nurse_manager) GetNurseNumber() int {
+	return n.busy_nurse_number + n.usable_nurse_number
+}
+
+// 添加成功返回true 失败false 最大值为5
+func (n *Nurse_manager) Add_patient() {
+	flag := false
+	for flag == false {
+		if n.TryLock() {
+			flag = true
+
+			// 添加nurse
+			n.nurse_number++
+			n.usable_nurse_number++
+			a := NewNurse(n.now_id, instance)
+			n.now_id++
+			n.nurse_pool_usable = append(n.nurse_pool_usable, a)
+			go a.Run()
+			n.Unlock()
+		}
+	}
+}
+
+func (n *Nurse_manager) Reduce_patient(){
+	flag := false
+	for flag == false {
+		if n.TryLock() {
+			if n.usable_nurse_number == 0 {
+				n.Unlock()
+				continue
+			}
+
+			flag = true
+
+			n.nurse_number--
+			n.usable_nurse_number--
+			//a := NewNurse(n.now_id, instance)
+			//n.now_id++
+			t := n.nurse_pool_usable[len(n.nurse_pool_usable)-1]
+			n.nurse_pool_usable = n.nurse_pool_usable[:len(n.nurse_pool_usable)-1]
+			close(t.GetChan())
+			//go a.Run()
+			n.Unlock()
+		}
+	}
+}
+
 func (n *Nurse_manager) Get_chan_patient() chan *patient.Patient {
 	return n.msg_patient
 }
@@ -90,6 +137,7 @@ func (nm *Nurse_manager) handler_patient_request(n *patient.Patient) {
 		nm.Lock()
 		if nm.usable_nurse_number > 0 {
 			nm.usable_nurse_number--
+			nm.busy_nurse_number++
 			nur := nm.nurse_pool_usable[0]
 
 			nm.nurse_pool_usable = nm.nurse_pool_usable[1:]

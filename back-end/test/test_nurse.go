@@ -11,8 +11,17 @@ import (
 
 func Test() {
 	h := agent.CreateHospital()
-	h.Start()
-	p(h)
+	go h.Start()
+
+	log.Println(h.NurseCenter.GetNurseNumber())
+	time.Sleep(5*time.Second)
+	h.NurseCenter.Add_patient()
+	log.Println(h.NurseCenter.GetNurseNumber())
+
+	time.Sleep(5*time.Second)
+	h.NurseCenter.Reduce_patient()
+	log.Println(h.NurseCenter.GetNurseNumber())
+
 	fmt.Scanln()
 }
 

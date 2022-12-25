@@ -35,6 +35,10 @@ func NewNurse(id int, m *Nurse_manager) *nurse {
 	}
 }
 
+func (n *nurse) GetChan() chan *patient.Patient {
+	return n.msg_recv
+}
+
 // 接受新的病人
 func (n *nurse) TreatNewPatient(p *patient.Patient) error {
 	n.Lock()
@@ -88,7 +92,12 @@ func (n *nurse) judge(patient2 *patient.Patient) {
 
 	// 时间 随机1-10
 	tim, _ := rand.Int(rand.Reader, big.NewInt(10))
-	n.SetPatientStatus(int(gra.Int64()+1), 10+int(tim.Int64()))
+	if patient2.Severity == -1 {
+		n.SetPatientStatus(int(gra.Int64()+1), 10+int(tim.Int64()))
+	} else {
+		n.SetPatientStatus(patient2.Severity, 10+int(tim.Int64()))
+	}
+
 
 	patient2.Lock()
 	patient2.Msg_nurse <- "ticket"
@@ -107,7 +116,11 @@ func (nur *nurse) Run() {
 	log.Println("Nurse " + strconv.FormatInt(int64(nur.ID), 10) + " start")
 	for {
 		select {
-		case n := <-nur.msg_recv:
+		case n, ok := <-nur.msg_recv:
+			if !ok {
+				log.Println("Nurse " + strconv.FormatInt(int64(nur.ID), 10) + " stop")
+				return
+			}
 			go nur.treat(n)
 		default:
 			time.Sleep(1 * time.Second)
