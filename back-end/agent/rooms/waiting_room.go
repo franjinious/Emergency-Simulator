@@ -28,7 +28,7 @@ var (
 func GetWaitingRoomInstance(c1 chan int, c2 chan *EmergencyRoom, c3 chan int, c4 chan *doctor.Doctor) *WaitingRoom {
 	once3.Do(func() {
 		instance_wr = &WaitingRoom{
-			MsgRequest:           make(chan *patient.Patient, 10),
+			MsgRequest:           make(chan *patient.Patient, 20),
 			QueuePatients:        make([]*patient.Patient, 0),
 			EmergencyRoomRequest: c1,
 			EmergencyRoomReponse: c2,

@@ -35,10 +35,10 @@ func NewPatient(id int, age int, gender bool, symptom string, severity int, tole
 		Tolerance:             tolerance,
 		TimeForTreat:          timeForTreate,
 		Status:                Waiting_for_nurse,
-		Msg_nurse:             make(chan string, 10),
+		Msg_nurse:             make(chan string, 20),
 		Msg_request_nurse:     c,
 		Msg_request_reception: d,
-		Msg_receive_reception: make(chan string, 10),
+		Msg_receive_reception: make(chan string, 20),
 		Msg_request_waiting:   c_w,
 	}
 }
@@ -62,7 +62,9 @@ func (p *Patient) SetStatus(s patient_status) {
 }
 
 func (p *Patient) RequestCheckingStatus() {
+	p.Lock()
 	p.Msg_request_nurse <- p
+	p.Unlock()
 }
 
 func (p *Patient) Run() {
@@ -73,13 +75,17 @@ func (p *Patient) Run() {
 			if n == "ticket" {
 				p.SetStatus(Waiting_for_register)
 				log.Println("Patient " + strconv.FormatInt(int64(p.ID), 10) + " get a status: gravity " + strconv.FormatInt(int64(p.Severity), 10) + ", need time " + strconv.FormatInt(int64(p.TimeForTreat), 10) + ", and go to get a reception")
+				p.Lock()
 				p.Msg_request_reception <- p
+				p.Unlock()
 			}
 		case m := <-p.Msg_receive_reception:
 			if m == "ticket" {
 				log.Println("Patient " + strconv.FormatInt(int64(p.ID), 10) + " get reception")
 				p.SetStatus(Waiting_for_treat)
+				p.Lock()
 				p.Msg_request_waiting <- p
+				p.Unlock()
 			}
 
 		default:

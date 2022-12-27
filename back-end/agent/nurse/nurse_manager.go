@@ -91,8 +91,8 @@ func GetInstance(n int) *Nurse_manager {
 			usable_nurse_number: n,
 			nurse_pool_busy:     make([]*nurse, 0),
 			nurse_pool_usable:   make([]*nurse, 0),
-			msg_nurse:           make(chan *nurse, 10),
-			msg_patient:         make(chan *patient.Patient, 10),
+			msg_nurse:           make(chan *nurse, 20),
+			msg_patient:         make(chan *patient.Patient, 20),
 		}
 		i := 1
 		for i <= n {

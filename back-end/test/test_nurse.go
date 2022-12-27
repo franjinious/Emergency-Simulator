@@ -13,14 +13,17 @@ func Test() {
 	h := agent.CreateHospital()
 	go h.Start()
 
-	log.Println(h.NurseCenter.GetNurseNumber())
-	time.Sleep(5*time.Second)
-	h.NurseCenter.Add_patient()
-	log.Println(h.NurseCenter.GetNurseNumber())
+	//log.Println(h.NurseCenter.GetNurseNumber())
+	time.Sleep(15*time.Second)
+	//h.ReceptionCenter.ReduceQueue()
+	//h.ReceptionCenter.ReduceQueue()
+	//h.ReceptionCenter.ReduceQueue()
+	//log.Println(h.ReceptionCenter.GetQueuesNumber())
 
-	time.Sleep(5*time.Second)
-	h.NurseCenter.Reduce_patient()
-	log.Println(h.NurseCenter.GetNurseNumber())
+	//log.Println(h.NurseCenter.GetNurseNumber())
+	//time.Sleep(5*time.Second)
+	//h.NurseCenter.Reduce_patient()
+	//log.Println(h.NurseCenter.GetNurseNumber())
 
 	fmt.Scanln()
 }

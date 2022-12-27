@@ -31,7 +31,7 @@ func NewNurse(id int, m *Nurse_manager) *nurse {
 		p:        nil,
 		manager:  m,
 		msg_send: m.msg_nurse,
-		msg_recv: make(chan *patient.Patient, 10),
+		msg_recv: make(chan *patient.Patient, 20),
 	}
 }
 
@@ -121,7 +121,7 @@ func (nur *nurse) Run() {
 				log.Println("Nurse " + strconv.FormatInt(int64(nur.ID), 10) + " stop")
 				return
 			}
-			go nur.treat(n)
+			nur.treat(n)
 		default:
 			time.Sleep(1 * time.Second)
 		}

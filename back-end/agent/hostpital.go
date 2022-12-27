@@ -34,7 +34,9 @@ func CreateHospital() *Hospital {
 }
 
 func (h *Hospital) CreatePatient(w http.ResponseWriter, r *http.Request) {
+	h.Lock()
 	h.AcceptNewPatient(1, true, "111", 10)
+	h.Unlock()
 }
 
 func (h *Hospital) Start() {
@@ -58,7 +60,6 @@ func (h *Hospital) Start() {
 }
 
 func (h *Hospital) AcceptNewPatient(age int, gender bool, symptom string, tolerance int) {
-	h.Lock()
 	p := &patient.Patient{
 		ID:                    h.ID,
 		Age:                   age,
@@ -68,13 +69,12 @@ func (h *Hospital) AcceptNewPatient(age int, gender bool, symptom string, tolera
 		Tolerance:             tolerance,
 		TimeForTreat:          -1,
 		Status:                patient.Waiting_for_nurse,
-		Msg_nurse:             make(chan string, 10),
+		Msg_nurse:             make(chan string, 20),
 		Msg_request_nurse:     h.NurseCenter.Get_chan_patient(),
 		Msg_request_reception: h.ReceptionCenter.MsgRequest,
-		Msg_receive_reception: make(chan string, 10),
+		Msg_receive_reception: make(chan string, 20),
 		Msg_request_waiting:   h.WaitingCenter.MsgRequest,
 	}
 	h.ID++
 	go p.Run()
-	h.Unlock()
 }

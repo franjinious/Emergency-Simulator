@@ -48,8 +48,8 @@ func GetEmergencyRoomManagerInstance(n int) *EmergencyRoomManager {
 	once2.Do(func() {
 		instance_erm = &EmergencyRoomManager{
 			RoomList:   make(map[string]*EmergencyRoom),
-			MsgRequest: make(chan int, 10),
-			MsgReponse: make(chan *EmergencyRoom, 10),
+			MsgRequest: make(chan int, 20),
+			MsgReponse: make(chan *EmergencyRoom, 20),
 		}
 
 		for i := 1; i <= n; i++ {

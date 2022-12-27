@@ -42,11 +42,11 @@ func GetDoctorManagerInstance(n int) *DoctorManager {
 	once.Do(func() {
 		instance = &DoctorManager{
 			AllDoctor:      make([]*Doctor, 0),
-			DoctorReuqest:  make(chan int, 10),
-			DoctorResponce: make(chan *Doctor, 10),
+			DoctorReuqest:  make(chan int, 20),
+			DoctorResponce: make(chan *Doctor, 20),
 		}
 		for i := 1; i < n; i++ {
-			d := NewDoctor(i, make(map[string]bool), true, 10)
+			d := NewDoctor(i, make(map[string]bool), true, i)
 			instance.AllDoctor = append(instance.AllDoctor, d)
 		}
 	})
