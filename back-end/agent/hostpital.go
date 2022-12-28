@@ -27,7 +27,7 @@ func CreateHospital() *Hospital {
 	h.ID = 1
 	h.NurseCenter = nurse.GetInstance(3)
 	h.ReceptionCenter = rooms.GetInstance(5)
-	h.EmergencyRoomCenter = rooms.GetEmergencyRoomManagerInstance(5)
+	h.EmergencyRoomCenter = rooms.GetEmergencyRoomManagerInstance(10)
 	h.DoctorCenter = doctor.GetDoctorManagerInstance(5)
 	h.WaitingCenter = rooms.GetWaitingRoomInstance(h.EmergencyRoomCenter.MsgRequest, h.EmergencyRoomCenter.MsgReponse, h.DoctorCenter.DoctorReuqest, h.DoctorCenter.DoctorResponce)
 	return h

@@ -98,7 +98,6 @@ func (n *nurse) judge(patient2 *patient.Patient) {
 		n.SetPatientStatus(patient2.Severity, 10+int(tim.Int64()))
 	}
 
-
 	patient2.Lock()
 	patient2.Msg_nurse <- "ticket"
 	patient2.Unlock()

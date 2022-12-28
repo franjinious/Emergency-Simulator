@@ -21,6 +21,44 @@ type DoctorManager struct {
 	DoctorResponce chan *Doctor // 返回可用的医生
 }
 
+func (dm *DoctorManager) AddDoctor(level int) {
+	dm.Lock()
+
+	d := NewDoctor(len(dm.AllDoctor)+1, make(map[string]bool), true, level)
+	dm.AllDoctor = append(dm.AllDoctor, d)
+
+	log.Println("Add a new doctor")
+	dm.Unlock()
+}
+
+func (dm *DoctorManager) DeleteDoctor(level int) {
+	dm.Lock()
+	flag := false
+	for !flag {
+		for i, j := range dm.AllDoctor {
+			j.Lock()
+			if j.Usable == true && j.Ability == level {
+				// 删除j
+				if i == 0 {
+					dm.AllDoctor = dm.AllDoctor[1:]
+				} else if i == len(dm.AllDoctor) {
+					dm.AllDoctor = dm.AllDoctor[:len(dm.AllDoctor)-1]
+				} else {
+					dm.AllDoctor = append(dm.AllDoctor[:i], dm.AllDoctor[i+1:]...)
+				}
+
+				flag = true
+				j.Unlock()
+				break
+			}
+			j.Unlock()
+		}
+	}
+
+	log.Println("Delete a new doctor")
+	dm.Unlock()
+}
+
 func (dm *DoctorManager) handlerRequest(value int) {
 	for i := 0; i < len(dm.AllDoctor); i++ {
 		// 依次判断有没有满足的医生
