@@ -16,7 +16,7 @@
       <div>
         <div class="waiting-area">
           <div class="wait">
-            <div class="waiter" v-for="wt in allCusList" :key="wt.id">
+            <div class="waiter" v-for="wt in waitingList" :key="wt.id">
               <div class="people" :class="wt.state" >
                 <img class="people-icon" style="width: 100%;"
                      :src="wt.avatar" alt=""/>
@@ -130,7 +130,7 @@ export default {
         'time1',
         'progress1',
         'waitingList',
-        'allCusList'
+        'allPatListList'
     ]),
     progress(){
       let pro = (this.hour*30+this.minute)/180*100

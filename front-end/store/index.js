@@ -14,7 +14,34 @@ export const urgences = new Vuex.Store({
             //Progres
             progress1 : 10,
             //waiting list
-            waitingList: [],
+            waitingList: [                {
+                id:1,
+                name:'CUS1',
+                avatar: require('./379339-512.png'),
+                state: 'waiting',
+                patience: 100,
+                come:false,
+                timer: null
+            },
+                {
+                    id:2,
+                    name:'CUS2',
+                    avatar: require('./379444-512.png'),
+                    state: 'waiting',
+                    patience: 100,
+                    come:false,
+                    timer: null
+                },
+                {
+                    id:3,
+                    name:'CUS3',
+                    avatar: require('./379446-512.png'),
+                    state: 'waiting',
+                    patience: 100,
+                    come:false,
+                    timer: null
+                },
+            ],
             //List de patient
 
             allPatList:[
