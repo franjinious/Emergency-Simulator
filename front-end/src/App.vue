@@ -28,17 +28,17 @@
           </div>
         </div>
 
-        <div class = "input-box" style="margin-top: 5%">
+        <div class = "input-box" style="margin-top: 5%;margin-left: auto; margin-right: auto ">
           <label for="country">La maladie du nouveau patient</label>
-          <select v-model = "maladie" id="country" name="country">
+          <select v-model = "maladie" id="country" name="country" style="width: 100%">
             <option value="rhume">Rhume</option>
             <option value="fievre">Fievre</option>
             <option value="rupture des os">Rupture des os</option>
           </select>
-          <div class="button" @click="createPatient">Ajouter</div>
+          <div class="button" @click="createPatient" style="margin-bottom: auto">Ajouter</div>
         </div>
 
-        <div class="Acceuil ac1" style="margin-top: 2%">Acceuil</div>
+        <div class="Acceuil ac1" style="margin-top: 2%; margin-left: auto; margin-right: auto">Acceuil</div>
       </div>
 
     </header>
@@ -100,6 +100,7 @@ export default {
   },
 
   methods: {
+
     //Fonction d'essai pour pousser l'info du patient au backend
     createPatient() {
       axios.post('http://localhost:8080/api/users', {
@@ -268,8 +269,8 @@ main .Room4 {
 
  /*Espace pour les entrees*/
 .input-box{
-  height: 75px;
-  width: 40%;
+  height: 150px;
+  width: 10%;
   background-color: #ffd24d;
   margin-left: auto;
   margin-right: auto;
