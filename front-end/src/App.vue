@@ -28,17 +28,33 @@
           </div>
         </div>
 
-        <div class = "input-box" style="margin-top: 5%;margin-left: auto; margin-right: auto ">
+        <div class = "input-box" style="margin-top: 5%;margin-left: 0; margin-right: auto ">
           <label for="country">La maladie du nouveau patient</label>
-          <select v-model = "maladie" id="country" name="country" style="width: 100%">
-            <option value="rhume">Rhume</option>
-            <option value="fievre">Fievre</option>
-            <option value="rupture des os">Rupture des os</option>
+          <select v-model = "maladie"  style="width: 100%">
+            <option value=1>Rhume</option>
+            <option value=2>Fievre</option>
+            <option value=3>Mal à l'estomac</option>
+            <option value=4>diarrhée</option>
+            <option value=5>Rupture des os</option>
+<!--            心绞痛-->
+            <option value=6>Angine</option>
+<!--            中风-->
+            <option value=7>Accident vasculaire cérébral</option>
+            <option value=8>Cracher du sang</option>
+<!--            休克-->
+            <option value=9>Choc</option>
+<!--            心脏骤停-->
+            <option value=10>arrêt cardiaque</option>
+
           </select>
           <div class="button" @click="createPatient" style="margin-bottom: auto">Ajouter</div>
         </div>
+        <div>
+          <div class="Acceuil ac1" style="margin-top: 2%; float: left">Acceuil</div>
+          <div class="Acceuil ac2" style="margin-top: 2%; float: right">Réception Infirmière</div>
 
-        <div class="Acceuil ac1" style="margin-top: 2%; margin-left: auto; margin-right: auto">Acceuil</div>
+        </div>
+
       </div>
 
     </header>
@@ -271,8 +287,8 @@ main .Room4 {
 
  /*Espace pour les entrees*/
 .input-box{
-  height: 150px;
-  width: 10%;
+  height: 80px;
+  width: 40%;
   background-color: #ffd24d;
   margin-left: auto;
   margin-right: auto;
