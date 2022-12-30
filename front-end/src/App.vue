@@ -20,8 +20,8 @@
               <div class="people" :class="wt.state" >
                 <img class="people-icon" style="width: 100%;"
                      :src="wt.avatar" alt=""/>
-                <div class="label" >
-                  Dans l'attente
+                <div class="label" :style="calculateWaitStyle(wt)">
+                  Waiting
                 </div>
               </div>
             </div>
@@ -120,6 +120,10 @@ export default {
 
             });
       }, 500);
+    },
+    // 计算顾客耐心值
+    calculateWaitStyle(wt) {
+      return 'background: linear-gradient(to right, #006dd9 ' + (100 - wt.patience) + '%, #2693ff ' + (100 - wt.patience) + '%);'
     },
   },
 

@@ -16,36 +16,9 @@ export const urgences = new Vuex.Store({
             //Progres
             progress1 : 10,
             //waiting list
-            waitingList: [                {
-                id:1,
-                name:'CUS1',
-                avatar: require('./379339-512.png'),
-                state: 'waiting',
-                patience: 100,
-                come:false,
-                timer: null
-            },
-                {
-                    id:2,
-                    name:'CUS2',
-                    avatar: require('./379444-512.png'),
-                    state: 'waiting',
-                    patience: 100,
-                    come:false,
-                    timer: null
-                },
-                {
-                    id:3,
-                    name:'CUS3',
-                    avatar: require('./379446-512.png'),
-                    state: 'waiting',
-                    patience: 100,
-                    come:false,
-                    timer: null
-                },
-            ],
-            //List de patient
+            waitingList: [],
 
+            //List de patient
             allPatList:[
                 {
                     id:1,
@@ -217,6 +190,7 @@ export const urgences = new Vuex.Store({
     mutations: {
         initState() {
           this.commit('startDataUpdating')
+          this.commit('resumeAddWaiting')
         },
         // 开启日期时间变换
         startDataUpdating(state) {
@@ -228,6 +202,7 @@ export const urgences = new Vuex.Store({
               state.minute = 0
               state.hour++
             } else if (state.day < 7) {
+                this.commit('resetAllPat') //一天结束，重置顾客状态
               state.minute = 0
               state.hour = 0
               state.day += 1
@@ -238,6 +213,41 @@ export const urgences = new Vuex.Store({
               state.week += 1
             }
           }, 500)
-        }
+        },
+        // 重置所有顾客的状态
+    resetAllPat(state){
+        state.allPatList.forEach((cus) => {
+          cus.come = false
+          cus.patience = 100
+          cus.state = 'waiting'
+          cus.timer = null
+        })
+      },
+      // 等待队列随机时间添加人物
+      resumeAddWaiting(state) {
+        let len = state.allPatList.length
+        state.waitAddTimer = setTimeout(function addWait() {
+          let cus = state.allPatList[Math.floor(Math.random() * len)]
+          if (state.waitingList.length < 5) {
+            if (cus.come === false){
+              let wt = JSON.parse(JSON.stringify(cus))
+              state.waitingList.push(wt)
+              wt.timer = setTimeout(function time() {
+                wt.patience--
+                if (wt.patience > 0) {
+                  wt.timer = setTimeout(time, 100)
+                } else {
+                  let idx = state.waitingList.findIndex((item) => {
+                    return item.id === wt.id
+                  })
+                  state.waitingList.splice(idx, 1)
+                }
+              }, 100)
+            }
+          }
+          cus.come = true
+          state.waitAddTimer = setTimeout(addWait, 4000)
+        }, 3000)
+      }
       }
 })
