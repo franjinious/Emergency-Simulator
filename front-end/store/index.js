@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 export const urgences = new Vuex.Store({
     state(){
         return{
+            hour: 0, //heure
+            minute: 0, //minute
             //Semaine
             week : 1,
             //Jour
@@ -211,5 +213,31 @@ export const urgences = new Vuex.Store({
 
 
         }
-    }
+    },
+    mutations: {
+        initState() {
+          this.commit('startDataUpdating')
+        },
+        // 开启日期时间变换
+        startDataUpdating(state) {
+          // 每天240分钟 每天4小时
+          state.timer = setInterval(() => {
+            if (state.minute < 60) {
+              state.minute++
+            } else if (state.hour < 3) {
+              state.minute = 0
+              state.hour++
+            } else if (state.day < 7) {
+              state.minute = 0
+              state.hour = 0
+              state.day += 1
+            } else {
+              state.minute = 0
+              state.hour = 0
+              state.day = 1
+              state.week += 1
+            }
+          }, 500)
+        }
+      }
 })

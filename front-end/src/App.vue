@@ -125,6 +125,8 @@ export default {
 
   computed: {
     ...mapState([
+        'hour',
+        'minute',
         'day',
         'week',
         'patientsTraites',
@@ -134,7 +136,7 @@ export default {
         'allPatListList'
     ]),
     progress(){
-      let pro = (this.hour*30+this.minute)/180*100
+      let pro = (this.hour*60+this.minute)/240*100
       return 'background: linear-gradient(to right, #ffd24d '+pro+'%, #ffe699 '+pro+'%);'
     },
 
