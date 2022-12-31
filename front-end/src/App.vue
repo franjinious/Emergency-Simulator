@@ -1,6 +1,6 @@
 <template xmlns:progress="http://java.sun.com/xml/ns/javaee">
   <div class = "app">
-    <header>
+    <header style="margin-bottom: 20px">
 <!--      <img class="people-icon" style="width: 100%;" src="src/assets/images/ambulance.png" alt=""/>-->
       <div class="header-item date" :style="progress">
         <span>W{{week}} </span> &nbsp; <span>D{{day}}</span>
@@ -72,10 +72,14 @@
 
     </header>
 
-    <main>
-
-      <div >
-        <div class="Room Room1" >
+    <main style="margin-top: 20px; width: 100%">
+      <div>
+        <div class="salleAttente" style="width: 100%; margin-top: 2rem">
+          Salle d'attente
+        </div>
+      </div>
+      <div>
+        <div class="Room Room1" style="float:left;">
           Room1
 <!--          <div style="display:inline-block;margin-bottom: 0%; margin-top:0; width: 100%;text-align: center; align-items: baseline" >-->
 <!--            <progress-->
@@ -85,9 +89,15 @@
 <!--          </div>-->
 
         </div>
-        <div class="Room Room2" >Room2</div>
-        <div class="Room Room3"  style= "margin-bottom: 5%">Room3</div>
-        <div class="Room Room4" style="margin-bottom: 5%">Room4</div>
+        <div class="Room Room2" style="float:left;margin-left: 2rem">Room2</div>
+        <div class="Room Room3" style="float:left;margin-left: 2rem">Room3</div>
+        <div class="Room Room4" style="float:left;margin-left: 2rem">Room4</div>
+        <div class="Room Room5" style="float:left;margin-left: 2rem">Room5</div>
+        <div class="Room Room6" style="float:left;margin-left: 2rem">Room6</div>
+        <div class="Room Room7" style="float:left;margin-left: 2rem">Room7</div>
+        <div class="Room Room8" style="float:left;margin-left: 2rem">Room8</div>
+        <div class="Room Room9" style="float:left;margin-left: 2rem">Room9</div>
+        <div class="Room Room10" style="float:left;margin-left: 2rem">Room10</div>
 
       </div>
 
@@ -246,19 +256,20 @@ export default {
 main .Room {
   background-color: #ffa64d;
   margin: auto;
-  height: 6rem;
+  height: 5rem;
   width: 10%;  /*left: 50%;*/
   /*top: 70%;*/
   /*float: left;*/
   border-radius: 0.8rem;
   border: 0.3rem solid white;
   box-sizing: border-box;
-  display: flex;
+  display: inline-block;
   /*flex-wrap: wrap;*/
   justify-content: left;
   align-items: flex-start;
   text-align: start;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1%;
+  /*padding-bottom: 2rem;*/
   /*display: inline-flex;*/
 
 }
@@ -303,6 +314,24 @@ main .Room {
   padding-bottom: 1.5rem;
 
 }
+ .salleAttente{
+   background: chocolate;
+   margin: auto;
+   height: 5rem;
+   width: 10%;  /*left: 50%;*/
+   /*top: 70%;*/
+   /*float: left;*/
+   border-radius: 0.8rem;
+   border: 0.3rem solid white;
+   box-sizing: border-box;
+   display: inline-block;
+   /*flex-wrap: wrap;*/
+   justify-content: left;
+   align-items: flex-start;
+   text-align: start;
+   margin-bottom: 1%;
+
+ }
 
  /*Espace pour les entrees*/
 .input-box{
