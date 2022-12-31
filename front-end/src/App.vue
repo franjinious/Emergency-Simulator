@@ -15,7 +15,7 @@
 
       <div>
         <div class="waiting-area">
-          <div class="wait">
+          <div class="wait" style="width: 60%">
             <div class="waiter" v-for="wt in waitingList" :key="wt.id">
               <div class="people" :class="wt.state" >
                 <img class="people-icon" style="width: 100%;"
@@ -34,7 +34,7 @@
             <option value=1>Rhume</option>
             <option value=2>Fievre</option>
             <option value=3>Mal à l'estomac</option>
-            <option value=4>diarrhée</option>
+            <option value=4>Diarrhée</option>
             <option value=5>Rupture des os</option>
 <!--            心绞痛-->
             <option value=6>Angine</option>
@@ -44,14 +44,27 @@
 <!--            休克-->
             <option value=9>Choc</option>
 <!--            心脏骤停-->
-            <option value=10>arrêt cardiaque</option>
+            <option value=10>Arrêt cardiaque</option>
 
           </select>
           <div class="button" @click="createPatient" style="margin-bottom: auto">Ajouter</div>
         </div>
-        <div>
-          <div class="Acceuil ac1" style="margin-top: 2%; float: left">Acceuil</div>
-          <div class="Acceuil ac2" style="margin-top: 2%; float: right">Réception Infirmière</div>
+        <div >
+          <div style="width: 50%; float: left">
+            <div class="Acceuil ac1" style="margin-top: 2%;height: 6rem; float: left">Acceuil 1</div>
+            <div class="Acceuil ac2" style="margin-top: 2%;height: 6rem;float: left">Acceuil 2</div>
+            <div class="Acceuil ac3" style="margin-top: 2%;height: 6rem;float: left">Acceuil 3</div>
+            <div class="Acceuil ac4" style="margin-top: 2%;height: 6rem;float: left">Acceuil 4</div>
+            <div class="Acceuil ac5" style="margin-top: 2%;height: 6rem;float: left">Acceuil 5</div>
+          </div>
+          <div style="width: 50%; float: right">
+            <div class="Acceuil inf1" style="margin-top: 2%;height: 6rem; float: right">Réception Infirmière 1</div>
+            <div class="Acceuil inf1" style="margin-top: 2%;height: 6rem; float: right">Réception Infirmière 2</div>
+            <div class="Acceuil inf1" style="margin-top: 2%;height: 6rem; float: right">Réception Infirmière 3</div>
+            <div class="Acceuil inf1" style="margin-top: 2%;height: 6rem; float: right">Réception Infirmière 4</div>
+            <div class="Acceuil inf1" style="margin-top: 2%;height: 6rem; float: right">Réception Infirmière 5</div>
+
+          </div>
 
         </div>
 
@@ -61,24 +74,25 @@
 
     <main>
 
-      <div>
-        <div class="Room Room1" style="margin-top: 5%">
+      <div >
+        <div class="Room Room1" >
           Room1
-          <div style="display:inline-block;margin-bottom: 0%; margin-top:0; width: 100%;text-align: center; align-items: baseline" >
-            <progress
-              :value = "progress1" max = 100 style=" width: 60%">
-            </progress>
-            <br style="float: right">Proges:{{progress1}}%<br>
-          </div>
+<!--          <div style="display:inline-block;margin-bottom: 0%; margin-top:0; width: 100%;text-align: center; align-items: baseline" >-->
+<!--            <progress-->
+<!--              :value = "progress1" max = 100 style=" width: 60%">-->
+<!--            </progress>-->
+<!--            <br style="float: right">Proges:{{progress1}}%<br>-->
+<!--          </div>-->
 
         </div>
-        <div class="Room Room2" style="margin-top: 5%">Room2</div>
+        <div class="Room Room2" >Room2</div>
+        <div class="Room Room3"  style= "margin-bottom: 5%">Room3</div>
+        <div class="Room Room4" style="margin-bottom: 5%">Room4</div>
+
       </div>
 
 
       <div>
-        <div class="Room Room3" style="margin-top: 5%; margin-bottom: 5%">Room3</div>
-        <div class="Room Room4" style="margin-top: 5%; margin-bottom: 5%">Room4</div>
       </div>
 
     </main>
@@ -100,6 +114,7 @@ export default {
   },
   data(){
     return{
+      //Les infos ensemble passees
       infos: null,
       backgroundImage: require('/src/assets/images/2382727.jpg'),
       backColorMap: {
@@ -110,7 +125,7 @@ export default {
         danger: 'background: linear-gradient(to right,#ff2020 50%, #b20000 50%);',
         destroy: 'background-color: #535362;text-decoration: line-through;'
       },
-      maladie : "init"
+      maladie : "init",
 
     }
   },
@@ -153,7 +168,8 @@ export default {
         'time1',
         'progress1',
         'waitingList',
-        'allPatListList'
+        'allPatListList',
+        'cntInfirmier'
     ]),
     progress(){
       let pro = (this.hour*60+this.minute)/240*100
@@ -230,16 +246,15 @@ export default {
 main .Room {
   background-color: #ffa64d;
   margin: auto;
-  height: 10rem;
-  width: 40%;
-  /*left: 50%;*/
+  height: 6rem;
+  width: 10%;  /*left: 50%;*/
   /*top: 70%;*/
   /*float: left;*/
   border-radius: 0.8rem;
   border: 0.3rem solid white;
   box-sizing: border-box;
   display: flex;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
   justify-content: left;
   align-items: flex-start;
   text-align: start;
@@ -248,21 +263,21 @@ main .Room {
 
 }
 
-main .Room1 {
-  float: left;
-}
+/*main .Room1 {*/
+/*  float: left;*/
+/*}*/
 
-main .Room3 {
-  float: left;
-}
+/*main .Room3 {*/
+/*  float: left;*/
+/*}*/
 
-main .Room2 {
-  float: right;
-}
+/*main .Room2 {*/
+/*  float: right;*/
+/*}*/
 
-main .Room4 {
-  float: right;
-}
+/*main .Room4 {*/
+/*  float: right;*/
+/*}*/
 
  .Acceuil {
   /*margin-left: auto;*/
@@ -292,7 +307,7 @@ main .Room4 {
  /*Espace pour les entrees*/
 .input-box{
   height: 80px;
-  width: 40%;
+  width: 20%;
   background-color: #ffd24d;
   margin-left: auto;
   margin-right: auto;
@@ -337,7 +352,7 @@ input[type=submit] {
 /*Zone d'attente*/
 .waiting-area {
   position: relative;
-  width: 95%;
+  width: 80%;
   margin: 0 auto;
 }
 

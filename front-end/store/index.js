@@ -182,9 +182,10 @@ export const urgences = new Vuex.Store({
                     come:false,
                     timer: null
                 },
-                ]
-
-
+                ],
+            //Patient dans chaque salle
+            cntPatient: [0,0,0,0],
+            cntInfirmier: 3
         }
     },
     mutations: {
@@ -249,5 +250,18 @@ export const urgences = new Vuex.Store({
           state.waitAddTimer = setTimeout(addWait, 4000)
         }, 3000)
       }
-      }
+    },
+    //Fonction pour le pretraitement des infirmiers
+    ordering(state) {
+        if (state.cntInfirmier == 0) {
+            this.commit('prompting', ["Il n'existe pas d'infirmier disponible", 'negative'])
+            return
+        }
+        this.commit('pause')
+        state.orderingCus = state.waitingList[0]
+        // 从等待队列中删除第一个顾客
+        state.waitingList.splice(0, 1)
+        state.menuing = true
+    },
+
 })

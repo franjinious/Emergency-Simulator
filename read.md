@@ -20,7 +20,9 @@ Il faut tout d'abord changer le répertoire au front-end
 ```bash
 cd ./front-end
 ```
-Ensuite, pour démarrer le programme, utiliser la commande
+Ensuite, pour démarrer le programme, utiliser les commandes
 ```
+npm install -g @vue/cli
+
 npm run serve
 ```
