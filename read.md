@@ -13,3 +13,14 @@ Chaque patient se caractérise principalement par
 Les infirmiers se caractérisent principalement par
 
 - La disponibilité de type bool
+
+## Démarrage du projet
+### Front-end
+Il faut tout d'abord changer le répertoire au front-end
+```bash
+cd ./front-end
+```
+Ensuite, pour démarrer le programme, utiliser la commande
+```
+npm run serve
+```
