@@ -56,16 +56,23 @@
             <div class="Acceuil ac3" style="margin-top: 2%;height: 6rem;float: left">Acceuil 3</div>
             <div class="Acceuil ac4" style="margin-top: 2%;height: 6rem;float: left">Acceuil 4</div>
             <div class="Acceuil ac5" style="margin-top: 2%;height: 6rem;float: left">Acceuil 5</div>
+            <div class = "buttonArea accueil" style=" margin-top: 2rem">
+              <div class="button activerAccueil" @click="createPatient" style="float: left; margin-top: auto; margin-bottom: auto">➕</div>
+              <div class="button desactiverAccueil" @click="createPatient" style="float: right; margin-top: auto; margin-bottom: auto">➖</div>
+            </div>
           </div>
-          <div style="width: 50%; float: right">
-            <div class="Acceuil inf1" style="margin-top: 2%;height: 6rem; float: right">Réception Infirmière 1</div>
-            <div class="Acceuil inf1" style="margin-top: 2%;height: 6rem; float: right">Réception Infirmière 2</div>
-            <div class="Acceuil inf1" style="margin-top: 2%;height: 6rem; float: right">Réception Infirmière 3</div>
-            <div class="Acceuil inf1" style="margin-top: 2%;height: 6rem; float: right">Réception Infirmière 4</div>
-            <div class="Acceuil inf1" style="margin-top: 2%;height: 6rem; float: right">Réception Infirmière 5</div>
+          <div style="width: 20%; float: right; align-items: flex-end">
+            <div class="Acceuil infi1" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 1</div>
+            <div class="Acceuil infi2" style="margin-top:1.5%;height:3rem">Reception Infirmiere 2</div>
+            <div class="Acceuil infi3" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 3</div>
+            <div class="Acceuil infi4" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 4</div>
+            <div class="Acceuil infi5" style="margin-top: 1.5%;height: 3rem">Rception Infirmiere 5</div>
+            <div class = "buttonArea infirmier" style=" margin-top: 2rem; margin-right: auto">
+              <div class="button activerInfirmier" @click="createPatient" style="float: left">➕</div>
+              <div class="button desactiverInfirmier" @click="createPatient" style="float: right">➖</div>
+            </div>
 
           </div>
-
         </div>
 
       </div>
@@ -257,7 +264,7 @@ main .Room {
   background-color: #ffa64d;
   margin: auto;
   height: 5rem;
-  width: 10%;  /*left: 50%;*/
+  width: 8%;  /*left: 50%;*/
   /*top: 70%;*/
   /*float: left;*/
   border-radius: 0.8rem;
@@ -289,7 +296,11 @@ main .Room {
 /*main .Room4 {*/
 /*  float: right;*/
 /*}*/
-
+.buttonArea{
+  margin-top: 3rem;
+  width: 40%;
+  display: inline-block;
+}
  .Acceuil {
   /*margin-left: auto;*/
   /*margin-left: auto;*/
@@ -331,6 +342,14 @@ main .Room {
    text-align: start;
    margin-bottom: 1%;
 
+ }
+
+ .activerAccueil{
+   margin-top: 3rem;
+ }
+
+ .desactiverAccueil{
+   margin-left: 1rem;
  }
 
  /*Espace pour les entrees*/

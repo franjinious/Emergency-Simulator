@@ -59,6 +59,8 @@ p,div{
 }
 
 .button {
+    display: flex;
+    justify-content: space-between;
     text-align: center;
     border-radius: 99999px;
     border: 0.1rem solid #745904;
