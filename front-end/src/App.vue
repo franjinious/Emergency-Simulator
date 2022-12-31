@@ -51,28 +51,28 @@
         </div>
         <div >
           <div style="width: 50%; float: left">
-            <div class="Acceuil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; float: left">
-              Acceuil 1
+            <div class="Accueil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; float: left">
+              Accueil 1
 <!--              <div class="people cus" :class="cus.state">-->
 <!--                <img class="people-icon" style="width: 100%" :src="cus.avatar"/>-->
 <!--              </div>-->
 
             </div>
-            <div class="Acceuil ac2" v-if="nbAccueil>=2" style="margin-top: 2%;height: 6rem;float: left">Acceuil 2</div>
-            <div class="Acceuil ac3" v-if="nbAccueil>=3" style="margin-top: 2%;height: 6rem;float: left">Acceuil 3</div>
-            <div class="Acceuil ac4" v-if="nbAccueil>=4" style="margin-top: 2%;height: 6rem;float: left">Acceuil 4</div>
-            <div class="Acceuil ac5" v-if="nbAccueil>=5" style="margin-top: 2%;height: 6rem;float: left">Acceuil 5</div>
+            <div class="Accueil ac2" v-if="nbAccueil>=2" style="margin-top: 2%;height: 6rem;float: left">Accueil 2</div>
+            <div class="Accueil ac3" v-if="nbAccueil>=3" style="margin-top: 2%;height: 6rem;float: left">Accueil 3</div>
+            <div class="Accueil ac4" v-if="nbAccueil>=4" style="margin-top: 2%;height: 6rem;float: left">Accueil 4</div>
+            <div class="Accueil ac5" v-if="nbAccueil>=5" style="margin-top: 2%;height: 6rem;float: left">Accueil 5</div>
             <div class="button activerAccueil" @click="activerAccueil" style="float: left; margin-top: auto; margin-bottom: auto">➕</div>
             <div class="button desactiverAccueil" @click="desactiverAccueil"  style="float: left; margin-top: auto; margin-bottom: auto">➖</div>
           </div>
           <div style="width: 20%; float: right; align-items: flex-end">
-            <div class="Acceuil infi1" v-if="nbInfirmier>=1" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 1</div>
-            <div class="Acceuil infi2" v-if="nbInfirmier>=2" style="margin-top:1.5%;height:3rem">Reception Infirmiere 2</div>
-<!--            <div class="Acceuil infi2" v-else style="margin-top:1.5%;height:3rem; {background: #aaaaaa}" >Reception Infirmiere 2</div>-->
+            <div class="Accueil infi1" v-if="nbInfirmier>=1" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 1</div>
+            <div class="Accueil infi2" v-if="nbInfirmier>=2" style="margin-top:1.5%;height:3rem">Reception Infirmiere 2</div>
+<!--            <div class="Accueil infi2" v-else style="margin-top:1.5%;height:3rem; {background: #aaaaaa}" >Reception Infirmiere 2</div>-->
 
-            <div class="Acceuil infi3" v-if="nbInfirmier>=3" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 3</div>
-            <div class="Acceuil infi4" v-if="nbInfirmier>=4" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 4</div>
-            <div class="Acceuil infi5" v-if="nbInfirmier>=5" style="margin-top: 1.5%;height: 3rem">Rception Infirmiere 5</div>
+            <div class="Accueil infi3" v-if="nbInfirmier>=3" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 3</div>
+            <div class="Accueil infi4" v-if="nbInfirmier>=4" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 4</div>
+            <div class="Accueil infi5" v-if="nbInfirmier>=5" style="margin-top: 1.5%;height: 3rem">Rception Infirmiere 5</div>
               <div class="button activerInfirmier" @click="activerInfirmier" style="float: left">➕</div>
               <div class="button desactiverInfirmier" @click="desactiverInfirmier" style="float: right">➖</div>
 
@@ -91,25 +91,98 @@
         </div>
       </div>
       <div>
-        <div class="Room Room1" style="float:left;">
+        <div class="Room Room1" v-if="nbSalle>=1" style="float:left;">
           Room1
-<!--          <div style="display:inline-block;margin-bottom: 0%; margin-top:0; width: 100%;text-align: center; align-items: baseline" >-->
-<!--            <progress-->
-<!--              :value = "progress1" max = 100 style=" width: 60%">-->
-<!--            </progress>-->
-<!--            <br style="float: right">Proges:{{progress1}}%<br>-->
-<!--          </div>-->
-
+          <div class="people p1 free" >
+            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+<!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <div class="redC"></div>
+            <div class="redR"></div>
+          </div>
         </div>
-        <div class="Room Room2" style="float:left;margin-left: 2rem">Room2</div>
-        <div class="Room Room3" style="float:left;margin-left: 2rem">Room3</div>
-        <div class="Room Room4" style="float:left;margin-left: 2rem">Room4</div>
-        <div class="Room Room5" style="float:left;margin-left: 2rem">Room5</div>
-        <div class="Room Room6" style="float:left;margin-left: 2rem">Room6</div>
-        <div class="Room Room7" style="float:left;margin-left: 2rem">Room7</div>
-        <div class="Room Room8" style="float:left;margin-left: 2rem">Room8</div>
-        <div class="Room Room9" style="float:left;margin-left: 2rem">Room9</div>
-        <div class="Room Room10" style="float:left;margin-left: 2rem">Room10</div>
+        <div class="Room Room2" v-if="nbSalle>=2" style="float:left;margin-left: 2rem">
+          Room2
+          <div class="people p1 free" >
+            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <div class="redC"></div>
+            <div class="redR"></div>
+          </div>
+        </div>
+        <div class="Room Room3" v-if="nbSalle>=3" style="float:left;margin-left: 2rem">
+          Room3
+          <div class="people p1 free" >
+            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <div class="redC"></div>
+            <div class="redR"></div>
+          </div>
+        </div>
+        <div class="Room Room4" v-if="nbSalle>=4" style="float:left;margin-left: 2rem">
+          Room4
+          <div class="people p1 free" >
+          <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+          <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+          <div class="redC"></div>
+          <div class="redR"></div>
+        </div>
+        </div>
+        <div class="Room Room5" v-if="nbSalle>=5" style="float:left;margin-left: 2rem">
+          Room5
+          <div class="people p1 free" >
+          <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+          <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+          <div class="redC"></div>
+          <div class="redR"></div>
+        </div>
+        </div>
+        <div class="Room Room6" v-if="nbSalle>=6" style="float:left;margin-left: 2rem">
+          Room6
+          <div class="people p1 free" >
+          <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+          <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+          <div class="redC"></div>
+          <div class="redR"></div>
+        </div>
+        </div>
+        <div class="Room Room7" v-if="nbSalle>=7" style="float:left;margin-left: 2rem">
+          Room7
+          <div class="people p1 free" >
+            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <div class="redC"></div>
+            <div class="redR"></div>
+          </div>
+        </div>
+        <div class="Room Room8" v-if="nbSalle>=8" style="float:left;margin-left: 2rem">
+          Room8
+          <div class="people p1 free" >
+            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <div class="redC"></div>
+            <div class="redR"></div>
+          </div>
+        </div>
+        <div class="Room Room9" v-if="nbSalle>=9" style="float:left;margin-left: 2rem">
+          Room9
+          <div class="people p1 free" >
+            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <div class="redC"></div>
+            <div class="redR"></div>
+          </div>
+        </div>
+        <div class="Room Room10" v-if="nbSalle>=10" style="float:left;margin-left: 2rem">
+          Room10
+          <div class="people p1 free" >
+          <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+          <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+          <div class="redC"></div>
+          <div class="redR"></div>
+        </div>
+        </div>
+        <div class="button activerSalle" @click="activerSalle" style="float: left">➕</div>
+        <div class="button desactiverSalle" @click="desactiverSalle" style="float: left">➖</div>
 
       </div>
 
@@ -149,7 +222,8 @@ export default {
       },
       maladie : "init",
       nbAccueil : 1,
-      nbInfirmier : 1
+      nbInfirmier : 1,
+      nbSalle : 1
     }
   },
 
@@ -187,8 +261,8 @@ export default {
     },
 
     desactiverAccueil(){
-      if (this.nbAccueil == 0){
-        this.nbAccueil = 0
+      if (this.nbAccueil == 1){
+        this.nbAccueil = 1
       }else
         this.nbAccueil --
     },
@@ -200,10 +274,23 @@ export default {
     },
 
     desactiverInfirmier(){
-      if (this.nbAccueil == 0){
-        this.nbInfirmier = 0
+      if (this.nbAccueil == 1){
+        this.nbInfirmier = 1
       }else
         this.nbInfirmier --
+    },
+
+    activerSalle(){
+      if (this.nbSalle == 10){
+        this.nbSalle = 10
+      }else
+        this.nbSalle ++
+    },
+    desactiverSalle(){
+      if (this.nbSalle == 1){
+        this.nbSalle = 1
+      }else
+        this.nbSalle --
     },
 
 
@@ -337,7 +424,7 @@ main .Room {
   width: 40%;
   display: inline-block;
 }
- .Acceuil {
+ .Accueil {
   /*margin-left: auto;*/
   /*margin-left: auto;*/
   /*align-items: center;*/

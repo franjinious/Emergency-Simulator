@@ -75,6 +75,15 @@ p,div{
     height: 3rem;
     border: 0.3rem solid white;
 }
+.p1{
+    border: 0.3rem solid white;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
 
 .pop-item {
     padding: 1rem;
