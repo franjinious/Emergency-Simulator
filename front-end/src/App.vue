@@ -51,26 +51,31 @@
         </div>
         <div >
           <div style="width: 50%; float: left">
-            <div class="Acceuil ac1" style="margin-top: 2%;height: 6rem; float: left">Acceuil 1</div>
-            <div class="Acceuil ac2" style="margin-top: 2%;height: 6rem;float: left">Acceuil 2</div>
-            <div class="Acceuil ac3" style="margin-top: 2%;height: 6rem;float: left">Acceuil 3</div>
-            <div class="Acceuil ac4" style="margin-top: 2%;height: 6rem;float: left">Acceuil 4</div>
-            <div class="Acceuil ac5" style="margin-top: 2%;height: 6rem;float: left">Acceuil 5</div>
-            <div class = "buttonArea accueil" style=" margin-top: 2rem">
-              <div class="button activerAccueil" @click="createPatient" style="float: left; margin-top: auto; margin-bottom: auto">➕</div>
-              <div class="button desactiverAccueil" @click="createPatient" style="float: right; margin-top: auto; margin-bottom: auto">➖</div>
+            <div class="Acceuil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; float: left">
+              Acceuil 1
+<!--              <div class="people cus" :class="cus.state">-->
+<!--                <img class="people-icon" style="width: 100%" :src="cus.avatar"/>-->
+<!--              </div>-->
+
             </div>
+            <div class="Acceuil ac2" v-if="nbAccueil>=2" style="margin-top: 2%;height: 6rem;float: left">Acceuil 2</div>
+            <div class="Acceuil ac3" v-if="nbAccueil>=3" style="margin-top: 2%;height: 6rem;float: left">Acceuil 3</div>
+            <div class="Acceuil ac4" v-if="nbAccueil>=4" style="margin-top: 2%;height: 6rem;float: left">Acceuil 4</div>
+            <div class="Acceuil ac5" v-if="nbAccueil>=5" style="margin-top: 2%;height: 6rem;float: left">Acceuil 5</div>
+            <div class="button activerAccueil" @click="activerAccueil" style="float: left; margin-top: auto; margin-bottom: auto">➕</div>
+            <div class="button desactiverAccueil" @click="desactiverAccueil"  style="float: left; margin-top: auto; margin-bottom: auto">➖</div>
           </div>
           <div style="width: 20%; float: right; align-items: flex-end">
-            <div class="Acceuil infi1" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 1</div>
-            <div class="Acceuil infi2" style="margin-top:1.5%;height:3rem">Reception Infirmiere 2</div>
-            <div class="Acceuil infi3" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 3</div>
-            <div class="Acceuil infi4" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 4</div>
-            <div class="Acceuil infi5" style="margin-top: 1.5%;height: 3rem">Rception Infirmiere 5</div>
-            <div class = "buttonArea infirmier" style=" margin-top: 2rem; margin-right: auto">
-              <div class="button activerInfirmier" @click="createPatient" style="float: left">➕</div>
-              <div class="button desactiverInfirmier" @click="createPatient" style="float: right">➖</div>
-            </div>
+            <div class="Acceuil infi1" v-if="nbInfirmier>=1" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 1</div>
+            <div class="Acceuil infi2" v-if="nbInfirmier>=2" style="margin-top:1.5%;height:3rem">Reception Infirmiere 2</div>
+<!--            <div class="Acceuil infi2" v-else style="margin-top:1.5%;height:3rem; {background: #aaaaaa}" >Reception Infirmiere 2</div>-->
+
+            <div class="Acceuil infi3" v-if="nbInfirmier>=3" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 3</div>
+            <div class="Acceuil infi4" v-if="nbInfirmier>=4" style="margin-top:1.5%;height: 3rem">Reception Infirmiere 4</div>
+            <div class="Acceuil infi5" v-if="nbInfirmier>=5" style="margin-top: 1.5%;height: 3rem">Rception Infirmiere 5</div>
+              <div class="button activerInfirmier" @click="activerInfirmier" style="float: left">➕</div>
+              <div class="button desactiverInfirmier" @click="desactiverInfirmier" style="float: right">➖</div>
+
 
           </div>
         </div>
@@ -143,7 +148,8 @@ export default {
         destroy: 'background-color: #535362;text-decoration: line-through;'
       },
       maladie : "init",
-
+      nbAccueil : 1,
+      nbInfirmier : 1
     }
   },
 
@@ -173,6 +179,34 @@ export default {
     calculateWaitStyle(wt) {
       return 'background: linear-gradient(to right, #006dd9 ' + (100 - wt.patience) + '%, #2693ff ' + (100 - wt.patience) + '%);'
     },
+    activerAccueil(){
+      if (this.nbAccueil == 5){
+        this.nbAccueil = 5
+      }else
+        this.nbAccueil ++
+    },
+
+    desactiverAccueil(){
+      if (this.nbAccueil == 0){
+        this.nbAccueil = 0
+      }else
+        this.nbAccueil --
+    },
+    activerInfirmier(){
+      if (this.nbInfirmier == 5){
+        this.nbInfirmier = 5
+      }else
+        this.nbInfirmier ++
+    },
+
+    desactiverInfirmier(){
+      if (this.nbAccueil == 0){
+        this.nbInfirmier = 0
+      }else
+        this.nbInfirmier --
+    },
+
+
   },
 
   computed: {
@@ -186,7 +220,9 @@ export default {
         'progress1',
         'waitingList',
         'allPatListList',
-        'cntInfirmier'
+        'cntInfirmier',
+        'color1',
+        'color2'
     ]),
     progress(){
       let pro = (this.hour*60+this.minute)/240*100

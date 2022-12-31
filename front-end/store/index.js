@@ -3,8 +3,10 @@ import Vuex from 'vuex'
 export const urgences = new Vuex.Store({
     state(){
         return{
-            hour: 0, //heure
-            minute: 0, //minute
+            //heure
+            hour: 0,
+            //minute
+            minute: 0,
             //Semaine
             week : 1,
             //Jour
@@ -17,6 +19,9 @@ export const urgences = new Vuex.Store({
             progress1 : 10,
             //waiting list
             waitingList: [],
+            //color
+            color1 : '#ffa64d',
+            color2 : '#aaaaaa',
 
             //List de patient
             allPatList:[
