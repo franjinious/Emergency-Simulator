@@ -319,7 +319,7 @@ export default {
   data(){
     return{
       //Les infos ensemble passees
-      infos: null,
+      infos: [],
       backgroundImage: require('/src/assets/images/2382727.jpg'),
       backColorMap: {
         free: 'background: linear-gradient(to right, #dddddd 50%, #aaaaaa 50%);',
@@ -339,6 +339,19 @@ export default {
       nbPatient:0
     }
   },
+  // Fonction pour rafraichir les infos toutes les 0.5 secondes
+  mounted() {
+    this.interval = setInterval(() => {
+      axios
+          .get('http://localhost:8082/get')
+          .then(response => {
+            this.infos = response.data;
+          })
+          .catch(error => {
+            console.error(error);
+          });
+    }, 500);
+  },
 
   methods: {
 
@@ -351,16 +364,6 @@ export default {
             // 创建成功，将新用户添加到用户列表中
             console.log(response.data);
           });
-    },
-    // Fonction pour rafraichir les infos toutes les 0.5 secondes
-    mounted() {
-      setInterval(() => {
-        axios.get('http://example.com/api/data')
-            .then(response => {
-              this.infos = response.data;
-
-            });
-      }, 500);
     },
     // 计算顾客耐心值
     calculateWaitStyle(wt) {
