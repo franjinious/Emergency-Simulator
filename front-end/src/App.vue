@@ -339,6 +339,24 @@ export default {
             console.log(response.data);
           });
     },
+    createMedecin() {
+      axios.post('http://localhost:8080/api/users', {
+        levelMedecin: this.levelMedecin,
+      })
+          .then(response => {
+            // 创建成功，将新用户添加到用户列表中
+            console.log(response.data);
+          });
+    },
+    createSalle() {
+        axios.post('http://localhost:8080/api/users', {
+          levelSalle: this.levelSalle,
+        })
+            .then(response => {
+              // 创建成功，将新用户添加到用户列表中
+              console.log(response.data);
+            });
+      },
     // Fonction pour rafraichir les infos toutes les 0.5 secondes
     mounted() {
       setInterval(() => {
