@@ -309,9 +309,9 @@ export default {
         destroy: 'background-color: #535362;text-decoration: line-through;'
       },
       maladie : 0,
-      nbAccueil : 1,
-      nbInfirmier : 1,
-      nbSalle : 1,
+      nbAccueil : 3,
+      nbInfirmier : 3,
+      nbSalle : 5,
       nbMedecin:9,
     }
   },
