@@ -1,3 +1,4 @@
+
 <template xmlns:progress="http://java.sun.com/xml/ns/javaee">
   <div class = "app">
     <header style="margin-bottom: 20px">
@@ -333,6 +334,20 @@ export default {
       nbPatient:0
     }
   },
+  // Fonction pour rafraichir les infos toutes les 0.5 secondes
+  mounted() {
+    this.interval = setInterval(() => {
+      axios
+          .get("/api/items")
+          .then(response => {
+            this.items = response.data;
+          })
+          .catch(error => {
+            console.error(error);
+          });
+    }, 5000);
+    },
+
 
   methods: {
 
@@ -364,16 +379,6 @@ export default {
               console.log(response.data);
             });
       },
-    // Fonction pour rafraichir les infos toutes les 0.5 secondes
-    mounted() {
-      setInterval(() => {
-        axios.get('http://example.com/api/data')
-            .then(response => {
-              this.infos = response.data;
-
-            });
-      }, 500);
-    },
     // 计算顾客耐心值
     calculateWaitStyle(wt) {
       return 'background: linear-gradient(to right, #006dd9 ' + (100 - wt.patience) + '%, #2693ff ' + (100 - wt.patience) + '%);'
