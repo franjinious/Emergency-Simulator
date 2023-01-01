@@ -1,6 +1,7 @@
 package agent
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"sync"
@@ -14,6 +15,8 @@ import (
 
 type Hospital struct {
 	sync.Mutex
+	IP                  string
+	Port                string
 	ID                  int // 给病人分配的序号
 	NurseCenter         *nurse.Nurse_manager
 	ReceptionCenter     *rooms.ReceptionRoom
@@ -22,8 +25,11 @@ type Hospital struct {
 	WaitingCenter       *rooms.WaitingRoom
 }
 
-func CreateHospital() *Hospital {
+func CreateHospital(i string, p string) *Hospital {
+	ini()
 	h := &Hospital{}
+	h.IP = i
+	h.Port = p
 	h.ID = 1
 	h.NurseCenter = nurse.GetInstance(3)
 	h.ReceptionCenter = rooms.GetInstance(5)
@@ -39,6 +45,14 @@ func (h *Hospital) CreatePatient(w http.ResponseWriter, r *http.Request) {
 	h.Unlock()
 }
 
+func ini(){
+	bande := " ｜ ╔═╗┌┬┐┌─┐┬─┐┌─┐┌─┐┌┐┌┌─┐┬ ┬   ╔═╗┬┌┬┐┬ ┬┬  ┌─┐┌┬┐┌─┐┬─┐ | \n ｜ ║╣ │││├┤ ├┬┘│ ┬├┤ ││││  └┬┘───╚═╗│││││ ││  ├─┤ │ │ │├┬┘ | \n ｜ ╚═╝┴ ┴└─┘┴└─└─┘└─┘┘└┘└─┘ ┴    ╚═╝┴┴ ┴└─┘┴─┘┴ ┴ ┴ └─┘┴└─ | \n"
+
+	fmt.Println("  ----------------------------------------------------------")
+	fmt.Print(bande)
+	fmt.Println("  ----------------------------------------------------------")
+}
+
 func (h *Hospital) Start() {
 	go h.NurseCenter.Run()
 	go h.ReceptionCenter.Run()
@@ -49,13 +63,16 @@ func (h *Hospital) Start() {
 	mux.HandleFunc("/new", h.CreatePatient)
 
 	s := &http.Server{
-		Addr:           "127.0.0.1:8082",
+		Addr:           h.IP + ":" + h.Port,
 		Handler:        mux,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
 	}
 
+	time.Sleep(1*time.Second)
+	fmt.Println("----------------------------------------------------------")
+	log.Println("Everything is normal, the emergency room is working")
 	log.Fatal(s.ListenAndServe())
 }
 
