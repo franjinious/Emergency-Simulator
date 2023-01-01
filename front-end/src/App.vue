@@ -383,6 +383,11 @@ export default {
         this.nbAccueil = 5
       }else
         this.nbAccueil ++
+      axios.post('http://localhost:8082/activerAccueil', null)
+          .then(response => {
+            console.log(response.data)
+          });
+
     },
 
     desactiverAccueil(){
@@ -401,6 +406,11 @@ export default {
         this.nbInfirmier = 5
       }else
         this.nbInfirmier ++
+      axios.post('http://localhost:8082/activerInfirmier', null)
+          .then(response => {
+            console.log(response.data)
+          });
+
     },
 
     desactiverInfirmier(){
@@ -420,7 +430,13 @@ export default {
         this.nbSalle = 10
       }else
         this.nbSalle ++
+      axios.post('http://localhost:8082/activerSalle', this.levelSalle)
+          .then(response => {
+            console.log(response.data)
+          });
+
     },
+
     desactiverSalle(){
       if (this.nbSalle == 1){
         this.nbSalle = 1
@@ -434,6 +450,12 @@ export default {
     },
     activerDoc(){
         this.nbMedecin ++
+      axios.post('http://localhost:8082/activerDoc', this.levelMedecin)
+          .then(response => {
+            console.log(response.data)
+          });
+
+
     },
     desactiverDoc(){
         if (this.nbMedecin == 1){
