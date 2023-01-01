@@ -136,3 +136,7 @@ p,div{
 .people-icon{
     transform: scale(1.2);
 }
+
+.nbMedecin{
+    font-size: 1.5rem;
+}
