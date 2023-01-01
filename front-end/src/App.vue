@@ -13,21 +13,20 @@
         <img class="image" src="./assets/images/ambulance.png">
       </div>
 
-      <div>
-        <div class="waiting-area">
-          <div class="wait" style="width: 60%">
-            <div class="waiter" v-for="wt in waitingList" :key="wt.id">
-              <div class="people" :class="wt.state" >
-                <img class="people-icon" style="width: 100%;"
-                     :src="wt.avatar" alt=""/>
-                <div class="label" :style="calculateWaitStyle(wt)">
-                  Waiting
+        <div style="display: flex; flex-wrap: wrap">
+          <div class="waiting-area" style="float: right">
+            <div class="wait" style="width: 60%">
+              <div class="waiter" v-for="wt in waitingList" :key="wt.id">
+                <div class="people" :class="wt.state" >
+                  <img class="people-icon" style="width: 100%;"
+                       :src="wt.avatar" alt=""/>
+                  <div class="label" :style="calculateWaitStyle(wt)">
+                    Waiting
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
         <div class = "input-box" style="margin-top: 5%;margin-left: 0; margin-right: auto ">
           <label for="country">La maladie du nouveau patient</label>
           <select v-model = "maladie"  style="width: 100%">
@@ -45,10 +44,12 @@
             <option value=9>Choc</option>
 <!--            心脏骤停-->
             <option value=10>Arrêt cardiaque</option>
-
           </select>
           <div class="button" @click="createPatient" style="margin-bottom: auto">Ajouter</div>
         </div>
+        </div>
+
+      <div>
         <div >
           <div style="width: 25%; float: left">
             <div class="Accueil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; width:50%; float: left">
@@ -96,6 +97,9 @@
             <div class="button activerAccueil" @click="activerAccueil" style="float: left; margin-top: auto; margin-bottom: auto">➕</div>
             <div class="button desactiverAccueil" @click="desactiverAccueil"  style="float: left; margin-top: auto; margin-bottom: auto">➖</div>
           </div>
+
+          <div></div>
+
           <div style="width: 30%; float: right; text-align: end">
             <div class="Accueil infi1" v-if="nbInfirmier>=1" style="margin-top:1.5%;height: 5.5rem;float:right;display: block">
               <div class="people p1 free" v-if="nbInfirmier>=1" style="float: left;display: inline-block" >
@@ -163,12 +167,13 @@
           Salle d'attente
         </div>
       </div>
-      <div>
+      <div style="display: flex; flex-wrap: wrap">
+        <div style="width:70%; margin-left: 0;">
         <div class="Room Room1" v-if="nbSalle>=1" style="float:left;">
           Room1
           <div class="people p1 free" >
             <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-<!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
             <div class="redC"></div>
             <div class="redR"></div>
           </div>
@@ -194,29 +199,29 @@
         <div class="Room Room4" v-if="nbSalle>=4" style="float:left;margin-left: 2rem">
           Room4
           <div class="people p1 free" >
-          <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-          <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-          <div class="redC"></div>
-          <div class="redR"></div>
-        </div>
+            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <div class="redC"></div>
+            <div class="redR"></div>
+          </div>
         </div>
         <div class="Room Room5" v-if="nbSalle>=5" style="float:left;margin-left: 2rem">
           Room5
           <div class="people p1 free" >
-          <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-          <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-          <div class="redC"></div>
-          <div class="redR"></div>
-        </div>
+            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <div class="redC"></div>
+            <div class="redR"></div>
+          </div>
         </div>
         <div class="Room Room6" v-if="nbSalle>=6" style="float:left;margin-left: 2rem">
           Room6
           <div class="people p1 free" >
-          <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-          <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-          <div class="redC"></div>
-          <div class="redR"></div>
-        </div>
+            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <div class="redC"></div>
+            <div class="redR"></div>
+          </div>
         </div>
         <div class="Room Room7" v-if="nbSalle>=7" style="float:left;margin-left: 2rem">
           Room7
@@ -248,15 +253,25 @@
         <div class="Room Room10" v-if="nbSalle>=10" style="float:left;margin-left: 2rem">
           Room10
           <div class="people p1 free" >
-          <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-          <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-          <div class="redC"></div>
-          <div class="redR"></div>
-        </div>
+            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+            <div class="redC"></div>
+            <div class="redR"></div>
+          </div>
         </div>
         <div class="button activerSalle" @click="activerSalle" style="float: left">➕</div>
         <div class="button desactiverSalle" @click="desactiverSalle" style="float: left">➖</div>
+        </div>
+        <div style="width: 30%">
+          <div style="width: 100%; justify-items: center; float: right">
+          <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 8rem">
+            Le nombre de medecin actifs:{{nbMedecin}}
+            <div class="button activerDoc" @click="activerDoc" style="float: left">➕</div>
+            <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
 
+          </div>
+        </div>
+        </div>
       </div>
 
 
@@ -293,10 +308,11 @@ export default {
         danger: 'background: linear-gradient(to right,#ff2020 50%, #b20000 50%);',
         destroy: 'background-color: #535362;text-decoration: line-through;'
       },
-      maladie : "init",
+      maladie : 0,
       nbAccueil : 1,
       nbInfirmier : 1,
-      nbSalle : 1
+      nbSalle : 1,
+      nbMedecin:9,
     }
   },
 
@@ -365,6 +381,12 @@ export default {
       }else
         this.nbSalle --
     },
+    activerDoc(){
+
+    },
+    desctiverDoc(){
+
+    }
 
 
   },
@@ -382,7 +404,8 @@ export default {
         'allPatListList',
         'cntInfirmier',
         'color1',
-        'color2'
+        'color2',
+        'nbMedecin'
     ]),
     progress(){
       let pro = (this.hour*60+this.minute)/240*100
@@ -547,6 +570,13 @@ main .Room {
  .desactiverAccueil{
    margin-left: 1rem;
  }
+
+ .activerDoc{
+   height: 40%;
+ }
+ .desactiverDoc{
+  height: 40%;
+}
 
  /*Espace pour les entrees*/
 .input-box{
