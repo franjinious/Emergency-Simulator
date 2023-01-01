@@ -31,19 +31,19 @@
           <label for="country">La maladie du nouveau patient</label>
           <select v-model = "maladie"  style="width: 100%">
             <option value=1>Rhume</option>
-            <option value=2>Fievre</option>
-            <option value=3>Mal à l'estomac</option>
-            <option value=4>Diarrhée</option>
-            <option value=5>Rupture des os</option>
+            <option value=1>Fievre</option>
+            <option value=2>Mal à l'estomac</option>
+            <option value=2>Diarrhée</option>
+            <option value=3>Rupture des os</option>
 <!--            心绞痛-->
-            <option value=6>Angine</option>
+            <option value=3>Angine</option>
 <!--            中风-->
-            <option value=7>Accident vasculaire cérébral</option>
-            <option value=8>Cracher du sang</option>
+            <option value=4>Accident vasculaire cérébral</option>
+            <option value=4>Cracher du sang</option>
 <!--            休克-->
-            <option value=9>Choc</option>
+            <option value=5>Choc</option>
 <!--            心脏骤停-->
-            <option value=10>Arrêt cardiaque</option>
+            <option value=5>Arrêt cardiaque</option>
           </select>
           <div class="button" @click="createPatient" style="margin-bottom: auto">Ajouter</div>
         </div>
@@ -165,6 +165,12 @@
       <div>
         <div class="salleAttente" style="width: 100%; margin-top: 2rem">
           Salle d'attente
+<!--          <div v-for="i in nbPatient">-->
+<!--            <div class="people cus" :class="cus.state">-->
+<!--              <img class="people-icon" style="width: 100%" :src="cus.avatar"/>-->
+<!--            </div>-->
+
+<!--          </div>-->
         </div>
       </div>
       <div style="display: flex; flex-wrap: wrap">
@@ -323,7 +329,8 @@ export default {
       nbSalle : 5,
       nbMedecin:9,
       levelMedecin:0,
-      levelSalle:0
+      levelSalle:0,
+      nbPatient:0
     }
   },
 
@@ -331,7 +338,7 @@ export default {
 
     //Fonction d'essai pour pousser l'info du patient au backend
     createPatient() {
-      axios.post('http://localhost:8080/api/users', {
+      axios.post('http://localhost:8082/api/users', {
         maladie: this.maladie,
       })
           .then(response => {
@@ -340,7 +347,7 @@ export default {
           });
     },
     createMedecin() {
-      axios.post('http://localhost:8080/api/users', {
+      axios.post('http://localhost:8082/api/users', {
         levelMedecin: this.levelMedecin,
       })
           .then(response => {
@@ -349,7 +356,7 @@ export default {
           });
     },
     createSalle() {
-        axios.post('http://localhost:8080/api/users', {
+        axios.post('http://localhost:8082/api/users', {
           levelSalle: this.levelSalle,
         })
             .then(response => {
@@ -383,6 +390,11 @@ export default {
         this.nbAccueil = 1
       }else
         this.nbAccueil --
+      axios.post('http://localhost:8082/desactiverAccueil', null)
+          .then(response => {
+            console.log(response.data)
+          });
+
     },
     activerInfirmier(){
       if (this.nbInfirmier == 5){
@@ -396,6 +408,11 @@ export default {
         this.nbInfirmier = 1
       }else
         this.nbInfirmier --
+      axios.post('http://localhost:8082/desactiverInfirmier', null)
+          .then(response => {
+            console.log(response.data)
+          });
+
     },
 
     activerSalle(){
@@ -409,6 +426,11 @@ export default {
         this.nbSalle = 1
       }else
         this.nbSalle --
+      axios.post('http://localhost:8082/desactiverSalle', null)
+          .then(response => {
+            console.log(response.data)
+          });
+
     },
     activerDoc(){
         this.nbMedecin ++
@@ -418,7 +440,13 @@ export default {
         this.nbMedecin = 1
       }else
         this.nbMedecin --
+      axios.post('http://localhost:8082/desactiverDoc', null)
+          .then(response => {
+            console.log(response.data)
+          });
+
     },
+
 
   },
 
