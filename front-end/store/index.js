@@ -22,7 +22,8 @@ export const urgences = new Vuex.Store({
             //color
             color1 : '#ffa64d',
             color2 : '#aaaaaa',
-
+            //Nombre de medecin
+            nbMedecin : 10,
             //List de patient
             allPatList:[
                 {
