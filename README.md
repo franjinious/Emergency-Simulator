@@ -1,6 +1,6 @@
 # Emergency-Simulator
 
-## Brève Introduction
+## 1. Brève Introduction
 
 // TODO 
 
@@ -8,7 +8,7 @@ Gitlab repository : [here](https://gitlab.utc.fr/wanhongz/emergency-simulator).
 
 ---
 
-## Quick Start
+## 2. Quick Start
 
 #### a. back-end
 
@@ -40,11 +40,34 @@ go build
 
 Normalement, vous devriez pouvoir voir l'invite indiquant que le projet démarre
 
-![backendstart](./picture/backendstart.png)
+<img src="./picture/backendstart.png" alt="backendstart" style="zoom:33%;" />
 
 #### b.front-end
 
 
 
----
+## 3. Agents et ses interaction 
+
+// TODO 解释agent1
+
+
+<center class="half">    <img src="./picture/1.jpg" alt="backendstart" style="zoom:40%;" />    <img src="./picture/2.jpg" alt="backendstart" style="zoom:42%;" /> </center>
+
+// TODO 解释agent2
+
+
+
+<img src="./picture/3.jpg" alt="backendstart" style="zoom:50%;" />
+
+
+
+## 4. Conception front-end
+
+
+
+## 5. Le résultat de l'expérience
+
+
+
+## 6. Résumé et Futur
 
