@@ -1,4 +1,3 @@
-
 <template xmlns:progress="http://java.sun.com/xml/ns/javaee">
   <div class = "app">
     <header style="margin-bottom: 20px">
@@ -174,122 +173,126 @@
 <!--          </div>-->
         </div>
       </div>
+
       <div style="display: flex; flex-wrap: wrap">
-        <div style="width:70%; margin-left: 0;">
-        <div class="Room Room1" v-if="nbSalle>=1" style="float:left;">
-          Room1
-          <div class="people p1 free" >
-            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-            <div class="redC"></div>
-            <div class="redR"></div>
-          </div>
-        </div>
-        <div class="Room Room2" v-if="nbSalle>=2" style="float:left;margin-left: 2rem">
-          Room2
-          <div class="people p1 free" >
-            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-            <div class="redC"></div>
-            <div class="redR"></div>
-          </div>
-        </div>
-        <div class="Room Room3" v-if="nbSalle>=3" style="float:left;margin-left: 2rem">
-          Room3
-          <div class="people p1 free" >
-            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-            <div class="redC"></div>
-            <div class="redR"></div>
-          </div>
-        </div>
-        <div class="Room Room4" v-if="nbSalle>=4" style="float:left;margin-left: 2rem">
-          Room4
-          <div class="people p1 free" >
-            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-            <div class="redC"></div>
-            <div class="redR"></div>
-          </div>
-        </div>
-        <div class="Room Room5" v-if="nbSalle>=5" style="float:left;margin-left: 2rem">
-          Room5
-          <div class="people p1 free" >
-            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-            <div class="redC"></div>
-            <div class="redR"></div>
-          </div>
-        </div>
-        <div class="Room Room6" v-if="nbSalle>=6" style="float:left;margin-left: 2rem">
-          Room6
-          <div class="people p1 free" >
-            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-            <div class="redC"></div>
-            <div class="redR"></div>
-          </div>
-        </div>
-        <div class="Room Room7" v-if="nbSalle>=7" style="float:left;margin-left: 2rem">
-          Room7
-          <div class="people p1 free" >
-            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-            <div class="redC"></div>
-            <div class="redR"></div>
-          </div>
-        </div>
-        <div class="Room Room8" v-if="nbSalle>=8" style="float:left;margin-left: 2rem">
-          Room8
-          <div class="people p1 free" >
-            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-            <div class="redC"></div>
-            <div class="redR"></div>
-          </div>
-        </div>
-        <div class="Room Room9" v-if="nbSalle>=9" style="float:left;margin-left: 2rem">
-          Room9
-          <div class="people p1 free" >
-            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-            <div class="redC"></div>
-            <div class="redR"></div>
-          </div>
-        </div>
-        <div class="Room Room10" v-if="nbSalle>=10" style="float:left;margin-left: 2rem">
-          Room10
-          <div class="people p1 free" >
-            <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-            <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-            <div class="redC"></div>
-            <div class="redR"></div>
-          </div>
-        </div>
-        
-          <div class="input box">
-                <input v-model="levelSalle" type="number" style="width:5rem; height:2rem; float: left" min=1 max=5>
-          </div>
-          <div class="button activerSalle" @click="activerSalle" style="float: left">➕</div>
-          <div class="button desactiverSalle" @click="desactiverSalle" style="float: left">➖</div>
-        
-        
-        
-        </div>
-        <div style="width: 30%">
-          <div style="width: 100%; justify-items: center; float: right">
-          <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 8rem">
-            Le nombre de medecin actifs:{{nbMedecin}}
-            <div class="input box">
-              <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem" min=1 max=5>
+        <div style="width:100%; margin-left: 0;">
+          <div class="Room Room1" v-if="nbSalle>=1" style="float:left;">
+            Room1
+            <div class="people p1 free" >
+              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+              <div class="redC"></div>
+              <div class="redR"></div>
             </div>
-            <div class="button activerDoc" @click="activerDoc" style="float: left">➕</div>
-            <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
           </div>
-        </div>
+          <div class="Room Room2" v-if="nbSalle>=2" style="float:left;margin-left: 2rem">
+            Room2
+            <div class="people p1 free" >
+              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+              <div class="redC"></div>
+              <div class="redR"></div>
+            </div>
+          </div>
+          <div class="Room Room3" v-if="nbSalle>=3" style="float:left;margin-left: 2rem">
+            Room3
+            <div class="people p1 free" >
+              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+              <div class="redC"></div>
+              <div class="redR"></div>
+            </div>
+          </div>
+          <div class="Room Room4" v-if="nbSalle>=4" style="float:left;margin-left: 2rem">
+            Room4
+            <div class="people p1 free" >
+              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+              <div class="redC"></div>
+              <div class="redR"></div>
+            </div>
+          </div>
+          <div class="Room Room5" v-if="nbSalle>=5" style="float:left;margin-left: 2rem">
+            Room5
+            <div class="people p1 free" >
+              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+              <div class="redC"></div>
+              <div class="redR"></div>
+            </div>
+          </div>
+          <div class="Room Room6" v-if="nbSalle>=6" style="float:left;margin-left: 2rem">
+            Room6
+            <div class="people p1 free" >
+              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+              <div class="redC"></div>
+              <div class="redR"></div>
+            </div>
+          </div>
+          <div class="Room Room7" v-if="nbSalle>=7" style="float:left;margin-left: 2rem">
+            Room7
+            <div class="people p1 free" >
+              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+              <div class="redC"></div>
+              <div class="redR"></div>
+            </div>
+          </div>
+          <div class="Room Room8" v-if="nbSalle>=8" style="float:left;margin-left: 2rem">
+            Room8
+            <div class="people p1 free" >
+              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+              <div class="redC"></div>
+              <div class="redR"></div>
+            </div>
+          </div>
+          <div class="Room Room9" v-if="nbSalle>=9" style="float:left;margin-left: 2rem">
+            Room9
+            <div class="people p1 free" >
+              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+              <div class="redC"></div>
+              <div class="redR"></div>
+            </div>
+          </div>
+          <div class="Room Room10" v-if="nbSalle>=10" style="float:left;margin-left: 2rem">
+            Room10
+            <div class="people p1 free" >
+              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+              <div class="redC"></div>
+              <div class="redR"></div>
+            </div>
+          </div>
         </div>
       </div>
+      <!-- 按钮 -->
+      <div style="height: 2rem">
+        <div class="input box">
+          <input v-model="levelSalle" type="number" style="width:5rem; height:2rem; float: left" min=1 max=5>
+        </div>
+        <div class="button activerSalle" @click="activerSalle" style="float: left">➕</div>
+        <div class="button desactiverSalle" @click="desactiverSalle" style="float: left">➖</div>
+      </div>
 
+      <div>
+        <div style="width: 100%; justify-items: center; float: right">
+          <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 8rem">
+                Le nombre de medecin actifs:{{nbMedecin}}
+     
+                  <div class="input box" style="margin-left:1rem">
+                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
+                  </div>
+                  <div class="button activerDoc" @click="activerDoc" style="float: left">➕</div>
+                  <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
+              
+            
+          </div>
+          
+        </div>
+      </div>
 
       <div>
       </div>
@@ -334,26 +337,12 @@ export default {
       nbPatient:0
     }
   },
-  // Fonction pour rafraichir les infos toutes les 0.5 secondes
-  mounted() {
-    this.interval = setInterval(() => {
-      axios
-          .get("/api/items")
-          .then(response => {
-            this.items = response.data;
-          })
-          .catch(error => {
-            console.error(error);
-          });
-    }, 5000);
-    },
-
 
   methods: {
 
     //Fonction d'essai pour pousser l'info du patient au backend
     createPatient() {
-      axios.post('http://localhost:8082/api/users', {
+      axios.post('http://localhost:8082/createPatient', {
         maladie: this.maladie,
       })
           .then(response => {
@@ -361,24 +350,16 @@ export default {
             console.log(response.data);
           });
     },
-    createMedecin() {
-      axios.post('http://localhost:8082/api/users', {
-        levelMedecin: this.levelMedecin,
-      })
-          .then(response => {
-            // 创建成功，将新用户添加到用户列表中
-            console.log(response.data);
-          });
-    },
-    createSalle() {
-        axios.post('http://localhost:8082/api/users', {
-          levelSalle: this.levelSalle,
-        })
+    // Fonction pour rafraichir les infos toutes les 0.5 secondes
+    mounted() {
+      setInterval(() => {
+        axios.get('http://example.com/api/data')
             .then(response => {
-              // 创建成功，将新用户添加到用户列表中
-              console.log(response.data);
+              this.infos = response.data;
+
             });
-      },
+      }, 500);
+    },
     // 计算顾客耐心值
     calculateWaitStyle(wt) {
       return 'background: linear-gradient(to right, #006dd9 ' + (100 - wt.patience) + '%, #2693ff ' + (100 - wt.patience) + '%);'
