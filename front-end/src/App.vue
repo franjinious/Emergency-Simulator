@@ -259,16 +259,25 @@
             <div class="redR"></div>
           </div>
         </div>
-        <div class="button activerSalle" @click="activerSalle" style="float: left">➕</div>
-        <div class="button desactiverSalle" @click="desactiverSalle" style="float: left">➖</div>
+        
+          <div class="input box">
+                <input v-model="levelSalle" type="number" style="width:5rem; height:2rem; float: left" min=1 max=5>
+          </div>
+          <div class="button activerSalle" @click="activerSalle" style="float: left">➕</div>
+          <div class="button desactiverSalle" @click="desactiverSalle" style="float: left">➖</div>
+        
+        
+        
         </div>
         <div style="width: 30%">
           <div style="width: 100%; justify-items: center; float: right">
           <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 8rem">
             Le nombre de medecin actifs:{{nbMedecin}}
+            <div class="input box">
+              <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem" min=1 max=5>
+            </div>
             <div class="button activerDoc" @click="activerDoc" style="float: left">➕</div>
             <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
-
           </div>
         </div>
         </div>
@@ -313,6 +322,8 @@ export default {
       nbInfirmier : 3,
       nbSalle : 5,
       nbMedecin:9,
+      levelMedecin:0,
+      levelSalle:0
     }
   },
 
@@ -382,12 +393,14 @@ export default {
         this.nbSalle --
     },
     activerDoc(){
-
+        this.nbMedecin ++
     },
-    desctiverDoc(){
-
-    }
-
+    desactiverDoc(){
+        if (this.nbMedecin == 1){
+        this.nbMedecin = 1
+      }else
+        this.nbMedecin --
+    },
 
   },
 
