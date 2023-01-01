@@ -168,6 +168,9 @@ func GetInstance(n int) *ReceptionRoom {
 				QueueResponsable: c,
 				Msgreturn:        instance.MsgDoctor,
 			}
+			if i > 3 {
+				p.WorkOrNot = false
+			}
 			instance.DocorsQueue[p] = "Queue" + strconv.FormatInt(int64(i), 10)
 			instance.QueuesDoctor["Queue"+strconv.FormatInt(int64(i), 10)] = p
 			instance.AllPatientsWaiting["Queue"+strconv.FormatInt(int64(i), 10)] = make([]*patient.Patient, 0)
