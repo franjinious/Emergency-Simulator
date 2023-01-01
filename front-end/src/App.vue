@@ -51,109 +51,124 @@
 
       <div>
         <div >
-          <div style="width: 25%; float: left">
-            <div class="Accueil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; width:50%; float: left">
-              Accueil 1
-              <div class="people p1 free" >
+          <div style="display: flex; flex-wrap: wrap">
+            <div style="width:33.3%; margin-left: 0;">
+              <div class="Accueil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; width:35%; float: left">
+                Accueil 1
+                <div class="people p1 free" >
+                  <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+                  <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+                  <div class="redC"></div>
+                  <div class="redR"></div>
+                </div>
+  
+                <!--              <div class="people cus" :class="cus.state">-->
+  <!--                <img class="people-icon" style="width: 100%" :src="cus.avatar"/>-->
+  <!--              </div>-->
+  
+              </div>
+              <div class="Accueil ac2" v-if="nbAccueil>=2" style="margin-top: 2%;height: 6rem; width:35%;float: left">Accueil 2          <div class="people p1 free" >
                 <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
                 <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                 <div class="redC"></div>
                 <div class="redR"></div>
               </div>
-
-              <!--              <div class="people cus" :class="cus.state">-->
-<!--                <img class="people-icon" style="width: 100%" :src="cus.avatar"/>-->
-<!--              </div>-->
-
+              </div>
+              <div class="Accueil ac3" v-if="nbAccueil>=3" style="margin-top: 2%;height: 6rem; width:35%;float: left">Accueil 3          <div class="people p1 free" >
+                <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+                <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+                <div class="redC"></div>
+                <div class="redR"></div>
+              </div>
+              </div>
+              <div class="Accueil ac4" v-if="nbAccueil>=4" style="margin-top: 2%;height: 6rem; width:35%;float: left">Accueil 4          <div class="people p1 free" >
+                <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+                <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+                <div class="redC"></div>
+                <div class="redR"></div>
+              </div>
+              </div>
+              <div class="Accueil ac5" v-if="nbAccueil>=5" style="margin-top: 2%;height: 6rem; width:35%;float: left">Accueil 5          <div class="people p1 free" >
+                <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+                <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+                <div class="redC"></div>
+                <div class="redR"></div>
+              </div>
+              </div>
+              <div class="button activerAccueil" @click="activerAccueil" style="float: left; margin-top: auto; margin-bottom: auto">➕</div>
+              <div class="button desactiverAccueil" @click="desactiverAccueil"  style="float: left; margin-top: auto; margin-bottom: auto">➖</div>
             </div>
-            <div class="Accueil ac2" v-if="nbAccueil>=2" style="margin-top: 2%;height: 6rem; width:50%;float: left">Accueil 2          <div class="people p1 free" >
-              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-              <div class="redC"></div>
-              <div class="redR"></div>
-            </div>
-            </div>
-            <div class="Accueil ac3" v-if="nbAccueil>=3" style="margin-top: 2%;height: 6rem; width:50%;float: left">Accueil 3          <div class="people p1 free" >
-              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-              <div class="redC"></div>
-              <div class="redR"></div>
-            </div>
-            </div>
-            <div class="Accueil ac4" v-if="nbAccueil>=4" style="margin-top: 2%;height: 6rem; width:50%;float: left">Accueil 4          <div class="people p1 free" >
-              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-              <div class="redC"></div>
-              <div class="redR"></div>
-            </div>
-            </div>
-            <div class="Accueil ac5" v-if="nbAccueil>=5" style="margin-top: 2%;height: 6rem; width:50%;float: left">Accueil 5          <div class="people p1 free" >
-              <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-              <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-              <div class="redC"></div>
-              <div class="redR"></div>
-            </div>
-            </div>
-            <div class="button activerAccueil" @click="activerAccueil" style="float: left; margin-top: auto; margin-bottom: auto">➕</div>
-            <div class="button desactiverAccueil" @click="desactiverAccueil"  style="float: left; margin-top: auto; margin-bottom: auto">➖</div>
+            <div style="width:33.3%; margin-left: 0;justify-content:center">
+              <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 7rem; width:100%">
+                Le nombre de medecin actifs:{{nbMedecin}}
+     
+                  <div class="input box" style="margin-left:1rem">
+                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
+                  </div>
+                  <div class="button activerDoc" @click="activerDoc" style="float: left" >➕</div>
+                  <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
+                
+              
           </div>
 
-          <div></div>
-
-          <div style="width: 30%; float: right; text-align: end">
-            <div class="Accueil infi1" v-if="nbInfirmier>=1" style="margin-top:1.5%;height: 5.5rem;float:right;display: block">
-              <div class="people p1 free" v-if="nbInfirmier>=1" style="float: left;display: inline-block" >
-                <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-                <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-                <div class="redC"></div>
-                <div class="redR"></div>
-              </div>
-              Reception Infirmiere 1
+              
+              
             </div>
-
-            <div class="Accueil infi2" v-if="nbInfirmier>=2" style="margin-top:1.5%;height:5.5rem;float: right; display: block">
-              <div class="people p1 free" v-if="nbInfirmier>=2" style="float: left;display: inline-block" >
-                <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-                <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-                <div class="redC"></div>
-                <div class="redR"></div>
+            <div style="width:33.3%; margin-right: 0;">
+              <div class="Accueil infi1" v-if="nbInfirmier>=1" style="margin-top:1.5%;height: 5.5rem;float:right;display: block;width:35%">
+                <div class="people p1 free" v-if="nbInfirmier>=1" style="float: left;display: inline-block" >
+                  <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+                  <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+                  <div class="redC"></div>
+                  <div class="redR"></div>
+                </div>
+                Reception Infirmiere 1
               </div>
-
-              Reception Infirmiere 2
-            </div>
-<!--            <div class="Accueil infi2" v-else style="margin-top:1.5%;height:3rem; {background: #aaaaaa}" >Reception Infirmiere 2</div>-->
-
-            <div class="Accueil infi3" v-if="nbInfirmier>=3" style="margin-top:1.5%;height: 5.5rem;float: right;display: block">
-              <div class="people p1 free" v-if="nbInfirmier>=3" style="float: left;display: inline-block" >
-                <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-                <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-                <div class="redC"></div>
-                <div class="redR"></div>
+  
+              <div class="Accueil infi2" v-if="nbInfirmier>=2" style="margin-top:1.5%;height:5.5rem;float: right; display: block;width:35%">
+                <div class="people p1 free" v-if="nbInfirmier>=2" style="float: left;display: inline-block" >
+                  <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+                  <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+                  <div class="redC"></div>
+                  <div class="redR"></div>
+                </div>
+  
+                Reception Infirmiere 2
               </div>
-              Reception Infirmiere 3
-            </div>
-
-            <div class="Accueil infi4" v-if="nbInfirmier>=4" style="margin-top:1.5%;height: 5.5rem;float:right;display: block">
-              <div class="people p1 free" v-if="nbInfirmier>=4" style="float: left;display: inline-block" >
-                <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-                <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-                <div class="redC"></div>
-                <div class="redR"></div>
+  <!--            <div class="Accueil infi2" v-else style="margin-top:1.5%;height:3rem; {background: #aaaaaa}" >Reception Infirmiere 2</div>-->
+  
+              <div class="Accueil infi3" v-if="nbInfirmier>=3" style="margin-top:1.5%;height: 5.5rem;float: right;display: block;width:35%">
+                <div class="people p1 free" v-if="nbInfirmier>=3" style="float: left;display: inline-block" >
+                  <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+                  <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+                  <div class="redC"></div>
+                  <div class="redR"></div>
+                </div>
+                Reception Infirmiere 3
               </div>
-              Reception Infirmiere 4
-            </div>
-
-            <div class="Accueil infi5" v-if="nbInfirmier>=5" style="margin-top: 1.5%;height: 5.5rem;float:right;display: block">
-              <div class="people p1 free" v-if="nbInfirmier>=1" style="float: left;display: inline-block" >
-                <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
-                <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
-                <div class="redC"></div>
-                <div class="redR"></div>
+  
+              <div class="Accueil infi4" v-if="nbInfirmier>=4" style="margin-top:1.5%;height: 5.5rem;float:right;display: block;width:35%">
+                <div class="people p1 free" v-if="nbInfirmier>=4" style="float: left;display: inline-block" >
+                  <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+                  <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+                  <div class="redC"></div>
+                  <div class="redR"></div>
+                </div>
+                Reception Infirmiere 4
               </div>
-              Reception Infirmiere 5
+  
+              <div class="Accueil infi5" v-if="nbInfirmier>=5" style="margin-top: 1.5%;height: 5.5rem;float:right;display: block;width:35%">
+                <div class="people p1 free" v-if="nbInfirmier>=1" style="float: left;display: inline-block" >
+                  <img style="width: 100%;filter: grayscale(100%) brightness(500%);" class="people-icon">
+                  <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
+                  <div class="redC"></div>
+                  <div class="redR"></div>
+                </div>
+                Reception Infirmiere 5
+              </div>
+              <div class="button activerInfirmier" @click="activerInfirmier" style="float: right">➕</div>
+              <div class="button desactiverInfirmier" @click="desactiverInfirmier" style="float: right">➖</div>
             </div>
-            <div class="button activerInfirmier" @click="activerInfirmier" style="float: left">➕</div>
-            <div class="button desactiverInfirmier" @click="desactiverInfirmier" style="float: left">➖</div>
           </div>
         </div>
 
@@ -278,24 +293,8 @@
       </div>
 
         
-          <!-- <div style="width: 100%; justify-items: center; float: right"> -->
-            <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 7rem">
-                  Le nombre de medecin actifs:{{nbMedecin}}
-       
-                    <div class="input box" style="margin-left:1rem">
-                      <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
-                    </div>
-                    <div class="button activerDoc" @click="activerDoc" style="float: left" >➕</div>
-                    <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
-                  
-                
-            </div>
           
-          <!-- </div> -->
           
-  
-        
- 
       
 
 
@@ -319,7 +318,7 @@ export default {
   data(){
     return{
       //Les infos ensemble passees
-      infos: [],
+      infos: null,
       backgroundImage: require('/src/assets/images/2382727.jpg'),
       backColorMap: {
         free: 'background: linear-gradient(to right, #dddddd 50%, #aaaaaa 50%);',
@@ -339,19 +338,6 @@ export default {
       nbPatient:0
     }
   },
-  // Fonction pour rafraichir les infos toutes les 0.5 secondes
-  mounted() {
-    this.interval = setInterval(() => {
-      axios
-          .get('http://localhost:8082/get')
-          .then(response => {
-            this.infos = response.data;
-          })
-          .catch(error => {
-            console.error(error);
-          });
-    }, 500);
-  },
 
   methods: {
 
@@ -364,6 +350,16 @@ export default {
             // 创建成功，将新用户添加到用户列表中
             console.log(response.data);
           });
+    },
+    // Fonction pour rafraichir les infos toutes les 0.5 secondes
+    mounted() {
+      setInterval(() => {
+        axios.get('http://example.com/api/data')
+            .then(response => {
+              this.infos = response.data;
+
+            });
+      }, 500);
     },
     // 计算顾客耐心值
     calculateWaitStyle(wt) {
