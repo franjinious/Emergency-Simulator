@@ -1,6 +1,7 @@
 package agent
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"sync"
@@ -23,6 +24,7 @@ type Hospital struct {
 }
 
 func CreateHospital() *Hospital {
+	ini()
 	h := &Hospital{}
 	h.ID = 1
 	h.NurseCenter = nurse.GetInstance(3)
@@ -37,6 +39,14 @@ func (h *Hospital) CreatePatient(w http.ResponseWriter, r *http.Request) {
 	h.Lock()
 	h.AcceptNewPatient(1, true, "111", 10)
 	h.Unlock()
+}
+
+func ini(){
+	bande := " ｜ ╔═╗┌┬┐┌─┐┬─┐┌─┐┌─┐┌┐┌┌─┐┬ ┬   ╔═╗┬┌┬┐┬ ┬┬  ┌─┐┌┬┐┌─┐┬─┐ | \n ｜ ║╣ │││├┤ ├┬┘│ ┬├┤ ││││  └┬┘───╚═╗│││││ ││  ├─┤ │ │ │├┬┘ | \n ｜ ╚═╝┴ ┴└─┘┴└─└─┘└─┘┘└┘└─┘ ┴    ╚═╝┴┴ ┴└─┘┴─┘┴ ┴ ┴ └─┘┴└─ | \n"
+
+	fmt.Println("  ----------------------------------------------------------")
+	fmt.Print(bande)
+	fmt.Println("  ----------------------------------------------------------")
 }
 
 func (h *Hospital) Start() {
@@ -56,6 +66,9 @@ func (h *Hospital) Start() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
+	time.Sleep(1*time.Second)
+	fmt.Println("----------------------------------------------------------")
+	log.Println("Everything is normal, the emergency room is working")
 	log.Fatal(s.ListenAndServe())
 }
 
