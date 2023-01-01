@@ -277,25 +277,27 @@
         <div class="button desactiverSalle" @click="desactiverSalle" style="float: left">➖</div>
       </div>
 
-      <div>
-        <div style="width: 100%; justify-items: center; float: right">
-          <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 8rem">
-                Le nombre de medecin actifs:{{nbMedecin}}
-     
-                  <div class="input box" style="margin-left:1rem">
-                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
-                  </div>
-                  <div class="button activerDoc" @click="activerDoc" style="float: left">➕</div>
-                  <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
-              
-            
-          </div>
+        
+          <!-- <div style="width: 100%; justify-items: center; float: right"> -->
+            <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 7rem">
+                  Le nombre de medecin actifs:{{nbMedecin}}
+       
+                    <div class="input box" style="margin-left:1rem">
+                      <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
+                    </div>
+                    <div class="button activerDoc" @click="activerDoc" style="float: left" >➕</div>
+                    <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
+                  
+                
+            </div>
           
-        </div>
-      </div>
+          <!-- </div> -->
+          
+  
+        
+ 
+      
 
-      <div>
-      </div>
 
     </main>
   </div>
