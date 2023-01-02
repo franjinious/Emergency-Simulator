@@ -199,6 +199,7 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	h.ReceptionCenter.Lock()
 
 	b := make([]int, h.ReceptionCenter.QueueNumber)
+
 	for i := 1; i < h.ReceptionCenter.QueueNumber; i++ {
 		b[i-1] = h.ReceptionCenter.QueuesDoctor["Queue"+strconv.FormatInt(int64(i), 10)].Getstatus()
 	}
@@ -210,7 +211,7 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	h.NurseCenter.Lock()
 
 	c := make([]int, 1)
-	c[0] = h.NurseCenter.PatientWaiting
+	c[0] = len(h.WaitingCenter.QueuePatients)
 	h.NurseCenter.Unlock()
 
 	// room
