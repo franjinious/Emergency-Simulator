@@ -255,6 +255,7 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	fmt.Println(re)
 
 	serial, _ := json.Marshal(re)
+	writer.WriteHeader(http.StatusOK)
 	writer.Write(serial)
 
 	return
