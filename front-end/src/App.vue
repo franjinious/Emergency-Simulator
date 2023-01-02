@@ -6,7 +6,7 @@
         <span>W{{week}} </span> &nbsp; <span>D{{day}}</span>
       </div>
       <div class="header-item patients">
-        Nb de patients suivis: {{patientsTraites}}
+        Salle des urgences
       </div>
 
       <div class="image-box">
@@ -18,8 +18,7 @@
             <div class="wait" style="width: 60%">
               <div class="waiter" v-for="wt in waitingList" :key="wt.id">
                 <div class="people" :class="wt.state" >
-                  <img class="people-icon" style="width: 100%;"
-                       :src="wt.avatar" alt=""/>
+                  <img class="people-icon" style="width: 100%;" src="../store/379444-512.png" alt=""/>
                   <div class="label" :style="calculateWaitStyle(wt)">
                     Waiting
                   </div>
