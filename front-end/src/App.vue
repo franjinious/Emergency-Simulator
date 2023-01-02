@@ -355,32 +355,30 @@ export default {
   },
   
   // Fonction pour rafraichir les infos toutes les 0.5 secondes
-  mounted() {
-    this.interval=setInterval(() => {
-      axios
-          .get('http://localhost:8082/getinfo')
-          .then(response => {
-            this.items = response.data;
+  // mounted() {
+  //   this.interval=setInterval(() => {
+  //     axios
+  //         .get('http://localhost:8082/getinfo')
+  //         .then(response => {
+  //           this.items = response.data;
 
-          });
-    }, 500);
-  },
-  beforeUnmount() {
-    clearInterval(this.interval);
-  },
+  //         });
+  //   }, 500);
+  // },
+  // beforeUnmount() {
+  //   clearInterval(this.interval);
+  // },
 
   methods: {
     //Fonction d'essai pour pousser l'info du patient au backend
   
     createPatient() {
-      axios.post('http://localhost:8082/createPatient', JSON.stringify({test:1}), {
-        headers: {
-          'Content-Type':'application/json'
-        }
-      }).then(response => {
+      axios.get('http://127.0.0.1:8082/createPatient?test='+this.maladie.toString()).then(response => {
             // 创建成功，将新用户添加到用户列表中
             console.log(response.data);
-          });
+      }).catch(e => {
+        console.log(e);
+      });
     },
 
     // 计算顾客耐心值

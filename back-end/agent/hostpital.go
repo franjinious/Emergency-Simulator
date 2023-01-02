@@ -1,11 +1,11 @@
 package agent
 
 import (
-	"bytes"
-	"encoding/json"
+
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 	"sync"
 	"time"
 
@@ -48,15 +48,20 @@ type requestBody struct {
 func (h *Hospital) CreatePatient(w http.ResponseWriter, r *http.Request) {
 	h.Lock()
 
-	re := requestBody{}
+	//re := requestBody{}
+	//
+	//buf := new(bytes.Buffer)
+	//buf.ReadFrom(r.Body)
+	//fmt.Println(buf.String())
+	//json.Unmarshal(buf.Bytes(), &re)
+	//fmt.Println(re.Test)
 
-	buf := new(bytes.Buffer)
-	buf.ReadFrom(r.Body)
-	fmt.Println(buf.String())
-	json.Unmarshal(buf.Bytes(), &re)
-	fmt.Println(re.Test)
-	h.AcceptNewPatient(1, true, "111", 10, re.Test)
-
+	q := r.URL.Query()
+	re := q.Get("test")
+	c, _ := strconv.Atoi(re)
+	h.AcceptNewPatient(1, true, "111", 10, c)
+	w.WriteHeader(http.StatusOK)
+	fmt.Println(c)
 	h.Unlock()
 }
 
