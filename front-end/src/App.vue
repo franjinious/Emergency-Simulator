@@ -353,11 +353,12 @@ export default {
       nbPatient:0
     }
   },
+  
   // Fonction pour rafraichir les infos toutes les 0.5 secondes
   mounted() {
     this.interval=setInterval(() => {
       axios
-          .get('http://localhost:8082/createPatient')
+          .get('http://localhost:8082/getinfo')
           .then(response => {
             this.items = response.data;
 
@@ -369,17 +370,19 @@ export default {
   },
 
   methods: {
-
     //Fonction d'essai pour pousser l'info du patient au backend
+  
     createPatient() {
-      axios.post('http://localhost:8082/createPatient', {
-        maladie: this.maladie,
-      })
-          .then(response => {
+      axios.post('http://localhost:8082/createPatient', JSON.stringify({test:1}), {
+        headers: {
+          'Content-Type':'application/json'
+        }
+      }).then(response => {
             // 创建成功，将新用户添加到用户列表中
             console.log(response.data);
           });
     },
+
     // 计算顾客耐心值
     calculateWaitStyle(wt) {
       return 'background: linear-gradient(to right, #006dd9 ' + (100 - wt.patience) + '%, #2693ff ' + (100 - wt.patience) + '%);'

@@ -1,6 +1,8 @@
 package agent
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -39,9 +41,22 @@ func CreateHospital(i string, p string) *Hospital {
 	return h
 }
 
+type requestBody struct {
+	Test int `json:"test"`
+}
+
 func (h *Hospital) CreatePatient(w http.ResponseWriter, r *http.Request) {
 	h.Lock()
-	h.AcceptNewPatient(1, true, "111", 10)
+
+	re := requestBody{}
+
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(r.Body)
+	fmt.Println(buf.String())
+	json.Unmarshal(buf.Bytes(), &re)
+	fmt.Println(re.Test)
+	h.AcceptNewPatient(1, true, "111", 10, re.Test)
+
 	h.Unlock()
 }
 
@@ -60,7 +75,7 @@ func (h *Hospital) Start() {
 	go h.DoctorCenter.Run()
 	go h.WaitingCenter.Run()
 	mux := http.NewServeMux()
-	mux.HandleFunc("/new", h.CreatePatient)
+	mux.HandleFunc("/createPatient", h.CreatePatient)
 
 	s := &http.Server{
 		Addr:           h.IP + ":" + h.Port,
@@ -76,13 +91,13 @@ func (h *Hospital) Start() {
 	log.Fatal(s.ListenAndServe())
 }
 
-func (h *Hospital) AcceptNewPatient(age int, gender bool, symptom string, tolerance int) {
+func (h *Hospital) AcceptNewPatient(age int, gender bool, symptom string, tolerance int, gra int) {
 	p := &patient.Patient{
 		ID:                    h.ID,
 		Age:                   age,
 		Gender:                gender,
 		Symptom:               symptom,
-		Severity:              -1,
+		Severity:              gra,
 		Tolerance:             tolerance,
 		TimeForTreat:          -1,
 		Status:                patient.Waiting_for_nurse,
