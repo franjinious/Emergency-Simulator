@@ -158,7 +158,7 @@ var (
 func GetInstance(n int) *ReceptionRoom {
 	once.Do(func() {
 		instance = &ReceptionRoom{
-			QueueNumber:        n,
+			QueueNumber:        3,
 			Queues:             make(map[string]chan *patient.Patient),
 			QueuesLength:       make(map[string]int),
 			QueuesDoctor:       make(map[string]*ReceptionDoctor),
