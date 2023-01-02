@@ -80,7 +80,15 @@ func (h *Hospital) Start() {
 	go h.DoctorCenter.Run()
 	go h.WaitingCenter.Run()
 	mux := http.NewServeMux()
-	mux.HandleFunc("/createPatient", h.CreatePatient)
+	mux.HandleFunc("/activerAccueil", h.ActiverAccueil)
+	mux.HandleFunc("/desactiverAccueil", h.DesactiverAccueil)
+	mux.HandleFunc("/activerInfirmier", h.ActiverInfirmier)
+	mux.HandleFunc("/desactiverInfirmier", h.DesactiverInfirmier)
+	mux.HandleFunc("/activerSalle", h.ActiverSalle)
+	mux.HandleFunc("/desactiverSalle", h.DesactiverSalle)
+	mux.HandleFunc("/activerDoc", h.ActiverDoc)
+	mux.HandleFunc("/desactiverDoc", h.DesactiverDoc)
+
 
 	s := &http.Server{
 		Addr:           h.IP + ":" + h.Port,
@@ -114,4 +122,64 @@ func (h *Hospital) AcceptNewPatient(age int, gender bool, symptom string, tolera
 	}
 	h.ID++
 	go p.Run()
+}
+
+func (h *Hospital) ActiverAccueil(writer http.ResponseWriter, request *http.Request) {
+	h.Lock()
+	h.NurseCenter.Add_patient()
+	h.Unlock()
+}
+
+func (h *Hospital) DesactiverAccueil(writer http.ResponseWriter, request *http.Request) {
+	h.Lock()
+	h.NurseCenter.Reduce_patient()
+	h.Unlock()
+}
+
+func (h *Hospital) DesactiverInfirmier(writer http.ResponseWriter, request *http.Request) {
+	h.Lock()
+	h.ReceptionCenter.ReduceQueue()
+	h.Unlock()
+}
+
+func (h *Hospital) ActiverSalle(writer http.ResponseWriter, request *http.Request) {
+	h.Lock()
+	// h.DoctorCenter.DeleteDoctor()
+	q := request.URL.Query()
+	re := q.Get("test")
+	c, _ := strconv.Atoi(re)
+	h.EmergencyRoomCenter.AddRoom(c)
+	h.Unlock()
+}
+
+func (h *Hospital) ActiverInfirmier(writer http.ResponseWriter, request *http.Request) {
+	h.Lock()
+	h.ReceptionCenter.AddQueue()
+	h.Unlock()
+}
+
+func (h *Hospital) DesactiverSalle(writer http.ResponseWriter, request *http.Request) {
+	h.Lock()
+	h.EmergencyRoomCenter.DeleteRoom()
+	h.Unlock()
+}
+
+func (h *Hospital) ActiverDoc(writer http.ResponseWriter, request *http.Request) {
+	h.Lock()
+	// h.DoctorCenter.DeleteDoctor()
+	q := request.URL.Query()
+	re := q.Get("test")
+	c, _ := strconv.Atoi(re)
+	h.DoctorCenter.AddDoctor(c)
+	h.Unlock()
+}
+
+func (h *Hospital) DesactiverDoc(writer http.ResponseWriter, request *http.Request) {
+	h.Lock()
+	// h.DoctorCenter.DeleteDoctor()
+	q := request.URL.Query()
+	re := q.Get("test")
+	c, _ := strconv.Atoi(re)
+	h.DoctorCenter.DeleteDoctor(c)
+	h.Unlock()
 }

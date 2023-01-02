@@ -33,6 +33,7 @@ func (rr* ReceptionRoom) AddQueue(){
 	i := rr.QueueNumber
 	rr.QueuesDoctor["Queue"+strconv.FormatInt(int64(i), 10)].WorkOrNot = true
 	rr.Unlock()
+	log.Println("a new queue waiting start")
 }
 
 func (rr* ReceptionRoom) ReduceQueue() {
@@ -41,6 +42,7 @@ func (rr* ReceptionRoom) ReduceQueue() {
 	rr.QueueNumber--
 	rr.QueuesDoctor["Queue"+strconv.FormatInt(int64(i), 10)].WorkOrNot = false
 	rr.Unlock()
+	log.Println("a new queue waiting stop")
 }
 
 /// 挂号医生
