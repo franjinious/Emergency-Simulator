@@ -48,16 +48,46 @@ Normalement, vous devriez pouvoir voir l'invite indiquant que le projet démarre
 
 ## 3. Agents et ses interaction 
 
-// TODO 解释agent1
+##### Agent Patient 
 
+1. L'agent le plus important est aussi l'agent avec le plus de comportements, il a principalement les modèles de comportement suivants :
 
-<center class="half">    <img src="./picture/1.jpg" alt="backendstart" style="zoom:40%;" />    <img src="./picture/2.jpg" alt="backendstart" style="zoom:42%;" /> </center>
+   1. Il attendra à l'entrée du bureau d'accueil de l'hôpital, expliquera sa situation, et attendra que l'infirmière lui donne un jugement préliminaire
+   2. Faire la queue pour l'inscription
+   3. Faites la queue dans la salle d'attente pour que le médecin appelle
+   4. Traitement
 
-// TODO 解释agent2
+##### Agent Nurse et Agent NurseCenter
 
+L'agent utilisé pour assurer l'accueil et le diagnostic initial des patients :
 
+1. NurseCenter est responsable du traitement des demandes des patients et de leur distribution aux infirmières
+2. L'infirmière exécute la tâche après avoir reçu la demande
+3. L'infirmière informe le patient après le travail
 
-<img src="./picture/3.jpg" alt="backendstart" style="zoom:50%;" />
+##### Agent Reception et Agent ReceptionCenter
+
+Pour l'inscription des patients :
+
+1. Il existe plusieurs files d'attente et le patient choisit activement l'une d'entre elles pour attendre
+2. Le médecin agréé traite la demande d'inscription du patient afin
+3. Une fois l'inscription terminée, le patient sera informé
+
+<center class="half">    <img src="./picture/1.jpg" alt="backendstart" style="zoom:40%;" />    <img src="./picture/2.png" alt="backendstart" style="zoom:60%;" /> </center>
+
+##### Agent WaitingRoom
+
+Utilisé pour la gestion de l'attente une fois l'enregistrement du patient terminé
+
+##### Agent DoctorCenter et Agent EmergencyRoomCenter
+
+Ressources nécessaires pour les visites de patients :
+
+1. DoctorCenter vérifie si un médecin est disponible
+2. EmergencyRoomCenter vérifie s'il y a une salle de consultation disponible
+3. Si tous sont satisfaits, commencez à voir le patient
+
+<img src="./picture/3.png" alt="backendstart" style="zoom:60%;" />
 
 
 
