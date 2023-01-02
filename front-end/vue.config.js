@@ -5,14 +5,13 @@ const { defineConfig } = require('@vue/cli-service')
 
 module.exports={
   devServer:{
-  proxy:{
-  ["/dev-api"]:{
-    target:'http://localhost:8082/getinfo',
-    changeOrigin:true,
-    pathRewrite: {
-      ['^' + "/dev-ap"]: ''
-    }
+  proxy:'http://localhost:8082/'// 配置访问的服务器地址
+  // ["/getinfo"]:{
+  //   target:'http://localhost:8082',
+  //   changeOrigin:true,
+  //   pathRewrite: {
+  //     '^/geinfo': ''
+  //   }
   }
-  }
-}
+
 }

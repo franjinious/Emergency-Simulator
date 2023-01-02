@@ -362,8 +362,24 @@ export default {
   // Fonction pour rafraichir les infos toutes les 0.5 secondes
   mounted() {
     // let interval= null
+    // const instance = axios({
+    //       baseURL:'http://localhost:8082/getinfo',
+    //       timeout :5000
+    //     })
 
     this.Interval=setInterval(() => {
+    //   instance
+    //       .get('http://localhost:8082/getinfo')
+    //       .then(response => {
+    //         this.$nextTick(() => {
+    //           // 修改组件数据
+    //           this.items = response.data;
+    //         });
+    //         console.log(response.data);})
+    //       .catch(e => {
+    //         console.log(e);
+    //       });
+    // }, 500);
       axios
           .get('http://localhost:8082/getinfo')
           .then(response => {
