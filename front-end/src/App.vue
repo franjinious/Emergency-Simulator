@@ -1,5 +1,5 @@
 <template xmlns:progress="http://java.sun.com/xml/ns/javaee">
-  <div class = "app">
+  <div class = "app"  v-bind:items="items">
     <header style="margin-bottom: 20px">
 <!--      <img class="people-icon" style="width: 100%;" src="src/assets/images/ambulance.png" alt=""/>-->
       <div class="header-item date" :style="progress">
@@ -104,7 +104,7 @@
             </div>
             <div style="width:33.3%; margin-left: 0;justify-content:center">
               <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 7rem; width:100%">
-                Le nombre de medecin actifs:{{nbMedecin}}
+                Le nombre de medecin actifs:{{items[4][0]}}
      
                   <div class="input box" style="margin-left:1rem">
                     <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
@@ -183,7 +183,7 @@
 
         <div class="salleAttente" style="width: 100%; margin-top: 2rem;display: flex; flex-wrap: wrap">
           Salle d'attente
-          <div class="people p2 complete" v-for="i in items[2]" :key="i" >
+          <div class="people p2 complete" v-for="i in items[2][0]" :key="i" >
             <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
 
             <!--          <div v-for="i in nbPatient">-->
@@ -324,16 +324,19 @@ export default {
   data(){
     return{
       //Les infos ensemble passees
-      items: [
+      items:
+          [
+          [],[],[],[],[]
           //Accueil
-          [0,1,1],
-          //Infirmier
-          [1,0,0],
-          //Nb patients
-          [5],
-          //Room
-          [1,1,0,0,1],
-          [1]
+          // [0,1,1],
+          // //Infirmier
+          // [1,0,0],
+          // //Nb patients
+          // [3],
+          // //Room
+          // [1,1,0,0,1],
+          // //Nb medecin
+          // [1]
       ],
       backgroundImage: require('/src/assets/images/2382727.jpg'),
       backColorMap: {
@@ -351,33 +354,45 @@ export default {
       nbMedecin:9,
       levelMedecin:0,
       levelSalle:0,
-      nbPatient:0
+      nbPatient:0,
+      Interval : null
     }
   },
   
   // Fonction pour rafraichir les infos toutes les 0.5 secondes
   mounted() {
-    this.interval=setInterval(() => {
+    // let interval= null
+
+    this.Interval=setInterval(() => {
       axios
           .get('http://localhost:8082/getinfo')
           .then(response => {
-            this.items = response.data;
-
+            this.$nextTick(() => {
+              // 修改组件数据
+              this.items = response.data;
+            });
+            console.log(response.data);})
+          .catch(e => {
+                  console.log(e);
           });
     }, 500);
+    // this.beforeUnmount()
   },
   beforeUnmount() {
-    clearInterval(this.interval);
+    clearInterval(this.Interval);
   },
 
   methods: {
     //Fonction d'essai pour pousser l'info du patient au backend
   
     createPatient() {
-      axios.get('http://127.0.0.1:8082/createPatient?test='+this.maladie.toString).then(response => {
+      axios
+          .get('http://127.0.0.1:8082/createPatient?test='+this.maladie.toString)
+          .then(response => {
             // 创建成功，将新用户添加到用户列表中
             console.log(response.data);
-      }).catch(e => {
+      })
+          .catch(e => {
         console.log(e);
       });
     },
@@ -458,9 +473,13 @@ export default {
     },
     activerDoc(){
         this.nbMedecin ++
-      axios.post('http://localhost:8082/activerDoc', this.levelMedecin)
+      axios.get('http://127.0.0.1:8082/activerDoc?test='+this.levelMedecin)
           .then(response => {
-            console.log(response.data)
+            // 创建成功，将新用户添加到用户列表中
+            console.log(response.data);
+          })
+          .catch(e => {
+            console.log(e);
           });
 
 
