@@ -1,7 +1,7 @@
 package agent
 
 import (
-
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -61,7 +61,7 @@ func (h *Hospital) CreatePatient(w http.ResponseWriter, r *http.Request) {
 	c, _ := strconv.Atoi(re)
 	h.AcceptNewPatient(1, true, "111", 10, c)
 	w.WriteHeader(http.StatusOK)
-	fmt.Println(c)
+	// fmt.Println(c)
 	h.Unlock()
 }
 
@@ -80,6 +80,7 @@ func (h *Hospital) Start() {
 	go h.DoctorCenter.Run()
 	go h.WaitingCenter.Run()
 	mux := http.NewServeMux()
+	mux.HandleFunc("/createPatient", h.CreatePatient)
 	mux.HandleFunc("/activerAccueil", h.ActiverAccueil)
 	mux.HandleFunc("/desactiverAccueil", h.DesactiverAccueil)
 	mux.HandleFunc("/activerInfirmier", h.ActiverInfirmier)
@@ -88,7 +89,7 @@ func (h *Hospital) Start() {
 	mux.HandleFunc("/desactiverSalle", h.DesactiverSalle)
 	mux.HandleFunc("/activerDoc", h.ActiverDoc)
 	mux.HandleFunc("/desactiverDoc", h.DesactiverDoc)
-
+	mux.HandleFunc("/getinfo", h.Getinfo)
 
 	s := &http.Server{
 		Addr:           h.IP + ":" + h.Port,
@@ -182,4 +183,79 @@ func (h *Hospital) DesactiverDoc(writer http.ResponseWriter, request *http.Reque
 	c, _ := strconv.Atoi(re)
 	h.DoctorCenter.DeleteDoctor(c)
 	h.Unlock()
+}
+
+func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
+	h.Lock()
+
+	var re [][]int
+
+	// Accueil
+	h.NurseCenter.Lock()
+
+
+	a := make([]int,h.NurseCenter.GetNurseNumber())
+
+	for _,j := range h.NurseCenter.GetBusyQueue() {
+		a[j.ID-1] = 1
+	}
+
+	h.NurseCenter.Unlock()
+
+
+	// Infirmier
+	h.ReceptionCenter.Lock()
+
+	b := make([]int,h.ReceptionCenter.QueueNumber)
+	for i := 1; i < h.ReceptionCenter.QueueNumber; i++ {
+		b[i-1] = h.ReceptionCenter.QueuesDoctor["Queue"+strconv.FormatInt(int64(i), 10)].Getstatus()
+	}
+
+	h.ReceptionCenter.Unlock()
+
+	// patient
+
+	h.NurseCenter.Lock()
+
+
+	c := make([]int,1)
+	c[0] = h.NurseCenter.PatientWaiting
+	h.NurseCenter.Unlock()
+
+	// room
+	h.EmergencyRoomCenter.Lock()
+
+
+
+	d := make([]int,h.EmergencyRoomCenter.WorkNumber)
+	for i:= 1; i <= h.EmergencyRoomCenter.WorkNumber; i++ {
+		d[i-1] = h.EmergencyRoomCenter.RoomList["EmergencyRoom"+strconv.FormatInt(int64(i), 10)].Status
+	}
+
+	h.EmergencyRoomCenter.Unlock()
+
+
+
+	h.DoctorCenter.Lock()
+
+	e := make([]int,1)
+	e[0] = len(h.DoctorCenter.AllDoctor)
+
+	h.DoctorCenter.Unlock()
+
+	h.Unlock()
+
+	re = append(re, a)
+	re = append(re, b)
+	re = append(re, c)
+	re = append(re, d)
+	re = append(re, e)
+
+
+	fmt.Println(re)
+
+	serial, _ := json.Marshal(re)
+	writer.Write(serial)
+
+	return
 }

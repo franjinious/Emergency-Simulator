@@ -28,6 +28,10 @@ func (n *Nurse_manager) GetNurseNumber() int {
 	return n.busy_nurse_number + n.usable_nurse_number
 }
 
+func (n *Nurse_manager) GetBusyQueue() []*nurse {
+	return n.nurse_pool_busy
+}
+
 // 添加成功返回true 失败false 最大值为5
 func (n *Nurse_manager) Add_patient() {
 	flag := false
@@ -85,7 +89,7 @@ func GetInstance(n int) *Nurse_manager {
 	once.Do(func() {
 		instance = &Nurse_manager{
 			PatientWaiting:      0,
-			now_id:              0,
+			now_id:              1,
 			nurse_number:        n,
 			busy_nurse_number:   0,
 			usable_nurse_number: n,

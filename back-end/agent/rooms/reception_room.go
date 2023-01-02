@@ -55,6 +55,10 @@ type ReceptionDoctor struct {
 	Msgreturn        chan *ReceptionDoctor // 反馈信道
 }
 
+func ( r *ReceptionDoctor ) Getstatus() int {
+	return r.status
+}
+
 func (rr *ReceptionRoom) HandlerRquest(p *patient.Patient) {
 	// 找到最合适的位置 然后放入
 

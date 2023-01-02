@@ -83,7 +83,7 @@ func GetDoctorManagerInstance(n int) *DoctorManager {
 			DoctorReuqest:  make(chan int, 20),
 			DoctorResponce: make(chan *Doctor, 20),
 		}
-		for i := 1; i < n; i++ {
+		for i := 1; i <= n; i++ {
 			d := NewDoctor(i, make(map[string]bool), true, i)
 			instance.AllDoctor = append(instance.AllDoctor, d)
 		}
