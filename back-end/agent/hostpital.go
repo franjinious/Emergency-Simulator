@@ -47,15 +47,6 @@ type requestBody struct {
 
 func (h *Hospital) CreatePatient(w http.ResponseWriter, r *http.Request) {
 	h.Lock()
-
-	//re := requestBody{}
-	//
-	//buf := new(bytes.Buffer)
-	//buf.ReadFrom(r.Body)
-	//fmt.Println(buf.String())
-	//json.Unmarshal(buf.Bytes(), &re)
-	//fmt.Println(re.Test)
-
 	q := r.URL.Query()
 	re := q.Get("test")
 	c, _ := strconv.Atoi(re)
@@ -194,10 +185,11 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	h.NurseCenter.Lock()
 
 
-	a := make([]int,h.NurseCenter.GetNurseNumber())
+	a := make([]int, len(h.NurseCenter.GetBusyQueue())+len(h.NurseCenter.GetfreeQueue()))
 
-	for _,j := range h.NurseCenter.GetBusyQueue() {
-		a[j.ID-1] = 1
+	// fmt.Println(h.NurseCenter.GetBusyQueue())
+	for i:= 1; i <= len(h.NurseCenter.GetBusyQueue()); i++ {
+		a[i-1] = 1
 	}
 
 	h.NurseCenter.Unlock()

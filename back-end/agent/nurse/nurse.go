@@ -81,6 +81,8 @@ func (n *nurse) judge(patient2 *patient.Patient) {
 	// 判断算法
 
 	// sleep模拟处理时间
+	// n.Lock()
+	n.Lock()
 	patient2.SetStatus(patient.Being_judged_by_nurse)
 	timee, _ := rand.Int(rand.Reader, big.NewInt(5))
 	tt := int(timee.Int64())
@@ -92,6 +94,7 @@ func (n *nurse) judge(patient2 *patient.Patient) {
 
 	// 时间 随机1-10
 	tim, _ := rand.Int(rand.Reader, big.NewInt(10))
+	n.Unlock()
 	if patient2.Severity == -1 {
 		n.SetPatientStatus(int(gra.Int64()+1), 10+int(tim.Int64()))
 	} else {
@@ -101,6 +104,7 @@ func (n *nurse) judge(patient2 *patient.Patient) {
 	patient2.Lock()
 	patient2.Msg_nurse <- "ticket"
 	patient2.Unlock()
+	// n.Unlock()
 }
 
 func (nur *nurse) treat(n *patient.Patient) {

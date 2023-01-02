@@ -12,11 +12,9 @@ import (
 // 管理所有的nurse
 type Nurse_manager struct {
 	sync.Mutex
-	PatientWaiting      int                   // 等待的病人数量
+	PatientWaiting      int // 等待的病人数量
 	now_id              int
 	nurse_number        int
-	busy_nurse_number   int                   // 空闲护士数量
-	usable_nurse_number int                   // 忙碌护士数量
 	nurse_pool_busy     []*nurse              // 忙碌队列
 	nurse_pool_usable   []*nurse              // 空闲的护士队列
 	msg_nurse           chan *nurse           // 护士任务结束的通知信道
@@ -25,11 +23,16 @@ type Nurse_manager struct {
 }
 
 func (n *Nurse_manager) GetNurseNumber() int {
-	return n.busy_nurse_number + n.usable_nurse_number
+
+	return n.nurse_number
 }
 
 func (n *Nurse_manager) GetBusyQueue() []*nurse {
 	return n.nurse_pool_busy
+}
+
+func (n *Nurse_manager) GetfreeQueue() []*nurse {
+	return n.nurse_pool_usable
 }
 
 // 添加成功返回true 失败false 最大值为5
@@ -41,7 +44,6 @@ func (n *Nurse_manager) Add_patient() {
 
 			// 添加nurse
 			n.nurse_number++
-			n.usable_nurse_number++
 			a := NewNurse(n.now_id, instance)
 			n.now_id++
 			n.nurse_pool_usable = append(n.nurse_pool_usable, a)
@@ -51,28 +53,32 @@ func (n *Nurse_manager) Add_patient() {
 	}
 }
 
-func (n *Nurse_manager) Reduce_patient(){
-	flag := false
-	for flag == false {
-		if n.TryLock() {
-			if n.usable_nurse_number == 0 {
-				n.Unlock()
-				continue
-			}
+func (n *Nurse_manager) Reduce_patient() {
+	n.Lock()
 
-			flag = true
+	if len(n.nurse_pool_usable) != 0 {
+		t := n.nurse_pool_usable[0]
+		t.Lock()
 
-			n.nurse_number--
-			n.usable_nurse_number--
-			//a := NewNurse(n.now_id, instance)
-			//n.now_id++
-			t := n.nurse_pool_usable[len(n.nurse_pool_usable)-1]
-			n.nurse_pool_usable = n.nurse_pool_usable[:len(n.nurse_pool_usable)-1]
-			close(t.GetChan())
-			//go a.Run()
-			n.Unlock()
-		}
+		n.nurse_number--
+
+		n.nurse_pool_usable = n.nurse_pool_usable[1:]
+		close(t.GetChan())
+		t.Unlock()
+	} else {
+		t := n.nurse_pool_busy[0]
+		t.Lock()
+		aa := t.p
+		close(t.GetChan())
+		t.Unlock()
+
+		n.nurse_number--
+		n.nurse_pool_busy = n.nurse_pool_busy[1:]
+
+		aa.RequestCheckingStatus()
 	}
+
+	n.Unlock()
 }
 
 func (n *Nurse_manager) Get_chan_patient() chan *patient.Patient {
@@ -91,8 +97,6 @@ func GetInstance(n int) *Nurse_manager {
 			PatientWaiting:      0,
 			now_id:              1,
 			nurse_number:        n,
-			busy_nurse_number:   0,
-			usable_nurse_number: n,
 			nurse_pool_busy:     make([]*nurse, 0),
 			nurse_pool_usable:   make([]*nurse, 0),
 			msg_nurse:           make(chan *nurse, 20),
@@ -120,8 +124,6 @@ func (nm *Nurse_manager) handler_nurse_request(n *nurse) {
 		if nm.nurse_pool_busy[i] == n {
 			nm.nurse_pool_busy = append(nm.nurse_pool_busy[:i], nm.nurse_pool_busy[i+1:]...)
 			nm.nurse_pool_usable = append(nm.nurse_pool_usable, n)
-			nm.usable_nurse_number++
-			nm.busy_nurse_number--
 			n.SetUsable(true)
 		}
 	}
@@ -139,9 +141,8 @@ func (nm *Nurse_manager) handler_patient_request(n *patient.Patient) {
 
 	for {
 		nm.Lock()
-		if nm.usable_nurse_number > 0 {
-			nm.usable_nurse_number--
-			nm.busy_nurse_number++
+		if len(nm.nurse_pool_usable) > 0 {
+
 			nur := nm.nurse_pool_usable[0]
 
 			nm.nurse_pool_usable = nm.nurse_pool_usable[1:]
