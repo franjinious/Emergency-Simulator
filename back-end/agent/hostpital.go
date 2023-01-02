@@ -56,7 +56,7 @@ func (h *Hospital) CreatePatient(w http.ResponseWriter, r *http.Request) {
 	h.Unlock()
 }
 
-func ini(){
+func ini() {
 	bande := " ｜ ╔═╗┌┬┐┌─┐┬─┐┌─┐┌─┐┌┐┌┌─┐┬ ┬   ╔═╗┬┌┬┐┬ ┬┬  ┌─┐┌┬┐┌─┐┬─┐ | \n ｜ ║╣ │││├┤ ├┬┘│ ┬├┤ ││││  └┬┘───╚═╗│││││ ││  ├─┤ │ │ │├┬┘ | \n ｜ ╚═╝┴ ┴└─┘┴└─└─┘└─┘┘└┘└─┘ ┴    ╚═╝┴┴ ┴└─┘┴─┘┴ ┴ ┴ └─┘┴└─ | \n"
 
 	fmt.Println("  ----------------------------------------------------------")
@@ -90,7 +90,7 @@ func (h *Hospital) Start() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	time.Sleep(1*time.Second)
+	time.Sleep(1 * time.Second)
 	fmt.Println("----------------------------------------------------------")
 	log.Println("Everything is normal, the emergency room is working")
 	log.Fatal(s.ListenAndServe())
@@ -177,6 +177,8 @@ func (h *Hospital) DesactiverDoc(writer http.ResponseWriter, request *http.Reque
 }
 
 func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
+	writer.Header().Set("Access-Control-Allow-Origin", "*")
+
 	h.Lock()
 
 	var re [][]int
@@ -184,21 +186,19 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	// Accueil
 	h.NurseCenter.Lock()
 
-
 	a := make([]int, len(h.NurseCenter.GetBusyQueue())+len(h.NurseCenter.GetfreeQueue()))
 
 	// fmt.Println(h.NurseCenter.GetBusyQueue())
-	for i:= 1; i <= len(h.NurseCenter.GetBusyQueue()); i++ {
+	for i := 1; i <= len(h.NurseCenter.GetBusyQueue()); i++ {
 		a[i-1] = 1
 	}
 
 	h.NurseCenter.Unlock()
 
-
 	// Infirmier
 	h.ReceptionCenter.Lock()
 
-	b := make([]int,h.ReceptionCenter.QueueNumber)
+	b := make([]int, h.ReceptionCenter.QueueNumber)
 	for i := 1; i < h.ReceptionCenter.QueueNumber; i++ {
 		b[i-1] = h.ReceptionCenter.QueuesDoctor["Queue"+strconv.FormatInt(int64(i), 10)].Getstatus()
 	}
@@ -209,28 +209,23 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 
 	h.NurseCenter.Lock()
 
-
-	c := make([]int,1)
+	c := make([]int, 1)
 	c[0] = h.NurseCenter.PatientWaiting
 	h.NurseCenter.Unlock()
 
 	// room
 	h.EmergencyRoomCenter.Lock()
 
-
-
-	d := make([]int,h.EmergencyRoomCenter.WorkNumber)
-	for i:= 1; i <= h.EmergencyRoomCenter.WorkNumber; i++ {
+	d := make([]int, h.EmergencyRoomCenter.WorkNumber)
+	for i := 1; i <= h.EmergencyRoomCenter.WorkNumber; i++ {
 		d[i-1] = h.EmergencyRoomCenter.RoomList["EmergencyRoom"+strconv.FormatInt(int64(i), 10)].Status
 	}
 
 	h.EmergencyRoomCenter.Unlock()
 
-
-
 	h.DoctorCenter.Lock()
 
-	e := make([]int,1)
+	e := make([]int, 1)
 	e[0] = len(h.DoctorCenter.AllDoctor)
 
 	h.DoctorCenter.Unlock()
@@ -242,7 +237,6 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	re = append(re, c)
 	re = append(re, d)
 	re = append(re, e)
-
 
 	fmt.Println(re)
 
