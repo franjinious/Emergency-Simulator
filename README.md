@@ -1,8 +1,13 @@
 # Emergency-Simulator
 
-## 1. Brève Introduction
+## 1. Introduction
 
-// TODO 
+Dans le cadre de l'UV IA04, nous devons conçevoir et réaliser un projet de système de multi-agents. Le but de notre projet est de simuler une salle des urgences d'un centre hospitalier ayant certains types d'agents. 
+On utilise le langage GO pour construire l'architecture de back end, la communication entre agents est réalisée par channel. La partie de front end est effectuée par vue.js.
+
+
+#### Problématique
+Quelle stratégie de répartition de salle de consultation et de docteur est la plus performante pour que le service des urgences soit le plus efficace possible?
 
 Gitlab repository : [here](https://gitlab.utc.fr/wanhongz/emergency-simulator).
 
