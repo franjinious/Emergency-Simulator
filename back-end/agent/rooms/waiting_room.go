@@ -90,6 +90,9 @@ func treat(r *EmergencyRoom, d *doctor.Doctor, p *patient.Patient) {
 	time.Sleep(10 * time.Second)
 	p.Status = patient.Finish
 	log.Println("patient " + strconv.FormatInt(int64(p.ID), 10) + " finish treat ")
+
+	// Alltime["patient " + strconv.FormatInt(int64(p.ID), 10)] = p.T.Sub(time.Now()).Seconds()
+
 	r.Lock()
 	r.Status = 0
 	r.Unlock()
