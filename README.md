@@ -105,7 +105,8 @@ En outre, il utilise également d'autres bibliothèques et plugins, tels qu'Axio
 - Mise à jour de données en temps réel  
 Pour ce faire, nous avons utilisé une option très pratique en Vue.js : _Life Cycle_. 
 Ce sont des méthodes prédéfinies qui existe tout au long de l'application.  
-Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquement quand l'élément DOM a été rendu dans la page.
+Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquement quand l'élément DOM a été rendu dans la page.  
+Dans la fonction nous utilisons _SetInterval_ pour effectuer la récuperation des données
 ## 5. Le résultat de l'expérience
 
 
