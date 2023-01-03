@@ -51,6 +51,7 @@ func (h *Hospital) CreatePatient(w http.ResponseWriter, r *http.Request) {
 	q := r.URL.Query()
 	re := q.Get("test")
 	c, _ := strconv.Atoi(re)
+	// fmt.Println(c)
 	h.AcceptNewPatient(1, true, "111", 10, c)
 	w.WriteHeader(http.StatusOK)
 	// fmt.Println(c)

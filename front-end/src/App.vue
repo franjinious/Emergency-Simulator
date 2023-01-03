@@ -402,7 +402,7 @@ export default {
   
     createPatient() {
       axios
-          .get('http://127.0.0.1:8082/createPatient?test='+this.maladie.toString)
+          .get('http://127.0.0.1:8082/createPatient?test='+this.maladie.toString())
           .then(response => {
             // 创建成功，将新用户添加到用户列表中
             console.log(response.data);

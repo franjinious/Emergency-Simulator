@@ -83,7 +83,7 @@ func GetEmergencyRoomManagerInstance(n int) *EmergencyRoomManager {
 
 		for i := 6; i <= n; i++ {
 			instance_erm.RoomList["EmergencyRoom"+strconv.FormatInt(int64(i), 10)] = &EmergencyRoom{
-				Level:  i,
+				Level:  -1,
 				Status: 0,
 				ID:     i,
 			}
@@ -99,10 +99,10 @@ func (erm *EmergencyRoomManager) check(LevelNeed int) {
 
 	// 依次检查每个房间的level
 	for _, v := range erm.RoomList {
-		if v.Status == 0 {
+		if v.Status == 0 && v.Level != -1 {
 			if ans == nil && v.Level >= LevelNeed {
 				ans = v
-			} else if ans != nil && ans.Level > v.Level {
+			} else if ans != nil &&ans.Level > v.Level {
 				ans = v
 			}
 
