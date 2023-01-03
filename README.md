@@ -2,11 +2,15 @@
 
 ## 1. Introduction
 
-Dans le cadre de l'UV IA04, nous avons conçu et réalisé un projet de système de multi-agents dont le sujet est la simulation de service des urgences.
+Dans le cadre de l'UV IA04, nous avons conçu et réalisé un projet de système de multi-agents dont le sujet est d'une simulation de service des urgences.
 
-#### Modélisation
+#### a. Problématique
 
-L'objectif de ce projet est de modéliser une salle des urgences d'un centre hospitalier en se basant sur de différents types d'agents et de simuler leurs interactions. Dans le page web, un processus d'arrivée des patients à l'hôpital pour un traitement d'urgence peut être constaté d'une manière intuitive et interactive.
+Dans le contexte de la continuation de circulation du coronavirus et de la pénurie de ressources de santé publique, on cherche à répondre à la question : Quelle stratégie d'affectation des salles de consultation et des médecins est la plus performante pour que le service des urgences soit le plus efficace possible?
+
+#### b. Modélisation
+
+L'objectif de ce projet est donc de modéliser une salle des urgences d'un centre médical en se basant sur de différents types d'agents et de simuler leurs interactions. Dans le page web, un processus d'arrivée des patients à l'hôpital pour un traitement d'urgence peut être constaté d'une manière intuitive et interactive.
 
 ###### 8 Types d'agents
 On dispose de 8 types d'agents en total dans ce projet.
@@ -19,21 +23,21 @@ On dispose de 8 types d'agents en total dans ce projet.
 * DoctorCenter 
 * EmergencyRoomCenter
 
-####### Processus
+###### Interaction et fonctionnemnt
+En choisissant une des différentes maladies et cliquant sur le bouton « ajouter », on simule l'arrivée d'un patient et il entre dans la queue et attend d'être traité. Le processus de consultation suivante est automatisé. Ce processus comprend 4 étapes : 
+1. 
 
-#### Problématique
 
-Quelle stratégie d'affectation des salles de consultation et des docteurs est la plus performante pour que le service des urgences soit le plus efficace possible?
 
-#### Architecture
+#### c. Architecture
 
 On utilise le langage GO pour construire la structure des agents du côté back-end, la communication entre les agents est réalisée par channel. La partie de front-end est effectuée par Vue.js. Plus de détails seront présentées dans les chapitres suivants.
-
-Gitlab repository : [here](https://gitlab.utc.fr/wanhongz/emergency-simulator).
 
 ---
 
 ## 2. Quick Start
+
+Gitlab repository : [here](https://gitlab.utc.fr/wanhongz/emergency-simulator).
 
 #### a. back-end
 
@@ -46,10 +50,10 @@ git clone https://gitlab.utc.fr/wanhongz/emergency-simulator.git
 2. Basculez vers le répertoire racine du back-end du projet
 
 ```bash
-cd YOUR_PATH_OF_THE_PROJECT/back-end
+cd YOUR_PATH_OF_THE_PROJET/back-end
 ```
 
-3. Modifiez l'adresse IP et le Port de votre serveur dans le fichier **main.go** ( L'adresse par défaut est **"127.0.0.1:8082"** ).
+3. Modifiez l'adresse IP et le Port de votre serveur dans le ficher **main.go** ( L'adresse par défaut est **"127.0.0.1:8082"** ).
 
 4. Compilez avec la commande go build.
 
@@ -68,32 +72,6 @@ Normalement, vous devriez pouvoir voir l'invite indiquant que le projet démarre
 <img src="./picture/backendstart.png" alt="backendstart" style="zoom:33%;" />
 
 #### b.front-end
-##### Conditions préalables
-Nous utilisons _Node.js_ et _Vue.js_ pour ce projet.  
-À cause des fonctionnements des différentes versions, certaines versions récentes peuvent éventuellement conduire à l'erreur.  
-Pour assurer un bon fonctionnement, nous vous demandons d'utiliser la version 16.18.1 de _Node.js_ ou celles antérieures.
-Si vous ne disposez pas de _Vue.js_, installez-la en utilisant
-```bash
-npm install vue
-```
-##### Etapes
-1. Il faut tout d'abord déplacer le répertoire au front-end
-```bash
-cd YOUR_PATH_OF_THE_PROJET/front-end
-```
-2. Ensuite, pour installer les dépendances, utilisez les commandes
-```
-npm install -g @vue/cli
-
-npm install
-```
-3. La commande suivante vous permet de lancer l'application
-```
-npm run serve
-```
-Si tout vas bien, vous allez voir les informations suivantes
-
-<img src="./picture/frontendstart.png" alt="frontendstart" style="zoom:33%;" />
 
 
 
@@ -156,12 +134,7 @@ En outre, il utilise également d'autres bibliothèques et plugins, tels qu'Axio
 - Mise à jour de données en temps réel  
 Pour ce faire, nous avons utilisé une option très pratique en Vue.js : _Life Cycle_. 
 Ce sont des méthodes prédéfinies qui existe tout au long de l'application.  
-Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquement quand l'élément DOM a été rendu dans la page.  
-Dans la fonction, nous utilisons _SetInterval_ pour effectuer la récuperation des données et le package _axios_ pour faire les demandes _http_.  
-  
-- Affichage dynamique et interaction entre le front et le back  
-Avec les données transmises en temps réel, nous avons pu construire l'affichage dynamique. 
-L'arrivée et le départ du patient ainsi leur séjour dans la salle est automatiquement présenté dans l'application.
+Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquement quand l'élément DOM a été rendu dans la page.
 ## 5. Le résultat de l'expérience
 
 
