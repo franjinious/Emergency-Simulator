@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-Dans le cadre de l'UV IA04, nous devons conçevoir et réaliser un projet de système de multi-agents.
+Dans le cadre de l'UV IA04, nous devons concevoir et réaliser un projet de système de multi-agents.
 
 #### Modélisation
 L'objectif de ce projet est de modéliser une salle des urgences d'un centre hospitalier en se basant sur de différents types d'agents et de simuler leurs interactions. Dans le page web, le processus d'arrivée des patients à l'hôpital pour un traitement d'urgence peut être constaté d'une manière intuitive et interactive. 
@@ -30,10 +30,10 @@ git clone https://gitlab.utc.fr/wanhongz/emergency-simulator.git
 2. Basculez vers le répertoire racine du back-end du projet
 
 ```bash
-cd YOUR_PATH_OF_THE_PROJET/back-end
+cd YOUR_PATH_OF_THE_PROJECT/back-end
 ```
 
-3. Modifiez l'adresse IP et le Port de votre serveur dans le ficher **main.go** ( L'adresse par défaut est **"127.0.0.1:8082"** ).
+3. Modifiez l'adresse IP et le Port de votre serveur dans le fichier **main.go** ( L'adresse par défaut est **"127.0.0.1:8082"** ).
 
 4. Compilez avec la commande go build.
 
@@ -52,6 +52,32 @@ Normalement, vous devriez pouvoir voir l'invite indiquant que le projet démarre
 <img src="./picture/backendstart.png" alt="backendstart" style="zoom:33%;" />
 
 #### b.front-end
+##### Conditions préalables
+Nous utilisons _Node.js_ et _Vue.js_ pour ce projet.  
+À cause des fonctionnements des différentes versions, certaines versions récentes peuvent éventuellement conduire à l'erreur.  
+Pour assurer un bon fonctionnement, nous vous demandons d'utiliser la version 16.18.1 de _Node.js_ ou celles antérieures.
+Si vous ne disposez pas de _Vue.js_, installez-la en utilisant
+```bash
+npm install vue
+```
+##### Etapes
+1. Il faut tout d'abord déplacer le répertoire au front-end
+```bash
+cd YOUR_PATH_OF_THE_PROJET/front-end
+```
+2. Ensuite, pour installer les dépendances, utilisez les commandes
+```
+npm install -g @vue/cli
+
+npm install
+```
+3. La commande suivante vous permet de lancer l'application
+```
+npm run serve
+```
+Si tout vas bien, vous allez voir les informations suivantes
+
+<img src="./picture/frontendstart.png" alt="frontendstart" style="zoom:33%;" />
 
 
 
@@ -115,7 +141,11 @@ En outre, il utilise également d'autres bibliothèques et plugins, tels qu'Axio
 Pour ce faire, nous avons utilisé une option très pratique en Vue.js : _Life Cycle_. 
 Ce sont des méthodes prédéfinies qui existe tout au long de l'application.  
 Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquement quand l'élément DOM a été rendu dans la page.  
-Dans la fonction nous utilisons _SetInterval_ pour effectuer la récuperation des données
+Dans la fonction, nous utilisons _SetInterval_ pour effectuer la récuperation des données et le package _axios_ pour faire les demandes _http_.  
+  
+- Affichage dynamique et interaction entre le front et le back  
+Avec les données transmises en temps réel, nous avons pu construire l'affichage dynamique. 
+L'arrivée et le départ du patient ainsi leur séjour dans la salle est automatiquement présenté dans l'application.
 ## 5. Le résultat de l'expérience
 
 
