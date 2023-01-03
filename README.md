@@ -24,10 +24,12 @@ On dispose de 8 types d'agents en total dans ce projet.
 * EmergencyRoomCenter
 
 ###### Interaction et fonctionnemnt
-En choisissant une des différentes maladies et cliquant sur le bouton « ajouter », on simule l'arrivée d'un patient et il entre dans la queue et attend d'être traité. Le processus de consultation suivante est automatisé. Ce processus comprend 4 étapes : 
-1. 
-
-
+En choisissant une des différentes maladies et cliquant sur le bouton « ajouter » dans la page web（前端图片？）, on simule l'arrivée d'un patient qu'il entre ensuite dans la queue et attend d'être traité. Le processus de consultation suivante est automatisé. Ce processus comprend 4 étapes : 
+1. L'infirmière lui désigne un niveau de gravité selon sa maladie
+2. Il fait la queue pour s'inscrire dans l'accueil
+3. Il attend dans la salle d'attente par son ordre. （优先级？）
+4. Le médecin consulte sa situation et le traite.
+// 讲不讲：room分配strategie、等待时间aleatoire、.....
 
 #### c. Architecture
 
