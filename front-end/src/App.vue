@@ -53,7 +53,7 @@
           <div style="display: flex; flex-wrap: wrap">
             <div style="width:33.3%; margin-left: 0;">
               <div class="Accueil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; width:35%; float: left">
-                Accueil 1
+                Infirmier 1
                 <div class="people p1 complete" v-if="items[0][0]==1">
                   <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
                   <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -66,7 +66,7 @@
   <!--              </div>-->
   
               </div>
-              <div class="Accueil ac2" v-if="nbAccueil>=2" style="margin-top: 2%;height: 6rem; width:35%;float: left">Accueil 2
+              <div class="Accueil ac2" v-if="nbAccueil>=2" style="margin-top: 2%;height: 6rem; width:35%;float: left">Infirmier 2
                 <div class="people p1 complete" v-if="items[0][1]==1">
                   <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
                 <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -74,7 +74,7 @@
                 <div class="redR"></div>
               </div>
               </div>
-              <div class="Accueil ac3" v-if="nbAccueil>=3" style="margin-top: 2%;height: 6rem; width:35%;float: left">Accueil 3
+              <div class="Accueil ac3" v-if="nbAccueil>=3" style="margin-top: 2%;height: 6rem; width:35%;float: left">Infirmier 3
                 <div class="people p1 complete" v-if="items[0][2]==1">
                   <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
                 <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -82,7 +82,7 @@
                 <div class="redR"></div>
               </div>
               </div>
-              <div class="Accueil ac4" v-if="nbAccueil>=4" style="margin-top: 2%;height: 6rem; width:35%;float: left">Accueil 4
+              <div class="Accueil ac4" v-if="nbAccueil>=4" style="margin-top: 2%;height: 6rem; width:35%;float: left">Infirmier 4
                 <div class="people p1 complete" v-if="items[0][3]==1">
                   <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
                 <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -90,7 +90,7 @@
                 <div class="redR"></div>
               </div>
               </div>
-              <div class="Accueil ac5" v-if="nbAccueil>=5" style="margin-top: 2%;height: 6rem; width:35%;float: left">Accueil 5
+              <div class="Accueil ac5" v-if="nbAccueil>=5" style="margin-top: 2%;height: 6rem; width:35%;float: left">Infirmier 5
                 <div class="people p1 complete" v-if="items[0][4]==1">
                   <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
                 <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -125,7 +125,7 @@
                   <div class="redC"></div>
                   <div class="redR"></div>
                 </div>
-                Infirmier 1
+                Accueil 1
               </div>
   
               <div class="Accueil infi2" v-if="nbInfirmier>=2" style="margin-top:1.5%;height:5.5rem;float: right; display: block;width:35%">
@@ -135,7 +135,7 @@
                   <div class="redC"></div>
                   <div class="redR"></div>
                 </div>
-                Infirmier 2
+                Accueil 2
               </div>
   <!--            <div class="Accueil infi2" v-else style="margin-top:1.5%;height:3rem; {background: #aaaaaa}" >Reception Infirmiere 2</div>-->
   
@@ -146,7 +146,7 @@
                   <div class="redC"></div>
                   <div class="redR"></div>
                 </div>
-                Infirmier 3
+                Accueil 3
               </div>
   
               <div class="Accueil infi4" v-if="nbInfirmier>=4" style="margin-top:1.5%;height: 5.5rem;float:right;display: block;width:35%">
@@ -156,7 +156,7 @@
                   <div class="redC"></div>
                   <div class="redR"></div>
                 </div>
-                Infirmier 4
+                Accueil 4
               </div>
   
               <div class="Accueil infi5" v-if="nbInfirmier>=5" style="margin-top: 1.5%;height: 5.5rem;float:right;display: block;width:35%">
@@ -166,7 +166,7 @@
                   <div class="redC"></div>
                   <div class="redR"></div>
                 </div>
-                Infirmier 5
+                Accueil 5
               </div>
               <div class="button activerInfirmier" @click="activerInfirmier" style="float: right">➕</div>
               <div class="button desactiverInfirmier" @click="desactiverInfirmier" style="float: right">➖</div>
