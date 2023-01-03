@@ -2,18 +2,44 @@
 
 ## 1. Introduction
 
-Dans le cadre de l'UV IA04, nous devons conçevoir et réaliser un projet de système de multi-agents. Le but de notre projet est de simuler une salle des urgences d'un centre hospitalier ayant certains types d'agents. 
-On utilise le langage GO pour construire l'architecture de back end, la communication entre agents est réalisée par channel. La partie de front end est effectuée par vue.js.
+Dans le cadre de l'UV IA04, nous avons conçu et réalisé un projet de système de multi-agents dont le sujet est d'une simulation de service des urgences.
 
+#### a. Problématique
 
-#### Problématique
-Quelle stratégie de répartition de salle de consultation et de docteur est la plus performante pour que le service des urgences soit le plus efficace possible?
+Dans le contexte de la continuation de circulation du coronavirus et de la pénurie de ressources de santé publique, on cherche à répondre à la question : Quelle stratégie d'affectation des salles de consultation et des médecins est la plus performante pour que le service des urgences soit le plus efficace possible?
 
-Gitlab repository : [here](https://gitlab.utc.fr/wanhongz/emergency-simulator).
+#### b. Modélisation
+
+L'objectif de ce projet est donc de modéliser une salle des urgences d'un centre médical en se basant sur de différents types d'agents et de simuler leurs interactions. Dans le page web, un processus d'arrivée des patients à l'hôpital pour un traitement d'urgence peut être constaté d'une manière intuitive et interactive.
+
+###### 8 Types d'agents
+On dispose de 8 types d'agents en total dans ce projet.
+* Patient
+* Nurse
+* NurseCenter
+* Reception 
+* ReceptionCenter
+* WaitingRoom
+* DoctorCenter 
+* EmergencyRoomCenter
+
+###### Interaction et fonctionnemnt
+En choisissant une des différentes maladies et cliquant sur le bouton « ajouter » dans la page web（前端图片？）, on simule l'arrivée d'un patient qu'il entre ensuite dans la queue et attend d'être traité. Le processus de consultation suivante est automatisé. Ce processus comprend 4 étapes : 
+1. L'infirmière lui désigne un niveau de gravité selon sa maladie
+2. Il fait la queue pour s'inscrire dans l'accueil
+3. Il attend dans la salle d'attente par son ordre. （优先级？）
+4. Le médecin consulte sa situation et le traite.
+// 讲不讲：room分配strategie、等待时间aleatoire、.....
+
+#### c. Architecture
+
+On utilise le langage GO pour construire la structure des agents du côté back-end, la communication entre les agents est réalisée par channel. La partie de front-end est effectuée par Vue.js. Plus de détails seront présentées dans les chapitres suivants.
 
 ---
 
 ## 2. Quick Start
+
+Gitlab repository : [here](https://gitlab.utc.fr/wanhongz/emergency-simulator).
 
 #### a. back-end
 
