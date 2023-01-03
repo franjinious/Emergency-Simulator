@@ -65,7 +65,6 @@ func ( r *ReceptionDoctor ) Getstatus() int {
 
 func (rr *ReceptionRoom) HandlerRquest(p *patient.Patient) {
 	// 找到最合适的位置 然后放入
-
 	rr.Lock()
 	m := rr.QueuesLength["Queue1"]
 	qq := "Queue1"
@@ -118,7 +117,6 @@ func (rr *ReceptionRoom) HandlerDoctor(r *ReceptionDoctor) {
 }
 
 func (rd *ReceptionDoctor) HandlerPatientRequest(patient2 *patient.Patient) {
-	rd.Lock()
 	rd.status = 1
 	log.Println("ReceptionDoctor" + strconv.FormatInt(int64(rd.ID), 10) + " start dealing with patient " + strconv.FormatInt(int64(patient2.ID), 10))
 
@@ -128,7 +126,6 @@ func (rd *ReceptionDoctor) HandlerPatientRequest(patient2 *patient.Patient) {
 
 	rd.status = 0
 	rd.Msgreturn <- rd
-	rd.Unlock()
 }
 
 func (rd *ReceptionDoctor) Run() {
@@ -137,8 +134,6 @@ func (rd *ReceptionDoctor) Run() {
 		select {
 		case n, ok := <-rd.QueueResponsable:
 			if !ok {
-				rd.Lock()
-				defer rd.Unlock()
 				log.Println("ReceptionDoctor" + strconv.FormatInt(int64(rd.ID), 10) + " stop")
 				return
 			}

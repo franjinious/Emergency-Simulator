@@ -25,6 +25,7 @@ type Hospital struct {
 	EmergencyRoomCenter *rooms.EmergencyRoomManager
 	DoctorCenter        *doctor.DoctorManager
 	WaitingCenter       *rooms.WaitingRoom
+	// Alltime             map[string]float64
 }
 
 func CreateHospital(i string, p string) *Hospital {
@@ -179,12 +180,7 @@ func (h *Hospital) DesactiverDoc(writer http.ResponseWriter, request *http.Reque
 func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	writer.Header().Set("Access-Control-Allow-Origin", "*")
 
-	h.Lock()
-
 	var re [][]int
-
-	// Accueil
-	h.NurseCenter.Lock()
 
 	a := make([]int, len(h.NurseCenter.GetBusyQueue())+len(h.NurseCenter.GetfreeQueue()))
 
@@ -193,45 +189,27 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 		a[i-1] = 1
 	}
 
-	h.NurseCenter.Unlock()
-
-	// Infirmier
-	h.ReceptionCenter.Lock()
-
 	b := make([]int, h.ReceptionCenter.QueueNumber)
 
-	for i := 1; i < h.ReceptionCenter.QueueNumber; i++ {
-		b[i-1] = h.ReceptionCenter.QueuesDoctor["Queue"+strconv.FormatInt(int64(i), 10)].Getstatus()
+	for i := 1; i <= h.ReceptionCenter.QueueNumber; i++ {
+		a := len(h.ReceptionCenter.AllPatientsWaiting["Queue"+strconv.FormatInt(int64(i), 10)])
+		if a > 0 {
+			b[i-1] = 1
+		} else {
+			b[i-1] = 0
+		}
 	}
-
-	h.ReceptionCenter.Unlock()
-
-	// patient
-
-	h.NurseCenter.Lock()
 
 	c := make([]int, 1)
 	c[0] = len(h.WaitingCenter.QueuePatients)
-	h.NurseCenter.Unlock()
-
-	// room
-	h.EmergencyRoomCenter.Lock()
 
 	d := make([]int, h.EmergencyRoomCenter.WorkNumber)
 	for i := 1; i <= h.EmergencyRoomCenter.WorkNumber; i++ {
 		d[i-1] = h.EmergencyRoomCenter.RoomList["EmergencyRoom"+strconv.FormatInt(int64(i), 10)].Status
 	}
 
-	h.EmergencyRoomCenter.Unlock()
-
-	h.DoctorCenter.Lock()
-
 	e := make([]int, 1)
 	e[0] = len(h.DoctorCenter.AllDoctor)
-
-	h.DoctorCenter.Unlock()
-
-	h.Unlock()
 
 	re = append(re, a)
 	re = append(re, b)
@@ -239,7 +217,6 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	re = append(re, d)
 	re = append(re, e)
 
-	fmt.Println(re)
 
 	serial, _ := json.Marshal(re)
 	writer.WriteHeader(http.StatusOK)

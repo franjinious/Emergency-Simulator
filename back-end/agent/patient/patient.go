@@ -22,6 +22,7 @@ type Patient struct {
 	Msg_request_reception chan *Patient  // 请求挂号的信道
 	Msg_receive_reception chan string    // 接受挂号的信道
 	Msg_request_waiting   chan *Patient  // 请求加入等待室候诊队列的信道
+	T                     time.Time      // 创建时间
 }
 
 // 构造函数
@@ -40,6 +41,7 @@ func NewPatient(id int, age int, gender bool, symptom string, severity int, tole
 		Msg_request_reception: d,
 		Msg_receive_reception: make(chan string, 20),
 		Msg_request_waiting:   c_w,
+		T:                     time.Now(),
 	}
 }
 
