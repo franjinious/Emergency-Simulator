@@ -92,9 +92,20 @@ Ressources nécessaires pour les visites de patients :
 
 
 ## 4. Conception front-end
+Il s'agit d'une application Web construite avec Vue.js, qui est principalement utilisée pour gérer les données transmises du backend et les présenter. 
+ 
+Nous avons utilisé la fonctionnalité de liaison de données de réponse de Vue.js pour réaliser une mise à jour des données en temps réel et utilise des composants de vue pour composer la mise en page. 
 
+En outre, il utilise également d'autres bibliothèques et plugins, tels qu'Axios et Vuex, pour réaliser l'acquisition et la gestion des données.
 
+<img src="./picture/front_general.png" style="zoom: 60%;" />
 
+### Points forts de la conception du front
+
+- Mise à jour de données en temps réel  
+Pour ce faire, nous avons utilisé une option très pratique en Vue.js : _Life Cycle_. 
+Ce sont des méthodes prédéfinies qui existe tout au long de l'application.  
+Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquement quand l'élément DOM a été rendu dans la page.
 ## 5. Le résultat de l'expérience
 
 
