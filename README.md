@@ -74,6 +74,32 @@ Normalement, vous devriez pouvoir voir l'invite indiquant que le projet démarre
 <img src="./picture/backendstart.png" alt="backendstart" style="zoom:33%;" />
 
 #### b.front-end
+##### Conditions préalables
+Nous utilisons _Node.js_ et _Vue.js_ pour ce projet.  
+À cause des fonctionnements des différentes versions, certaines versions récentes peuvent éventuellement conduire à l'erreur.  
+Pour assurer un bon fonctionnement, nous vous demandons d'utiliser la version 16.18.1 de _Node.js_ ou celles antérieures.
+Si vous ne disposez pas de _Vue.js_, installez-la en utilisant
+```bash
+npm install vue
+```
+##### Etapes
+1. Il faut tout d'abord déplacer le répertoire au front-end
+```bash
+cd YOUR_PATH_OF_THE_PROJET/front-end
+```
+2. Ensuite, pour installer les dépendances, utilisez les commandes
+```
+npm install -g @vue/cli
+
+npm install
+```
+3. La commande suivante vous permet de lancer l'application
+```
+npm run serve
+```
+Si tout vas bien, vous allez voir les informations suivantes
+
+<img src="./picture/frontendstart.png" alt="frontendstart" style="zoom:33%;" />
 
 
 
