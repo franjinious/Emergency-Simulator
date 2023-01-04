@@ -155,9 +155,13 @@ L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter
 <img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
 
 ### Les Points Positifs
-- 可以直观、交互地看到患者到达医院接受急救治疗的过程
+- Peut voir de manière intuitive et interactive le processus d'arrivée des patients à l'hôpital pour un traitement d'urgence
+- Peut augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, et le nombre de médecin
+- Peut choisir un niveau pour les médecins et les EmergencyRooms
 - 策略
-### Les Points Positifs
+
+### Les Points Négatifs
+
 
 ## 6. Résumé et Futur
 
