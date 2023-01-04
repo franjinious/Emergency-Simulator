@@ -7,10 +7,13 @@ Dans le cadre de l'UV IA04, nous avons conçu et réalisé un projet de système
 #### a. Problématique
 
 Dans le contexte de la continuation de circulation du coronavirus et de la pénurie de ressources de santé publique, on cherche à répondre à la question : Quelle stratégie d'affectation des salles de consultation et des médecins est la plus performante pour que le service des urgences soit le plus efficace possible?
+* Premier arrivé, premier servi
+* Privilégier la ressource hospitalière sur la base de l'ordre d'arrivée
+* Un ordre de priorité : privilégier toujours le patient le plus grave
 
 #### b. Modélisation
 
-L'objectif de ce projet est donc de modéliser une salle des urgences d'un centre médical en se basant sur de différents types d'agents et de simuler leurs interactions. Dans le page web, un processus d'arrivée des patients à l'hôpital pour un traitement d'urgence peut être constaté d'une manière intuitive et interactive.
+L'objectif de ce projet est donc de modéliser une salle des urgences d'un centre médical en se basant sur de différents types d'agents, de caractériser leurs comportements et de simuler leurs interactions. Dans le page web, un processus d'arrivée des patients à l'hôpital pour un traitement d'urgence peut être constaté d'une manière intuitive et interactive.
 
 ###### 8 Types d'agents
 On dispose de 8 types d'agents en total dans ce projet.
@@ -23,15 +26,24 @@ On dispose de 8 types d'agents en total dans ce projet.
 * DoctorCenter 
 * EmergencyRoomCenter
 
-###### Interaction et fonctionnemnt
-En choisissant une des différentes maladies et cliquant sur le bouton « ajouter » dans la page web（前端图片？）, on simule l'arrivée d'un patient qu'il entre ensuite dans la queue et attend d'être traité. Le processus de consultation suivante est automatisé. Ce processus comprend 4 étapes : 
-1. L'infirmière lui désigne un niveau de gravité selon sa maladie
-2. Il fait la queue pour s'inscrire dans l'accueil
-3. Il attend dans la salle d'attente par son ordre. （优先级？）
-4. Le médecin consulte sa situation et le traite.
-// 讲不讲：room分配strategie、等待时间aleatoire、增加删除房间.....
+#### c. Interaction et fonctionnement
 
-#### c. Architecture
+* Ajoute d'un patient
+En choisissant une des différentes maladies et cliquant sur le bouton « ajouter » dans la page web, on simule l'arrivée d'un patient qu'il entre ensuite dans la queue et attend d'être traité. 
+
+* Ajoute et suppression des infirmières, des receptions, des salles de consultation
+
+* Simulation du processus de consultation
+Le processus de consultation suivante est automatisé. Ce processus comprend 4 étapes : 
+1. L'infirmière désigne un niveau de gravité au patient selon sa maladie
+2. Il fait la queue pour s'inscrire dans l'accueil
+3. Il attend dans la salle d'attente pour son ordre.
+4. Le médecin consulte sa situation et le traite.
+
+* Calcul du temps d'attente de patient
+
+
+#### d. Architecture
 
 On utilise le langage GO pour construire la structure des agents du côté back-end, la communication entre les agents est réalisée par channel. La partie de front-end est effectuée par Vue.js. Plus de détails seront présentées dans les chapitres suivants.
 
@@ -52,7 +64,7 @@ git clone https://gitlab.utc.fr/wanhongz/emergency-simulator.git
 2. Basculez vers le répertoire racine du back-end du projet
 
 ```bash
-cd YOUR_PATH_OF_THE_PROJET/back-end
+cd YOUR_PATH_OF_THE_PROJECT/back-end
 ```
 
 3. Modifiez l'adresse IP et le Port de votre serveur dans le ficher **main.go** ( L'adresse par défaut est **"127.0.0.1:8082"** ).
@@ -74,49 +86,23 @@ Normalement, vous devriez pouvoir voir l'invite indiquant que le projet démarre
 <img src="./picture/backendstart.png" alt="backendstart" style="zoom:33%;" />
 
 #### b.front-end
-##### Conditions préalables
-Nous utilisons _Node.js_ et _Vue.js_ pour ce projet.  
-À cause des fonctionnements des différentes versions, certaines versions récentes peuvent éventuellement conduire à l'erreur.  
-Pour assurer un bon fonctionnement, nous vous demandons d'utiliser la version 16.18.1 de _Node.js_ ou celles antérieures.
-Si vous ne disposez pas de _Vue.js_, installez-la en utilisant
-```bash
-npm install vue
-```
-##### Etapes
-1. Il faut tout d'abord déplacer le répertoire au front-end
-```bash
-cd YOUR_PATH_OF_THE_PROJET/front-end
-```
-2. Ensuite, pour installer les dépendances, utilisez les commandes
-```
-npm install -g @vue/cli
-
-npm install
-```
-3. La commande suivante vous permet de lancer l'application
-```
-npm run serve
-```
-Si tout vas bien, vous allez voir les informations suivantes
-
-<img src="./picture/frontendstart.png" alt="frontendstart" style="zoom:33%;" />
 
 
 
-## 3. Agents et ses interaction 
+## 3. Types d'agents et leurs interactions 
 
 ##### Agent Patient 
 
-1. L'agent le plus important est aussi l'agent avec le plus de comportements, il a principalement les modèles de comportement suivants :
+1. L'agent le plus important est aussi l'agent ayant le plus de comportements, il a principalement les modèles de comportement suivants :
 
    1. Il attendra à l'entrée du bureau d'accueil de l'hôpital, expliquera sa situation, et attendra que l'infirmière lui donne un jugement préliminaire
    2. Faire la queue pour l'inscription
-   3. Faites la queue dans la salle d'attente pour que le médecin appelle
+   3. Faire la queue dans la salle d'attente pour que le médecin appelle
    4. Traitement
 
 ##### Agent Nurse et Agent NurseCenter
 
-L'agent utilisé pour assurer l'accueil et le diagnostic initial des patients :
+L'agent utilisé pour assurer l'accueil et la pré-consultation des patients :
 
 1. NurseCenter est responsable du traitement des demandes des patients et de leur distribution aux infirmières
 2. L'infirmière exécute la tâche après avoir reçu la demande
@@ -176,7 +162,9 @@ Les utilisateurs peuvent sélectionner l'une des listes de maladies fournies pou
 
 L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, embaucher ou licencier des médecins selon ses préférences. Pour les médecins et les EmergencyRooms, l'utilisateur peut choisir un niveau qui correspond à la gravité de la maladie du patient.
 
-<img src="./picture/resultat.png" style="zoom: 60%;"/>
+En calculant des temps d'attente de tous les patient pour les trois différentes stratégies d'allocation des ressources, on a constaté que la stratégie de l'"Ordre de priorité" présentait les temps d'attente moyens les plus faibles. Cependant, ce n'est pas toujours le cas dans la réalité, compte tenu de plusieurs raisons pratiques.
+
+<img src="./picture/resultat.jpg" style="zoom: 60%;"/>
 
 <img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
 
@@ -189,10 +177,6 @@ L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter
 - Le taux de rafraîchissement est faible et l'affichage est légèrement retardé
 - La fonction n'est pas très parfaite
 
-## 6. Résumé et Futur
+## 6. Conclusion et Futur
 
-### Résumé
-En conclusion, 
-
-### Futur
-我们地功能还不是很完善，我们可以增加其他功能，比如收费等等
+Dans ce projet, on a pu construire un système de multi-agents et réaliser une simulation de scène réaliste. En même temps, la problématique que l'on a cherché à répondre a obtenu une réponse raisonable avec des résultats statistiques. 我们地功能还不是很完善，我们可以增加其他功能，比如收费等等
