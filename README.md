@@ -186,25 +186,25 @@ Nos application Web et serveur fonctionne avec success. Et il n'y a aucun probl�
 
 Nous modélisons différents types d'agents(Patient, Nurse, NurseCenter, Reception, ReceptionCenter, WaitingRoom, DoctorCenter et EmergencyRoomCenter) et de simuler leurs interactions dans une salle des urgences d'un centre médical. 
 
-Les utilisateurs peuvent sélectionner l'une des listes de maladies fournies pour créer un patient
+Les utilisateurs peuvent sélectionner l'une des listes de maladies fournies pour créer un patient.
 
 L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, embaucher ou licencier des médecins selon ses préférences. Pour les médecins et les EmergencyRooms, l'utilisateur peut choisir un niveau qui correspond à la gravité de la maladie du patient.
 
-En calculant des temps d'attente de tous les patient pour les trois différentes stratégies d'allocation des ressources, on a constaté que la stratégie de l'"Ordre de priorité" présentait les temps d'attente moyens les plus faibles. Cependant, ce n'est pas toujours le cas dans la réalité, compte tenu de plusieurs raisons pratiques.
+Dans page web, L'utilisateur peut clairement voir le nombre de médecins inactifs à chaque niveau et le nombre de salles d'urgence à chaque niveau en temps réel.
 
+En calculant des temps d'attente de tous les patient pour les trois différentes stratégies d'allocation des ressources, on a constaté que la stratégie de l'"Ordre de priorité" présentait les temps d'attente moyens les plus faibles. Cependant, ce n'est pas toujours le cas dans la réalité, compte tenu de plusieurs raisons pratiques.
+9
 <img src="./picture/resultat.png" style="zoom: 60%;"/>
 
 <img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
 
 ### Les Points Positifs
-- Peut voir de manière intuitive et interactive le processus d'arrivée des patients à l'hôpital pour un traitement d'urgence
-- Peut augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, et le nombre de médecin
-- Peut choisir un niveau pour les médecins et les EmergencyRooms
+- Peut voir de manière intuitive et interactive le processus d'arrivée des patients à l'hôpital pour un traitement d'urgence.
+- Peut personnaliser des paramètres selon les préférences des utilisateurs.
+- Peut compqrer le temps de traitement des patients avec différentes sévérités sous différentes stratégies.
 
 ### Les Points Négatifs
-- Le taux de rafraîchissement est faible et l'affichage est légèrement retardé
-- La fonction n'est pas très parfaite
+- Fonction imparfaite
 
 ## 6. Conclusion et Futur
-
-Dans ce projet, on a pu construire un système de multi-agents et réaliser une simulation de scène réaliste. En même temps, la problématique que l'on a cherché à répondre a obtenu une réponse raisonable avec des résultats statistiques. 我们地功能还不是很完善，我们可以增加其他功能，比如收费等等
+Dans ce projet, on a pu construire un système de multi-agents et réaliser une simulation de scène réaliste. En même temps, la problématique que l'on a cherché à répondre a obtenu une réponse raisonable avec des résultats statistiques. Mais nous avons encore beaucoup de marge d'amélioration, comme ajouter des fonctions de recharge, recharger différents niveaux de patients, simuler la situation commerciale d'une salle d'urgence, etc.
