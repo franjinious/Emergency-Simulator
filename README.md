@@ -29,7 +29,7 @@ En choisissant une des différentes maladies et cliquant sur le bouton « ajoute
 2. Il fait la queue pour s'inscrire dans l'accueil
 3. Il attend dans la salle d'attente par son ordre. （优先级？）
 4. Le médecin consulte sa situation et le traite.
-// 讲不讲：room分配strategie、等待时间aleatoire、.....
+// 讲不讲：room分配strategie、等待时间aleatoire、增加删除房间.....
 
 #### c. Architecture
 
