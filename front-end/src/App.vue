@@ -104,12 +104,32 @@
               <div class="button desactiverAccueil" @click="desactiverAccueil"  style="float: left; margin-top: auto; margin-bottom: auto">➖</div>
             </div>
             <div style="width:33.3%; margin-left: 0;justify-content:center">
-              <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 14rem; width:100%">
-                Nombre de medecin niveau 1:{{items[4][0]}}<br>
-                Nombre de medecin niveau 2:{{items[4][1]}}<br>
+              <div class="Accueil nbMedecin" style="vertical-align:middle; margin-right: auto; margin-left: auto;background: #ffa64d;height: 14rem; width:100%">
+              <div>
+                <img style="width: 9%;display:inline;" src="../store/379339-512.png" class="people-icon">
+                <p style="display:inline;"><font size=5>Nombre de medecin niveau 1:{{items[4][0]}}</font></p>
+              </div>
+              <div>
+                <img style="width: 9%;display:inline;" src="../store/379339-512.png" class="people-icon">
+                <p style="display:inline;"><font size=5>Nombre de medecin niveau 1:{{items[4][1]}}</font></p>
+              </div>
+              <div>
+                <img style="width: 9%;display:inline;" src="../store/379339-512.png" class="people-icon">
+                <p style="display:inline;"><font size=5>Nombre de medecin niveau 1:{{items[4][2]}}</font></p>
+              </div>
+              <div>
+                <img style="width: 9%;display:inline;" src="../store/379339-512.png" class="people-icon">
+                <p style="display:inline;"><font size=5>Nombre de medecin niveau 1:{{items[4][3]}}</font></p>
+              </div>
+              <div>
+                <img style="width: 9%;display:inline;" src="../store/379339-512.png" class="people-icon">
+                <p style="display:inline;"><font size=5>Nombre de medecin niveau 1:{{items[4][4]}}</font></p>
+              </div>
+                
+                <!-- Nombre de medecin niveau 2:{{items[4][1]}}<br>
                 Nombre de medecin niveau 3:{{items[4][2]}}<br>
                 Nombre de medecin niveau 4:{{items[4][3]}}<br>
-                Nombre de medecin niveua 5:{{items[4][4]}}<br>
+                Nombre de medecin niveua 5:{{items[4][4]}}<br> -->
                 
                   <div class="input box" style="margin-left:13rem">
                     <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:right" min=1 max=5>
