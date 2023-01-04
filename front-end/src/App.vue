@@ -325,8 +325,21 @@ export default {
       //Les infos ensemble passees
       items:
           [
-          [],[],[],[],[]
-          //Accueil
+            //Accueil
+            [],
+            //Infirmier
+            [],
+            //Nb patients
+            [],
+            //Room
+            [],
+            //Nb medecin
+            [],
+            //File d'attente
+            []
+
+
+            //Accueil
           // [0,1,1],
           // //Infirmier
           // [1,0,0],
