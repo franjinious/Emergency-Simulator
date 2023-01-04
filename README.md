@@ -192,7 +192,7 @@ L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter
 
 En calculant des temps d'attente de tous les patient pour les trois différentes stratégies d'allocation des ressources, on a constaté que la stratégie de l'"Ordre de priorité" présentait les temps d'attente moyens les plus faibles. Cependant, ce n'est pas toujours le cas dans la réalité, compte tenu de plusieurs raisons pratiques.
 
-<img src="./picture/resultat.jpg" style="zoom: 60%;"/>
+<img src="./picture/resultat.png" style="zoom: 60%;"/>
 
 <img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
 
