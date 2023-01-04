@@ -144,13 +144,16 @@ nous avons trouvé une solution simple : utiliser des tableaux contenant selemen
 ### Le résultat
 Nos application Web et serveur fonctionne avec success. 
 
+<img src="./picture/resultat.jpg" style="zoom: 60%;"/>
+
 Nous modélisons différents types d'agents(Patient, Nurse, NurseCenter, Reception, ReceptionCenter, WaitingRoom, DoctorCenter et EmergencyRoomCenter) et de simuler leurs interactions dans une salle des urgences d'un centre médical. 
 
 L'utilisateur peut augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, embaucher ou licencier des médecins selon ses préférences. Pour les médecins et les EmergencyRooms, l'utilisateur peut choisir un niveau qui correspond à la gravité de la maladie du patient.
 
 
-<img src="./picture/resultat.jpg" style="zoom: 60%;"/>
+
 <img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
+
 ### Les Points Positifs
 - 可以直观、交互地看到患者到达医院接受急救治疗的过程
 ### Les Points Positifs
