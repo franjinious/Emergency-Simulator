@@ -29,11 +29,13 @@ On dispose de 8 types d'agents en total dans ce projet.
 #### c. Interaction et fonctionnement
 
 * Ajoute d'un patient
+
 En choisissant une des différentes maladies et cliquant sur le bouton « ajouter » dans la page web, on simule l'arrivée d'un patient qu'il entre ensuite dans la queue et attend d'être traité. 
 
 * Ajoute et suppression des infirmières, des receptions, des salles de consultation
 
 * Simulation du processus de consultation
+
 Le processus de consultation suivante est automatisé. Ce processus comprend 4 étapes : 
 1. L'infirmière désigne un niveau de gravité au patient selon sa maladie
 2. Il fait la queue pour s'inscrire dans l'accueil
