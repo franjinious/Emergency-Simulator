@@ -213,12 +213,15 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	e := make([]int, 1)
 	e[0] = len(h.DoctorCenter.AllDoctor)
 
+	g := make([]int, 1)
+	g[0] = h.NurseCenter.PatientWaiting
+
 	re = append(re, a)
 	re = append(re, b)
 	re = append(re, c)
 	re = append(re, d)
 	re = append(re, e)
-
+	re = append(re, g)
 
 	serial, _ := json.Marshal(re)
 	writer.WriteHeader(http.StatusOK)
