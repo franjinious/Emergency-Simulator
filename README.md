@@ -193,10 +193,13 @@ L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter
 Dans page web, L'utilisateur peut clairement voir le nombre de médecins inactifs à chaque niveau et le nombre de salles d'urgence à chaque niveau en temps réel.
 
 En calculant des temps d'attente de tous les patient pour les trois différentes stratégies d'allocation des ressources, on a constaté que la stratégie de l'"Ordre de priorité" présentait les temps d'attente moyens les plus faibles. Cependant, ce n'est pas toujours le cas dans la réalité, compte tenu de plusieurs raisons pratiques.
-9
-<img src="./picture/resultat.png" style="zoom: 60%;"/>
 
+Vous trouverez ci-dessous le résultat de l'exécution de notre frontend et de notre backend：
+<div align=center>
+<img src="./picture/resultat.png" style="zoom: 60%;"/>
 <img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
+</div>
+
 
 ### Les Points Positifs
 - Peut voir de manière intuitive et interactive le processus d'arrivée des patients à l'hôpital pour un traitement d'urgence.
