@@ -142,6 +142,7 @@ func (h *Hospital) ActiverSalle(writer http.ResponseWriter, request *http.Reques
 	q := request.URL.Query()
 	re := q.Get("test")
 	c, _ := strconv.Atoi(re)
+	fmt.Println(c)
 	h.EmergencyRoomCenter.AddRoom(c)
 	h.Unlock()
 }

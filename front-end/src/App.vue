@@ -464,11 +464,12 @@ export default {
     },
 
     activerSalle(){
+      // alert(this.levelSalle.toString())
       if (this.nbSalle == 10){
         this.nbSalle = 10
-      }else
+      } else
         this.nbSalle ++
-      axios.post('http://localhost:8082/activerSalle', this.levelSalle)
+      axios.post('http://localhost:8082/activerSalle?test='+this.levelSalle.toString())
           .then(response => {
             console.log(response.data)
           });
@@ -488,7 +489,7 @@ export default {
     },
     activerDoc(){
         this.nbMedecin ++
-      axios.get('http://127.0.0.1:8082/activerDoc?test='+this.levelMedecin)
+      axios.get('http://127.0.0.1:8082/activerDoc?test='+this.levelMedecin.toString())
           .then(response => {
             // 创建成功，将新用户添加到用户列表中
             console.log(response.data);

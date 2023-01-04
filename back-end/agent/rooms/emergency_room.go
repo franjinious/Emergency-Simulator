@@ -28,10 +28,14 @@ type EmergencyRoomManager struct {
 
 func (erm *EmergencyRoomManager) AddRoom(level int) {
 	erm.Lock()
-	i := erm.WorkNumber
 	erm.WorkNumber++
+	i := erm.WorkNumber
 	erm.RoomList["EmergencyRoom"+strconv.FormatInt(int64(i), 10)].Level = level
 	log.Println("Start a new room, now there are totally " + strconv.FormatInt(int64(erm.WorkNumber), 10) + " work")
+	for i:=1; i <= erm.WorkNumber; i++ {
+		log.Println(erm.RoomList["EmergencyRoom"+strconv.FormatInt(int64(i), 10)].Level)
+	}
+	log.Println("------")
 	erm.Unlock()
 }
 
@@ -102,7 +106,7 @@ func (erm *EmergencyRoomManager) check(LevelNeed int) {
 		if v.Status == 0 && v.Level != -1 {
 			if ans == nil && v.Level >= LevelNeed {
 				ans = v
-			} else if ans != nil &&ans.Level > v.Level {
+			} else if ans != nil && v.Level >= LevelNeed && ans.Level > v.Level {
 				ans = v
 			}
 
