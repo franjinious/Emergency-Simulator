@@ -191,7 +191,7 @@ Les utilisateurs peuvent sélectionner l'une des listes de maladies fournies pou
 
 L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, embaucher ou licencier des médecins selon ses préférences. Pour les médecins et les EmergencyRooms, l'utilisateur peut choisir un niveau qui correspond à la gravité de la maladie du patient.
 
-Dans page web, L'utilisateur peut clairement voir le nombre de médecins inactifs à chaque niveau et le nombre de salles d'urgence à chaque niveau en temps réel.
+Dans page web, L'utilisateur peut clairement voir le nombre de médecins actifs à chaque niveau et le nombre de salles d'urgence à chaque niveau en temps réel.
 
 En calculant des temps d'attente de tous les patient pour les trois différentes stratégies d'allocation des ressources, on a constaté que la stratégie de l'"Ordre de priorité" présentait les temps d'attente moyens les plus faibles. Cependant, ce n'est pas toujours le cas dans la réalité, compte tenu de plusieurs raisons pratiques.
 
