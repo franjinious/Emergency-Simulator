@@ -138,9 +138,10 @@ Pour ce faire, nous avons utilisé une option très pratique en Vue.js : _Life C
 Ce sont des méthodes prédéfinies qui existe tout au long de l'application.  
 Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquement quand l'élément DOM a été rendu dans la page.
 ## 5. Le résultat de l'expérience
-
+### Le résultat
+<img src="./picture/front_general.png" style="zoom: 60%;" />
 ### Les Points Positifs
-
+### Les Points Positifs
 
 ## 6. Résumé et Futur
 
