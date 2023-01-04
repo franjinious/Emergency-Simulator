@@ -17,7 +17,7 @@
           <div class="waiting-area" style="float: right">
 
             <div class="wait" style="width: 60%">
-              <div class="waiter" v-for="wt in items[5]" :key="wt">
+              <div class="waiter" v-for=" i in (items[5][0])" :key="i">
                 <div class="people p2 waiting" >
 <!--                     :class="wt.state" >-->
                   <img class="people-icon" style="width: 100%;" src="../store/379444-512.png" alt=""/>
