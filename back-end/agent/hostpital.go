@@ -25,7 +25,7 @@ type Hospital struct {
 	EmergencyRoomCenter *rooms.EmergencyRoomManager
 	DoctorCenter        *doctor.DoctorManager
 	WaitingCenter       *rooms.WaitingRoom
-	// Alltime             map[string]float64
+
 }
 
 func CreateHospital(i string, p string) *Hospital {
@@ -83,6 +83,7 @@ func (h *Hospital) Start() {
 	mux.HandleFunc("/activerDoc", h.ActiverDoc)
 	mux.HandleFunc("/desactiverDoc", h.DesactiverDoc)
 	mux.HandleFunc("/getinfo", h.Getinfo)
+	mux.HandleFunc("/affichetime", h.Affichetime)
 
 	s := &http.Server{
 		Addr:           h.IP + ":" + h.Port,
@@ -113,6 +114,7 @@ func (h *Hospital) AcceptNewPatient(age int, gender bool, symptom string, tolera
 		Msg_request_reception: h.ReceptionCenter.MsgRequest,
 		Msg_receive_reception: make(chan string, 20),
 		Msg_request_waiting:   h.WaitingCenter.MsgRequest,
+		T:                     time.Now(),
 	}
 	h.ID++
 	go p.Run()
@@ -228,4 +230,8 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	writer.Write(serial)
 
 	return
+}
+
+func (h *Hospital) Affichetime(writer http.ResponseWriter, request *http.Request) {
+	fmt.Println(h.WaitingCenter.Alltime)
 }

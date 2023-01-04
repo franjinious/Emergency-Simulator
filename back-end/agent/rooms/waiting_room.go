@@ -18,6 +18,7 @@ type WaitingRoom struct {
 	EmergencyRoomReponse chan *EmergencyRoom   // 急诊室资源的反馈信道
 	DoctorsRequest       chan int              // 申请医生的信道
 	DoctorsResponse      chan *doctor.Doctor
+	Alltime              map[string]float64
 }
 
 var (
@@ -34,6 +35,7 @@ func GetWaitingRoomInstance(c1 chan int, c2 chan *EmergencyRoom, c3 chan int, c4
 			EmergencyRoomReponse: c2,
 			DoctorsRequest:       c3,
 			DoctorsResponse:      c4,
+			Alltime: map[string]float64{},
 		}
 	})
 	return instance_wr
@@ -79,19 +81,19 @@ func (wr *WaitingRoom) work() {
 			p2.Unlock()
 			pp.Status = patient.Being_treated_now
 			wr.QueuePatients = append(wr.QueuePatients[:i], wr.QueuePatients[i+1:]...)
-			go treat(p2, p1, pp)
+			go wr.treat(p2, p1, pp)
 		}
 	}
 }
 
-func treat(r *EmergencyRoom, d *doctor.Doctor, p *patient.Patient) {
+func (wr *WaitingRoom) treat(r *EmergencyRoom, d *doctor.Doctor, p *patient.Patient) {
 	// 模拟治疗时间
 	log.Println("patient " + strconv.FormatInt(int64(p.ID), 10) + " start to be treat by doctor " + strconv.FormatInt(int64(d.ID), 10) + " in room " + strconv.FormatInt(int64(r.ID), 10))
 	time.Sleep(time.Duration(p.TimeForTreat) * time.Second)
 	p.Status = patient.Finish
 	log.Println("patient " + strconv.FormatInt(int64(p.ID), 10) + " finish treat ")
 
-	// Alltime["patient " + strconv.FormatInt(int64(p.ID), 10)] = p.T.Sub(time.Now()).Seconds()
+	wr.Alltime["patient " + strconv.FormatInt(int64(p.ID), 10) + "gravite " + strconv.FormatInt(int64(p.Severity), 10)] = time.Now().Sub(p.T).Seconds()
 
 	r.Lock()
 	r.Status = 0
