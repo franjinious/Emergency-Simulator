@@ -93,12 +93,12 @@ func (n *nurse) judge(patient2 *patient.Patient) {
 	gra, _ := rand.Int(rand.Reader, big.NewInt(4))
 
 	// 时间 随机1-10
-	tim, _ := rand.Int(rand.Reader, big.NewInt(10))
+	tim, _ := rand.Int(rand.Reader, big.NewInt(6))
 	n.Unlock()
 	if patient2.Severity == -1 {
 		n.SetPatientStatus(int(gra.Int64()+1), 10+int(tim.Int64()))
 	} else {
-		n.SetPatientStatus(patient2.Severity, 10+int(tim.Int64()))
+		n.SetPatientStatus(patient2.Severity, 5 + 2 * patient2.Severity + int(tim.Int64()))
 	}
 
 	patient2.Lock()

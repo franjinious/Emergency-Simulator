@@ -121,7 +121,7 @@ func (rd *ReceptionDoctor) HandlerPatientRequest(patient2 *patient.Patient) {
 	log.Println("ReceptionDoctor" + strconv.FormatInt(int64(rd.ID), 10) + " start dealing with patient " + strconv.FormatInt(int64(patient2.ID), 10))
 
 	// 模拟挂号时间 加入随机
-	time.Sleep(time.Duration(rand.Int31n(3)+5) * time.Second)
+	time.Sleep(time.Duration(rand.Int31n(3)+3) * time.Second)
 	patient2.Msg_receive_reception <- "ticket"
 
 	rd.status = 0

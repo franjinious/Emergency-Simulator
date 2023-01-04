@@ -87,7 +87,7 @@ func (wr *WaitingRoom) work() {
 func treat(r *EmergencyRoom, d *doctor.Doctor, p *patient.Patient) {
 	// 模拟治疗时间
 	log.Println("patient " + strconv.FormatInt(int64(p.ID), 10) + " start to be treat by doctor " + strconv.FormatInt(int64(d.ID), 10) + " in room " + strconv.FormatInt(int64(r.ID), 10))
-	time.Sleep(10 * time.Second)
+	time.Sleep(time.Duration(p.TimeForTreat) * time.Second)
 	p.Status = patient.Finish
 	log.Println("patient " + strconv.FormatInt(int64(p.ID), 10) + " finish treat ")
 
