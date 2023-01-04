@@ -150,7 +150,7 @@ Les utilisateurs peuvent sélectionner l'une des listes de maladies fournies pou
 
 L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, embaucher ou licencier des médecins selon ses préférences. Pour les médecins et les EmergencyRooms, l'utilisateur peut choisir un niveau qui correspond à la gravité de la maladie du patient.
 
-<img src="./picture/resultat.jpg" style="zoom: 60%;"/>
+<img src="./picture/resultat.png" style="zoom: 60%;"/>
 
 <img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
 
