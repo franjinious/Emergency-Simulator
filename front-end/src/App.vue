@@ -55,11 +55,10 @@
         <div >
           <div style="display: flex; flex-wrap: wrap">
             <div style="width:33.3%; margin-left: 0;">
-              <div class="Accueil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; width:35%; float: left">
+              <div class="Accueil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; width:35%; float: left;">
                 Infirmier 1
                 <div class="people p1 complete" v-if="items[0][0]==1">
                   <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
-                  <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                   <div class="redC"></div>
                   <div class="redR"></div>
                 </div>
@@ -668,7 +667,7 @@ main .Room {
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #ffd24d;
+  background-color: #4CAF50;
   height: 10rem;
   width: 40%;
   /*left: 50%;*/
