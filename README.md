@@ -137,9 +137,12 @@ En outre, il utilise également d'autres bibliothèques et plugins, tels qu'Axio
 Pour ce faire, nous avons utilisé une option très pratique en Vue.js : _Life Cycle_. 
 Ce sont des méthodes prédéfinies qui existe tout au long de l'application.  
 Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquement quand l'élément DOM a été rendu dans la page.
+- Affichage dynamique 
+Nous avons pu réaliser l'affichage dynamique en se basant sur les données transmises. Bien que ça paraisse un problème compliqué, 
+nous avons trouvé une solution simple : utiliser des tableaux contenant selement 0 et 1 pour distinguer les statuts des patients et des salles.
 ## 5. Le résultat de l'expérience
 ### Le résultat
-<img src="./picture/front_general.png" style="zoom: 60%;" />
+<img src="./picture/resultat.jpg" style="zoom: 60%;" />
 ### Les Points Positifs
 ### Les Points Positifs
 
