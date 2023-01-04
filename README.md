@@ -139,6 +139,7 @@ Ce sont des méthodes prédéfinies qui existe tout au long de l'application.
 Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquement quand l'élément DOM a été rendu dans la page.
 ## 5. Le résultat de l'expérience
 
+### Les Points Positifs
 
 
 ## 6. Résumé et Futur
