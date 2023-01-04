@@ -142,9 +142,7 @@ Nous avons pu réaliser l'affichage dynamique en se basant sur les données tran
 nous avons trouvé une solution simple : utiliser des tableaux contenant selement 0 et 1 pour distinguer les statuts des patients et des salles.
 ## 5. Le résultat de l'expérience
 ### Le résultat
-Nos application Web et serveur fonctionne avec success. 
-
-<img src="./picture/resultat.jpg" style="zoom: 60%;"/>
+Nos application Web et serveur fonctionne avec success. Et il n'y a aucun problème dans le transfert de données entre le frontend et le backend.
 
 Nous modélisons différents types d'agents(Patient, Nurse, NurseCenter, Reception, ReceptionCenter, WaitingRoom, DoctorCenter et EmergencyRoomCenter) et de simuler leurs interactions dans une salle des urgences d'un centre médical. 
 
@@ -152,10 +150,13 @@ L'utilisateur peut augmenter ou supprimer la capacité de NurseCenter, de Recept
 
 
 
+<img src="./picture/resultat.jpg" style="zoom: 60%;"/>
+
 <img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
 
 ### Les Points Positifs
 - 可以直观、交互地看到患者到达医院接受急救治疗的过程
+- 策略
 ### Les Points Positifs
 
 ## 6. Résumé et Futur
