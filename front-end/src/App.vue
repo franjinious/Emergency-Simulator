@@ -672,7 +672,7 @@ main .Room {
   /*margin-top: 50px;*/
   margin-left: auto;
   margin-right: auto;
-  background-color: #4CAF50;
+  background-color: #ffd24d;
   height: 10rem;
   width: 40%;
   /*left: 50%;*/
