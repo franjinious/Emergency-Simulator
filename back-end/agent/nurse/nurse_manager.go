@@ -118,7 +118,6 @@ func (nm *Nurse_manager) handler_nurse_request(n *nurse) {
 	log.Println("Nurse center gets a nurse " + strconv.FormatInt(int64(n.ID), 10) + " free request")
 	// 处理nurse的请求
 	nm.Lock()
-	nm.PatientWaiting--
 	for i := 0; i < len(nm.nurse_pool_busy); i++ {
 		// 增加可用队列 减少忙碌队列
 		if nm.nurse_pool_busy[i] == n {
@@ -148,6 +147,7 @@ func (nm *Nurse_manager) handler_patient_request(n *patient.Patient) {
 			nm.nurse_pool_usable = nm.nurse_pool_usable[1:]
 			nm.nurse_pool_busy = append(nm.nurse_pool_busy, nur)
 
+			nm.PatientWaiting--
 			nur.msg_recv <- n
 
 			// 结束
