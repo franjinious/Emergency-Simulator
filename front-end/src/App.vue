@@ -131,11 +131,11 @@
                 Nombre de medecin niveau 4:{{items[4][3]}}<br>
                 Nombre de medecin niveua 5:{{items[4][4]}}<br> -->
                 
-                  <div class="input box" style="margin-left:13rem">
-                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:right" min=1 max=5>
+                  <div class="input box" style="">
+                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
                   </div>
-                  <div class="button activerDoc" @click="activerDoc" style="float: right" >➕</div>
-                  <div class="button desactiverDoc" @click="desactiverDoc" style="float: right">➖</div>
+                  <div class="button activerDoc" @click="activerDoc" style="float: left" >➕</div>
+                  <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
                 
               
           </div>
@@ -692,7 +692,7 @@ main .Room {
   /*margin-top: 50px;*/
   margin-left: auto;
   margin-right: auto;
-  background-color: #4CAF50;
+  background-color: #ffd24d;
   height: 10rem;
   width: 40%;
   /*left: 50%;*/
@@ -753,7 +753,6 @@ main .Room {
   border-radius: 0.8rem;
   border: 0.3rem solid white;
   padding-bottom: 1.5rem;
-
 }
 
 /*Espaces pour renseigner les infos du noveau patient*/
