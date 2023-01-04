@@ -105,17 +105,20 @@
             </div>
             <div style="width:33.3%; margin-left: 0;justify-content:center">
               <div class="nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 14rem; width:100%">
-                Nombre de medecin niveau 1:{{items[4][0]}}<br>
-                Nombre de medecin niveau 2:{{items[4][1]}}<br>
-                Nombre de medecin niveau 3:{{items[4][2]}}<br>
-                Nombre de medecin niveau 4:{{items[4][3]}}<br>
-                Nombre de medecin niveua 5:{{items[4][4]}}<br>
+                Nombre de medecin level 1:{{items[4][0]}}<br>
+                Nombre de medecin level 2:{{items[4][1]}}<br>
+                Nombre de medecin level 3:{{items[4][2]}}<br>
+                Nombre de medecin level 4:{{items[4][3]}}<br>
+                Nombre de medecin level 5:{{items[4][4]}}<br>
                 
-                  <div class="input box" style="">
-                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
+                  <div class="input box" style="width:100%;text-align:center;align-items:center">
+                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem" min=1 max=5>
+                    <div class="button activerDoc" @click="activerDoc" style="" >➕</div>
+                  <div class="button desactiverDoc" @click="desactiverDoc" style="">➖</div>
+                    
                   </div>
-                  <div class="button activerDoc" @click="activerDoc" style="float: left" >➕</div>
-                  <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
+                  
+                  
                 
               
           </div>
