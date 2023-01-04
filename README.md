@@ -146,9 +146,9 @@ Nos application Web et serveur fonctionne avec success. Et il n'y a aucun probl�
 
 Nous modélisons différents types d'agents(Patient, Nurse, NurseCenter, Reception, ReceptionCenter, WaitingRoom, DoctorCenter et EmergencyRoomCenter) et de simuler leurs interactions dans une salle des urgences d'un centre médical. 
 
-L'utilisateur peut augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, embaucher ou licencier des médecins selon ses préférences. Pour les médecins et les EmergencyRooms, l'utilisateur peut choisir un niveau qui correspond à la gravité de la maladie du patient.
+Les utilisateurs peuvent sélectionner l'une des listes de maladies fournies pour créer un patient
 
-
+L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, embaucher ou licencier des médecins selon ses préférences. Pour les médecins et les EmergencyRooms, l'utilisateur peut choisir un niveau qui correspond à la gravité de la maladie du patient.
 
 <img src="./picture/resultat.jpg" style="zoom: 60%;"/>
 
