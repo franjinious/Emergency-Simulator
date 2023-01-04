@@ -12,7 +12,9 @@
       <div class="image-box">
         <img class="image" src="./assets/images/ambulance.png">
       </div>
-
+<!-- ../store/379339-512.png patient
+     ../store/379339-512.png medecin
+-->
         <div style="display: flex; flex-wrap: wrap">
           <div class="waiting-area" style="float: right">
 
@@ -20,7 +22,7 @@
               <div class="waiter" v-for=" i in (items[5][0])" :key="i">
                 <div class="people p2 waiting" >
 <!--                     :class="wt.state" >-->
-                  <img class="people-icon" style="width: 100%;" src="../store/379444-512.png" alt=""/>
+                  <img class="people-icon" style="width: 100%;" src="../store/379339-512.png" alt=""/>
 <!--                  <div class="label" :style="calculateWaitStyle(wt)">-->
                     Waiting
 <!--                  </div>-->
@@ -58,7 +60,7 @@
               <div class="Accueil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; width:35%; float: left;">
                 Infirmier 1
                 <div class="people p1 complete" v-if="items[0][0]==1">
-                  <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+                  <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
                   <div class="redC"></div>
                   <div class="redR"></div>
                 </div>
@@ -70,7 +72,7 @@
             
               <div class="Accueil ac2" v-if="nbAccueil>=2" style="margin-top: 2%;height: 6rem; width:35%;float: left">Infirmier 2
                 <div class="people p1 complete" v-if="items[0][1]==1">
-                  <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+                  <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
                 <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                 <div class="redC"></div>
                 <div class="redR"></div>
@@ -78,7 +80,7 @@
               </div>
               <div class="Accueil ac3" v-if="nbAccueil>=3" style="margin-top: 2%;height: 6rem; width:35%;float: left">Infirmier 3
                 <div class="people p1 complete" v-if="items[0][2]==1">
-                  <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+                  <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
                 <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                 <div class="redC"></div>
                 <div class="redR"></div>
@@ -86,7 +88,7 @@
               </div>
               <div class="Accueil ac4" v-if="nbAccueil>=4" style="margin-top: 2%;height: 6rem; width:35%;float: left">Infirmier 4
                 <div class="people p1 complete" v-if="items[0][3]==1">
-                  <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+                  <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
                 <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                 <div class="redC"></div>
                 <div class="redR"></div>
@@ -94,7 +96,7 @@
               </div>
               <div class="Accueil ac5" v-if="nbAccueil>=5" style="margin-top: 2%;height: 6rem; width:35%;float: left">Infirmier 5
                 <div class="people p1 complete" v-if="items[0][4]==1">
-                  <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+                  <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
                 <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                 <div class="redC"></div>
                 <div class="redR"></div>
@@ -104,48 +106,36 @@
               <div class="button desactiverAccueil" @click="desactiverAccueil"  style="float: left; margin-top: auto; margin-bottom: auto">➖</div>
             </div>
             <div style="width:33.3%; margin-left: 0;justify-content:center">
-<<<<<<< HEAD
-              <div class="nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 14rem; width:100%">
-                Nombre de medecin level 1:{{items[4][0]}}<br>
-                Nombre de medecin level 2:{{items[4][1]}}<br>
-                Nombre de medecin level 3:{{items[4][2]}}<br>
-                Nombre de medecin level 4:{{items[4][3]}}<br>
-                Nombre de medecin level 5:{{items[4][4]}}<br>
-=======
-              <div class="Accueil nbMedecin" style="vertical-align:middle; margin-right: auto; margin-left: auto;background: #ffa64d;height: 14rem; width:100%">
+              <div class="Accueil nbMedecin" style="vertical-align:middle; margin-right: auto; margin-left: auto;background: #ffa64d;height: 20rem; width:100%">
               <div>
-                <img style="width: 9%;display:inline;" src="../store/379339-512.png" class="people-icon">
-                <p style="display:inline;"><font size=5>Nombre de medecin niveau 1:{{items[4][0]}}</font></p>
+                <img style="width: 9%;display:inline;" src="../store/379444-512.png" class="people-icon">
+                <p style="display:inline;"><font size=4>Nombre de medecin level 1:{{items[4][0]}}</font></p>
               </div>
               <div>
-                <img style="width: 9%;display:inline;" src="../store/379339-512.png" class="people-icon">
-                <p style="display:inline;"><font size=5>Nombre de medecin niveau 1:{{items[4][1]}}</font></p>
+                <img style="width: 9%;display:inline;" src="../store/379444-512.png" class="people-icon">
+                <p style="display:inline;"><font size=4>Nombre de medecin level 1:{{items[4][1]}}</font></p>
               </div>
               <div>
-                <img style="width: 9%;display:inline;" src="../store/379339-512.png" class="people-icon">
-                <p style="display:inline;"><font size=5>Nombre de medecin niveau 1:{{items[4][2]}}</font></p>
+                <img style="width: 9%;display:inline;" src="../store/379444-512.png" class="people-icon">
+                <p style="display:inline;"><font size=4>Nombre de medecin level 1:{{items[4][2]}}</font></p>
               </div>
               <div>
-                <img style="width: 9%;display:inline;" src="../store/379339-512.png" class="people-icon">
-                <p style="display:inline;"><font size=5>Nombre de medecin niveau 1:{{items[4][3]}}</font></p>
+                <img style="width: 9%;display:inline;" src="../store/379444-512.png" class="people-icon">
+                <p style="display:inline;"><font size=4>Nombre de medecin level 1:{{items[4][3]}}</font></p>
               </div>
               <div>
-                <img style="width: 9%;display:inline;" src="../store/379339-512.png" class="people-icon">
-                <p style="display:inline;"><font size=5>Nombre de medecin niveau 1:{{items[4][4]}}</font></p>
+                <img style="width: 9%;display:inline;" src="../store/379444-512.png" class="people-icon">
+                <p style="display:inline;"><font size=4>Nombre de medecin level 1:{{items[4][4]}}</font></p>
               </div>
                 
-                <!-- Nombre de medecin niveau 2:{{items[4][1]}}<br>
-                Nombre de medecin niveau 3:{{items[4][2]}}<br>
-                Nombre de medecin niveau 4:{{items[4][3]}}<br>
-                Nombre de medecin niveua 5:{{items[4][4]}}<br> -->
->>>>>>> 51f19d45faa0ea58dd053c691c209de7de963187
                 
-                  <div class="input box" style="width:100%;text-align:center;align-items:center">
-                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem" min=1 max=5>
-                    <div class="button activerDoc" @click="activerDoc" style="" >➕</div>
-                  <div class="button desactiverDoc" @click="desactiverDoc" style="">➖</div>
+                  <div class="input box" style="">
+                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
+                   
                     
                   </div>
+                  <div class="button activerDoc" @click="activerDoc" style="float:left" >➕</div>
+                    <div class="button desactiverDoc" @click="desactiverDoc" style="float:left">➖</div>
                   
                   
                 
@@ -158,7 +148,7 @@
             <div style="width:33.3%; margin-right: 0;">
               <div class="Accueil infi1" v-if="nbInfirmier>=1" style="margin-top:1.5%;height: 5.5rem;float:right;display: block;width:35%">Accueil 1
                 <div class="people p1 complete" v-if="items[1][0]==1">
-                  <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+                  <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
                   <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                   <div class="redC"></div>
                   <div class="redR"></div>
@@ -168,7 +158,7 @@
   
               <div class="Accueil infi2" v-if="nbInfirmier>=2" style="margin-top:1.5%;height:5.5rem;float: right; display: block;width:35%">Accueil 2
                 <div class="people p1 complete" v-if="items[1][1]==1">
-                  <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+                  <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
                   <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                   <div class="redC"></div>
                   <div class="redR"></div>
@@ -179,7 +169,7 @@
   
               <div class="Accueil infi3" v-if="nbInfirmier>=3" style="margin-top:1.5%;height: 5.5rem;float: right;display: block;width:35%">Accueil 3
                 <div class="people p1 complete" v-if="items[1][2]==1">
-                  <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+                  <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
                   <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                   <div class="redC"></div>
                   <div class="redR"></div>
@@ -189,7 +179,7 @@
   
               <div class="Accueil infi4" v-if="nbInfirmier>=4" style="margin-top:1.5%;height: 5.5rem;float:right;display: block;width:35%">Accueil 4
                 <div class="people p1 complete" v-if="items[1][3]==1">
-                  <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+                  <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
                   <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                   <div class="redC"></div>
                   <div class="redR"></div>
@@ -199,7 +189,7 @@
   
               <div class="Accueil infi5" v-if="nbInfirmier>=5" style="margin-top: 1.5%;height: 5.5rem;float:right;display: block;width:35%">Accueil 5
                 <div class="people p1 complete" v-if="items[1][4]==1">
-                  <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+                  <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
                   <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                   <div class="redC"></div>
                   <div class="redR"></div>
@@ -222,7 +212,7 @@
           Salle d'attente
           
           <div class="people p2 complete" v-for="i in items[2][0]" :key="i" >
-            <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+            <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
 
             <!--          <div v-for="i in nbPatient">-->
 <!--            <div class="people cus" :class="cus.state">-->
@@ -238,7 +228,7 @@
           <div class="Room Room1" v-if="nbSalle>=1" style="float:left;">
             Room1-level{{items[6][0]}}
             <div class="people p1 complete" v-if="items[3][0]==1">
-              <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+              <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
               <div class="redC"></div>
               <div class="redR"></div>
@@ -247,7 +237,7 @@
           <div class="Room Room2" v-if="nbSalle>=2" style="float:left;margin-left: 2rem">
             Room2-level{{items[6][1]}}
             <div class="people p1 complete" v-if="items[3][1]==1">
-              <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+              <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
               <div class="redC"></div>
               <div class="redR"></div>
@@ -256,7 +246,7 @@
           <div class="Room Room3" v-if="nbSalle>=3" style="float:left;margin-left: 2rem">
             Room3-level{{items[6][2]}}
             <div class="people p1 complete" v-if="items[3][2]==1">
-              <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+              <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
               <div class="redC"></div>
               <div class="redR"></div>
@@ -265,7 +255,7 @@
           <div class="Room Room4" v-if="nbSalle>=4" style="float:left;margin-left: 2rem">
             Room4-level{{items[6][3]}}
             <div class="people p1 complete" v-if="items[3][3]==1">
-              <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+              <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
               <div class="redC"></div>
               <div class="redR"></div>
@@ -274,7 +264,7 @@
           <div class="Room Room5" v-if="nbSalle>=5" style="float:left;margin-left: 2rem">
             Room5-level{{items[6][4]}}
             <div class="people p1 complete" v-if="items[3][4]==1">
-              <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+              <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
               <div class="redC"></div>
               <div class="redR"></div>
@@ -283,7 +273,7 @@
           <div class="Room Room6" v-if="nbSalle>=6" style="float:left;margin-left: 2rem">
             Room6-level{{items[6][5]}}
             <div class="people p1 complete" v-if="items[3][5]==1">
-              <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+              <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
               <div class="redC"></div>
               <div class="redR"></div>
@@ -292,7 +282,7 @@
           <div class="Room Room7" v-if="nbSalle>=7" style="float:left;margin-left: 2rem">
             Room7-level{{items[6][6]}}
             <div class="people p1 complete" v-if="items[3][6]==1">
-              <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+              <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
               <div class="redC"></div>
               <div class="redR"></div>
@@ -301,7 +291,7 @@
           <div class="Room Room8" v-if="nbSalle>=8" style="float:left;margin-left: 2rem">
             Room8-level{{items[6][7]}}
             <div class="people p1 complete" v-if="items[3][7]==1">
-              <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+              <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
               <div class="redC"></div>
               <div class="redR"></div>
@@ -310,7 +300,7 @@
           <div class="Room Room9" v-if="nbSalle>=9" style="float:left;margin-left: 2rem">
             Room9-level{{items[6][8]}}
             <div class="people p1 complete" v-if="items[3][8]==1">
-              <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+              <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
               <div class="redC"></div>
               <div class="redR"></div>
@@ -319,7 +309,7 @@
           <div class="Room Room10" v-if="nbSalle>=10" style="float:left;margin-left: 2rem">
             Room10-level{{items[6][9]}}
             <div class="people p1 complete" v-if="items[3][9]==1">
-              <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
+              <img style="width: 100%;" src="../store/379339-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
               <div class="redC"></div>
               <div class="redR"></div>
@@ -444,7 +434,7 @@ export default {
           .catch(e => {
                   console.log(e);
           });
-    }, 50);
+    }, 100);
     // this.beforeUnmount()
   },
   beforeUnmount() {
@@ -749,10 +739,10 @@ main .Room {
  }
 
  .activerDoc{
-   height: 20%;
+   height: 12%;
  }
  .desactiverDoc{
-  height: 20%;
+  height: 12%;
 }
 
  /*Espace pour les entrees*/
