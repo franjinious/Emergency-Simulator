@@ -3,7 +3,7 @@
     <header style="margin-bottom: 20px">
 <!--      <img class="people-icon" style="width: 100%;" src="src/assets/images/ambulance.png" alt=""/>-->
       <div class="header-item date" :style="progress">
-        <span>W{{week}} </span> &nbsp; <span>D{{day}}</span>
+        <span>Week{{week}} </span> &nbsp; <span>Day{{day}}</span>
       </div>
       <div class="header-item patients">
         Salle des urgences
@@ -27,7 +27,8 @@
             </div>
           </div>
         <div class = "input-box" style="margin-top: 5%;margin-left: 0; margin-right: auto ">
-          <label for="country">La maladie du nouveau patient</label>
+          <div class="maladie"><label for="country">La maladie du nouveau patient</label></div>
+          
           <select v-model = "maladie"  style="width: 100%">
             <option value=1>Rhume</option>
             <option value=1>Fievre</option>
@@ -53,19 +54,20 @@
           <div style="display: flex; flex-wrap: wrap">
             <div style="width:33.3%; margin-left: 0;">
               <div class="Accueil ac1" v-if="nbAccueil>=1" style="margin-top: 2%;height: 6rem; width:35%; float: left">
-                Infirmier 1
+                
                 <div class="people p1 complete" v-if="items[0][0]==1">
                   <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
                   <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
                   <div class="redC"></div>
                   <div class="redR"></div>
                 </div>
-  
+                Infirmier 1
+                </div>
                 <!--              <div class="people cus" :class="cus.state">-->
   <!--                <img class="people-icon" style="width: 100%" :src="cus.avatar"/>-->
   <!--              </div>-->
   
-              </div>
+            
               <div class="Accueil ac2" v-if="nbAccueil>=2" style="margin-top: 2%;height: 6rem; width:35%;float: left">Infirmier 2
                 <div class="people p1 complete" v-if="items[0][1]==1">
                   <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
@@ -104,7 +106,7 @@
             <div style="width:33.3%; margin-left: 0;justify-content:center">
               <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 7rem; width:100%">
                 Le nombre de medecin actifs:{{items[4][0]}}
-     
+                
                   <div class="input box" style="margin-left:1rem">
                     <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
                   </div>
@@ -182,6 +184,7 @@
 
         <div class="salleAttente" style="width: 100%; margin-top: 2rem;display: flex; flex-wrap: wrap">
           Salle d'attente
+          
           <div class="people p2 complete" v-for="i in items[2][0]" :key="i" >
             <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
 
@@ -482,7 +485,11 @@ export default {
         this.nbSalle = 10
       } else
         this.nbSalle ++
+<<<<<<< Updated upstream
       axios.post('http://localhost:8082/activerSalle?test='+this.levelSalle.toString())
+=======
+      axios.post('http://localhost:8082/activerSalle', this.levelSalle.toString())
+>>>>>>> Stashed changes
           .then(response => {
             console.log(response.data)
           });
@@ -524,8 +531,6 @@ export default {
           });
 
     },
-
-
   },
 
   computed: {

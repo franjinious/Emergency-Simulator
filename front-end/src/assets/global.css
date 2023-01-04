@@ -152,3 +152,81 @@ p,div{
 .nbMedecin{
     font-size: 1.5rem;
 }
+
+/* Salle des urgences*/
+.patients{
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* W. D. */
+.date{
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.maladie{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+.infi1{
+    text-align: center;
+    font-weight: bold;
+}
+
+.infi2{
+    text-align: center;
+    font-weight: bold;
+}
+
+.infi3{
+    text-align: center;
+    font-weight: bold;
+}
+
+.infi4{
+    text-align: center;
+    font-weight: bold;
+}
+
+.infi5{
+    text-align: center;
+    font-weight: bold;
+}
+
+.ac1{
+    font-weight: bold;
+    text-align: center;
+}
+
+.ac2{
+    font-weight: bold;
+    text-align: center;
+}
+
+.ac3{
+    font-weight: bold;
+    text-align: center;
+}
+
+.ac4{
+    font-weight: bold;
+    text-align: center;
+}
+
+.ac5{
+    font-weight: bold;
+    text-align: center;
+}
+
+.salleAttente{
+    font-weight: bold;
+}
+
+.Room{
+    font-weight: bold;
+}
