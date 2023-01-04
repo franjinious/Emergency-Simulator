@@ -137,9 +137,36 @@ En outre, il utilise également d'autres bibliothèques et plugins, tels qu'Axio
 Pour ce faire, nous avons utilisé une option très pratique en Vue.js : _Life Cycle_. 
 Ce sont des méthodes prédéfinies qui existe tout au long de l'application.  
 Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquement quand l'élément DOM a été rendu dans la page.
+- Affichage dynamique 
+Nous avons pu réaliser l'affichage dynamique en se basant sur les données transmises. Bien que ça paraisse un problème compliqué, 
+nous avons trouvé une solution simple : utiliser des tableaux contenant selement 0 et 1 pour distinguer les statuts des patients et des salles.
 ## 5. Le résultat de l'expérience
+### Le résultat
+Nos application Web et serveur fonctionne avec success. Et il n'y a aucun problème dans le transfert de données entre le frontend et le backend.
 
+Nous modélisons différents types d'agents(Patient, Nurse, NurseCenter, Reception, ReceptionCenter, WaitingRoom, DoctorCenter et EmergencyRoomCenter) et de simuler leurs interactions dans une salle des urgences d'un centre médical. 
 
+Les utilisateurs peuvent sélectionner l'une des listes de maladies fournies pour créer un patient
+
+L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, embaucher ou licencier des médecins selon ses préférences. Pour les médecins et les EmergencyRooms, l'utilisateur peut choisir un niveau qui correspond à la gravité de la maladie du patient.
+
+<img src="./picture/resultat.jpg" style="zoom: 60%;"/>
+
+<img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
+
+### Les Points Positifs
+- Peut voir de manière intuitive et interactive le processus d'arrivée des patients à l'hôpital pour un traitement d'urgence
+- Peut augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, et le nombre de médecin
+- Peut choisir un niveau pour les médecins et les EmergencyRooms
+
+### Les Points Négatifs
+- Le taux de rafraîchissement est faible et l'affichage est légèrement retardé
+- La fonction n'est pas très parfaite
 
 ## 6. Résumé et Futur
 
+### Résumé
+En conclusion, 
+
+### Futur
+我们地功能还不是很完善，我们可以增加其他功能，比如收费等等
