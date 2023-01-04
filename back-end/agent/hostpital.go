@@ -216,7 +216,9 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 
 	e := make([]int, 5)
 	for _,j := range h.DoctorCenter.AllDoctor {
-		e[j.Ability-1]++
+		if j.Usable == true {
+			e[j.Ability-1]++
+		}
 	}
 
 
@@ -231,7 +233,7 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	re = append(re, g)
 	re = append(re, k)
 
-	fmt.Println(re)
+	// fmt.Println(re)
 	serial, _ := json.Marshal(re)
 	writer.WriteHeader(http.StatusOK)
 	writer.Write(serial)
