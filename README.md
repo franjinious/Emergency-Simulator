@@ -142,8 +142,10 @@ Nous avons pu réaliser l'affichage dynamique en se basant sur les données tran
 nous avons trouvé une solution simple : utiliser des tableaux contenant selement 0 et 1 pour distinguer les statuts des patients et des salles.
 ## 5. Le résultat de l'expérience
 ### Le résultat
-<img src="./picture/resultat.jpg" style="zoom: 60%;" />
+Nos application Web et serveur fonctionne avec success. 
+<img src="./picture/resultat.jpg" style="zoom: 60%;"/>
 ### Les Points Positifs
+- 可以直观、交互地看到患者到达医院接受急救治疗的过程
 ### Les Points Positifs
 
 ## 6. Résumé et Futur
