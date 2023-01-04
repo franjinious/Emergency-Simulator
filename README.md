@@ -141,8 +141,10 @@ Ici nous avons appliqué la fonction _mounted()_, elle s'effectue automatiquemen
 Nous avons pu réaliser l'affichage dynamique en se basant sur les données transmises. Bien que ça paraisse un problème compliqué, 
 nous avons trouvé une solution simple : utiliser des tableaux contenant selement 0 et 1 pour distinguer les statuts des patients et des salles.
 ## 5. Le résultat de l'expérience
-
-
+### Le résultat
+<img src="./picture/resultat.jpg" style="zoom: 60%;" />
+### Les Points Positifs
+### Les Points Positifs
 
 ## 6. Résumé et Futur
 

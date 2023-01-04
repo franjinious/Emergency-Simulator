@@ -41,7 +41,6 @@ func NewPatient(id int, age int, gender bool, symptom string, severity int, tole
 		Msg_request_reception: d,
 		Msg_receive_reception: make(chan string, 20),
 		Msg_request_waiting:   c_w,
-		T:                     time.Now(),
 	}
 }
 
