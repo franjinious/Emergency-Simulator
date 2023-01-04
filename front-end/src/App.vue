@@ -487,8 +487,8 @@ export default {
         this.nbSalle = 10
       } else
         this.nbSalle ++
-      // axios.post('http://localhost:8082/activerSalle?test='+this.levelSalle.toString())
-      axios.post('http://localhost:8082/activerSalle', this.levelSalle.toString())
+      axios.post('http://localhost:8082/activerSalle?test='+this.levelSalle.toString())
+      // axios.post('http://localhost:8082/activerSalle'+ this.levelSalle.toString())
           .then(response => {
             console.log(response.data)
           });
@@ -524,7 +524,7 @@ export default {
         this.nbMedecin = 1
       }else
         this.nbMedecin --
-      axios.post('http://localhost:8082/desactiverDoc', null)
+      axios.post('http://localhost:8082/desactiverDoc?test='+this.levelMedecin.toString())
           .then(response => {
             console.log(response.data)
           });
