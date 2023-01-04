@@ -485,11 +485,8 @@ export default {
         this.nbSalle = 10
       } else
         this.nbSalle ++
-<<<<<<< Updated upstream
-      axios.post('http://localhost:8082/activerSalle?test='+this.levelSalle.toString())
-=======
+      // axios.post('http://localhost:8082/activerSalle?test='+this.levelSalle.toString())
       axios.post('http://localhost:8082/activerSalle', this.levelSalle.toString())
->>>>>>> Stashed changes
           .then(response => {
             console.log(response.data)
           });
