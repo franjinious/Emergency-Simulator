@@ -63,8 +63,7 @@
                   <div class="redC"></div>
                   <div class="redR"></div>
                 </div>
-                
-                </div>
+              </div>
                 <!--              <div class="people cus" :class="cus.state">-->
   <!--                <img class="people-icon" style="width: 100%" :src="cus.avatar"/>-->
   <!--              </div>-->
