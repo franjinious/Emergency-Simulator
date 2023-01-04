@@ -113,19 +113,19 @@
               </div>
               <div>
                 <img style="width: 9%;display:inline;" src="../store/379444-512.png" class="people-icon">
-                <p style="display:inline;"><font size=4>Nombre de medecin level 1:{{items[4][1]}}</font></p>
+                <p style="display:inline;"><font size=4>Nombre de medecin level 2:{{items[4][1]}}</font></p>
               </div>
               <div>
                 <img style="width: 9%;display:inline;" src="../store/379444-512.png" class="people-icon">
-                <p style="display:inline;"><font size=4>Nombre de medecin level 1:{{items[4][2]}}</font></p>
+                <p style="display:inline;"><font size=4>Nombre de medecin level 3:{{items[4][2]}}</font></p>
               </div>
               <div>
                 <img style="width: 9%;display:inline;" src="../store/379444-512.png" class="people-icon">
-                <p style="display:inline;"><font size=4>Nombre de medecin level 1:{{items[4][3]}}</font></p>
+                <p style="display:inline;"><font size=4>Nombre de medecin level 4:{{items[4][3]}}</font></p>
               </div>
               <div>
                 <img style="width: 9%;display:inline;" src="../store/379444-512.png" class="people-icon">
-                <p style="display:inline;"><font size=4>Nombre de medecin level 1:{{items[4][4]}}</font></p>
+                <p style="display:inline;"><font size=4>Nombre de medecin level 5:{{items[4][4]}}</font></p>
               </div>
                 
                 
