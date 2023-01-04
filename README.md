@@ -158,7 +158,8 @@ Ressources nécessaires pour les visites de patients :
 2. EmergencyRoomCenter vérifie s'il y a une salle de consultation disponible
 3. Si tous sont satisfaits, commencez à voir le patient
 
-<img src="./picture/3.png" alt="backendstart" style="zoom:60%;" />
+<div align=center><img src="./picture/3.png" alt="backendstart" style="zoom:60%;" /></div>
+
 
 
 
@@ -169,7 +170,7 @@ Nous avons utilisé la fonctionnalité de liaison de données de réponse de Vue
 
 En outre, il utilise également d'autres bibliothèques et plugins, tels qu'Axios et Vuex, pour réaliser l'acquisition et la gestion des données.
 
-<img src="./picture/front_general.png" style="zoom: 60%;" />
+<div align=center><img src="./picture/front_general.png" style="zoom: 60%;" /></div>
 
 ### Points forts de la conception du front
 
