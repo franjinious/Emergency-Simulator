@@ -407,7 +407,7 @@ export default {
           .catch(e => {
                   console.log(e);
           });
-    }, 200);
+    }, 50);
     // this.beforeUnmount()
   },
   beforeUnmount() {
