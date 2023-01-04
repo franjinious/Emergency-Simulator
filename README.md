@@ -7,9 +7,9 @@ Dans le cadre de l'UV IA04, nous avons conçu et réalisé un projet de système
 #### a. Problématique
 
 Dans le contexte de la continuation de circulation du coronavirus et de la pénurie de ressources de santé publique, on cherche à répondre à la question : Quelle stratégie d'affectation des salles de consultation et des médecins est la plus performante pour que le service des urgences soit le plus efficace possible?
-* Premier arrivé, premier servi
-* Privilégier la ressource hospitalière sur la base de l'ordre d'arrivée
-* Un ordre de priorité : privilégier toujours le patient le plus grave
+* Stratégie 1 : Premier arrivé, premier servi
+* Stratégie 2 : Privilégier la ressource hospitalière sur la base de l'ordre d'arrivée
+* Stratégie 3 : Ordre de priorité (privilégier toujours le patient le plus grave)
 
 #### b. Modélisation
 
