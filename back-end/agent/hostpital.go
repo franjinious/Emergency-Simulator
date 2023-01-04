@@ -208,12 +208,17 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	c[0] = len(h.WaitingCenter.QueuePatients)
 
 	d := make([]int, h.EmergencyRoomCenter.WorkNumber)
+	k := make([]int, h.EmergencyRoomCenter.WorkNumber)
 	for i := 1; i <= h.EmergencyRoomCenter.WorkNumber; i++ {
 		d[i-1] = h.EmergencyRoomCenter.RoomList["EmergencyRoom"+strconv.FormatInt(int64(i), 10)].Status
+		k[i-1] = h.EmergencyRoomCenter.RoomList["EmergencyRoom"+strconv.FormatInt(int64(i), 10)].Level
 	}
 
-	e := make([]int, 1)
-	e[0] = len(h.DoctorCenter.AllDoctor)
+	e := make([]int, 5)
+	for _,j := range h.DoctorCenter.AllDoctor {
+		e[j.Ability-1]++
+	}
+
 
 	g := make([]int, 1)
 	g[0] = h.NurseCenter.PatientWaiting
@@ -224,7 +229,9 @@ func (h *Hospital) Getinfo(writer http.ResponseWriter, request *http.Request) {
 	re = append(re, d)
 	re = append(re, e)
 	re = append(re, g)
+	re = append(re, k)
 
+	fmt.Println(re)
 	serial, _ := json.Marshal(re)
 	writer.WriteHeader(http.StatusOK)
 	writer.Write(serial)

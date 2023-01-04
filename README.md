@@ -158,10 +158,15 @@ L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter
 - Peut voir de manière intuitive et interactive le processus d'arrivée des patients à l'hôpital pour un traitement d'urgence
 - Peut augmenter ou supprimer la capacité de NurseCenter, de ReceptionCenter et EmergencyRoomCenter, et le nombre de médecin
 - Peut choisir un niveau pour les médecins et les EmergencyRooms
-- 策略
 
 ### Les Points Négatifs
-
+- Le taux de rafraîchissement est faible et l'affichage est légèrement retardé
+- La fonction n'est pas très parfaite
 
 ## 6. Résumé et Futur
 
+### Résumé
+En conclusion, 
+
+### Futur
+我们地功能还不是很完善，我们可以增加其他功能，比如收费等等
