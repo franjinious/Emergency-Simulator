@@ -104,14 +104,18 @@
               <div class="button desactiverAccueil" @click="desactiverAccueil"  style="float: left; margin-top: auto; margin-bottom: auto">➖</div>
             </div>
             <div style="width:33.3%; margin-left: 0;justify-content:center">
-              <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 7rem; width:100%">
-                Le nombre de medecin actifs:{{items[4][0]}}
+              <div class="Accueil nbMedecin" style=" margin-right: auto; margin-left: auto;background: #ffa64d;height: 14rem; width:100%">
+                Nombre de medecin niveau 1:{{items[4][0]}}<br>
+                Nombre de medecin niveau 2:{{items[4][1]}}<br>
+                Nombre de medecin niveau 3:{{items[4][2]}}<br>
+                Nombre de medecin niveau 4:{{items[4][3]}}<br>
+                Nombre de medecin niveua 5:{{items[4][4]}}<br>
                 
-                  <div class="input box" style="margin-left:1rem">
-                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:left" min=1 max=5>
+                  <div class="input box" style="margin-left:13rem">
+                    <input v-model="levelMedecin" type="number" style="width:5rem; height:2rem; float:right" min=1 max=5>
                   </div>
-                  <div class="button activerDoc" @click="activerDoc" style="float: left" >➕</div>
-                  <div class="button desactiverDoc" @click="desactiverDoc" style="float: left">➖</div>
+                  <div class="button activerDoc" @click="activerDoc" style="float: right" >➕</div>
+                  <div class="button desactiverDoc" @click="desactiverDoc" style="float: right">➖</div>
                 
               
           </div>
@@ -200,7 +204,7 @@
       <div style="display: flex; flex-wrap: wrap">
         <div style="width:100%; margin-left: 0;">
           <div class="Room Room1" v-if="nbSalle>=1" style="float:left;">
-            Room1
+            Room1-level{{items[6][0]}}
             <div class="people p1 complete" v-if="items[3][0]==1">
               <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -209,7 +213,7 @@
             </div>
           </div>
           <div class="Room Room2" v-if="nbSalle>=2" style="float:left;margin-left: 2rem">
-            Room2
+            Room2-level{{items[6][1]}}
             <div class="people p1 complete" v-if="items[3][1]==1">
               <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -218,7 +222,7 @@
             </div>
           </div>
           <div class="Room Room3" v-if="nbSalle>=3" style="float:left;margin-left: 2rem">
-            Room3
+            Room3-level{{items[6][2]}}
             <div class="people p1 complete" v-if="items[3][2]==1">
               <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -227,7 +231,7 @@
             </div>
           </div>
           <div class="Room Room4" v-if="nbSalle>=4" style="float:left;margin-left: 2rem">
-            Room4
+            Room4-level{{items[6][3]}}
             <div class="people p1 complete" v-if="items[3][3]==1">
               <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -236,7 +240,7 @@
             </div>
           </div>
           <div class="Room Room5" v-if="nbSalle>=5" style="float:left;margin-left: 2rem">
-            Room5
+            Room5-level{{items[6][4]}}
             <div class="people p1 complete" v-if="items[3][4]==1">
               <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -245,7 +249,7 @@
             </div>
           </div>
           <div class="Room Room6" v-if="nbSalle>=6" style="float:left;margin-left: 2rem">
-            Room6
+            Room6-level{{items[6][5]}}
             <div class="people p1 complete" v-if="items[3][5]==1">
               <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -254,7 +258,7 @@
             </div>
           </div>
           <div class="Room Room7" v-if="nbSalle>=7" style="float:left;margin-left: 2rem">
-            Room7
+            Room7-level{{items[6][6]}}
             <div class="people p1 complete" v-if="items[3][6]==1">
               <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -263,7 +267,7 @@
             </div>
           </div>
           <div class="Room Room8" v-if="nbSalle>=8" style="float:left;margin-left: 2rem">
-            Room8
+            Room8-level{{items[6][7]}}
             <div class="people p1 complete" v-if="items[3][7]==1">
               <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -272,7 +276,7 @@
             </div>
           </div>
           <div class="Room Room9" v-if="nbSalle>=9" style="float:left;margin-left: 2rem">
-            Room9
+            Room9-level{{items[6][8]}}
             <div class="people p1 complete" v-if="items[3][8]==1">
               <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -281,7 +285,7 @@
             </div>
           </div>
           <div class="Room Room10" v-if="nbSalle>=10" style="float:left;margin-left: 2rem">
-            Room10
+            Room10-level{{items[6][9]}}
             <div class="people p1 complete" v-if="items[3][9]==1">
               <img style="width: 100%;" src="../store/379444-512.png" class="people-icon">
               <!--                 src="/store/iconfinder_Chef-2_379358.png" alt=""/>-->
@@ -339,6 +343,8 @@ export default {
             //Nb medecin
             [],
             //File d'attente
+            [],
+            // level de room
             []
 
 
@@ -632,7 +638,7 @@ main .Room {
   /*flex-wrap: wrap;*/
   justify-content: left;
   align-items: flex-start;
-  text-align: start;
+  text-align: center;
   margin-bottom: 1%;
   /*padding-bottom: 2rem;*/
   /*display: inline-flex;*/
@@ -663,7 +669,7 @@ main .Room {
   /*margin-left: auto;*/
   /*margin-left: auto;*/
   /*align-items: center;*/
-  margin-top: 50px;
+  /*margin-top: 50px;*/
   margin-left: auto;
   margin-right: auto;
   background-color: #4CAF50;
@@ -711,10 +717,10 @@ main .Room {
  }
 
  .activerDoc{
-   height: 40%;
+   height: 20%;
  }
  .desactiverDoc{
-  height: 40%;
+  height: 20%;
 }
 
  /*Espace pour les entrees*/
