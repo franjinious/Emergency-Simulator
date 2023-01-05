@@ -19,7 +19,7 @@ type Hospital struct {
 	sync.Mutex
 	IP                  string
 	Port                string
-	ID                  int // 给病人分配的序号
+	ID                  int
 	NurseCenter         *nurse.Nurse_manager
 	ReceptionCenter     *rooms.ReceptionRoom
 	EmergencyRoomCenter *rooms.EmergencyRoomManager

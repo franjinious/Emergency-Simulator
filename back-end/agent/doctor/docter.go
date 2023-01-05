@@ -7,18 +7,18 @@ import (
 )
 
 type Doctor struct {
-	sync.Mutex                  // 互斥量
-	ID          int             // 医生的唯一ID
-	Specialized map[string]bool // 医生的专业
-	Usable      bool            // 当前是否可用
-	Ability     int             // 医生的能力数值 1-5分
+	sync.Mutex                  // mutex
+	ID          int             // ID unique du médecin
+	Specialized map[string]bool // spécialité du médecin
+	Usable      bool            // Est-il actuellement disponible
+	Ability     int             // Valeur de la capacité du médecin 1-5 points
 }
 
 type DoctorManager struct {
 	sync.Mutex
 	AllDoctor      []*Doctor
-	DoctorReuqest  chan int     // 发过来的int类型 代表病人的严重程度
-	DoctorResponce chan *Doctor // 返回可用的医生
+	DoctorReuqest  chan int     // Le type int envoyé représente la gravité du patient
+	DoctorResponce chan *Doctor // retourner les médecins disponibles
 }
 
 func (dm *DoctorManager) AddDoctor(level int) {
@@ -61,7 +61,7 @@ func (dm *DoctorManager) DeleteDoctor(level int) {
 
 func (dm *DoctorManager) handlerRequest(value int) {
 	for i := 0; i < len(dm.AllDoctor); i++ {
-		// 依次判断有没有满足的医生
+		// Déterminer s'il y a des médecins satisfaits à leur tour
 		if dm.AllDoctor[i].Usable == true && dm.AllDoctor[i].Ability >= value {
 			dm.DoctorResponce <- dm.AllDoctor[i]
 			return
@@ -103,7 +103,7 @@ func (dm *DoctorManager) Run() {
 	}
 }
 
-// 构造函数
+// Constructeur
 func NewDoctor(id int, specialized map[string]bool, usable bool, ability int) *Doctor {
 	return &Doctor{
 		ID:          id,
@@ -113,7 +113,7 @@ func NewDoctor(id int, specialized map[string]bool, usable bool, ability int) *D
 	}
 }
 
-// 设置可用状态
+// définit l'état disponible
 func (d *Doctor) SetUsable(s bool) {
 	d.Lock()
 	d.Usable = s

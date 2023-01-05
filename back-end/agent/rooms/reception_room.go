@@ -13,14 +13,14 @@ import (
 /// 挂号室
 type ReceptionRoom struct {
 	sync.Mutex
-	QueueNumber        int              				// 启用的队列数量
-	Queues             map[string]chan *patient.Patient // 所有的等候队列
-	QueuesLength       map[string]int                   // 每个等候队列的长度
-	QueuesDoctor       map[string]*ReceptionDoctor      // 每个队列的医生
-	DocorsQueue        map[*ReceptionDoctor]string      // 医生映射队列
-	AllPatientsWaiting map[string][]*patient.Patient    // 所有等待的patient
-	MsgRequest         chan *patient.Patient            // 请求信道
-	MsgDoctor          chan *ReceptionDoctor            // 医生反馈信道
+	QueueNumber        int              				// Nombre de files d'attente activées
+	Queues             map[string]chan *patient.Patient // toutes les files d'attente
+	QueuesLength       map[string]int                   // La longueur de chaque file d'attente
+	QueuesDoctor       map[string]*ReceptionDoctor      // Médecins par cohorte
+	DocorsQueue        map[*ReceptionDoctor]string      // File d'attente de mappage des médecins
+	AllPatientsWaiting map[string][]*patient.Patient    // tous les patients en attente
+	MsgRequest         chan *patient.Patient            // canal de demande
+	MsgDoctor          chan *ReceptionDoctor            // Canal de rétroaction des médecins
 }
 
 func (rr* ReceptionRoom) GetQueuesNumber() int{
@@ -49,14 +49,14 @@ func (rr* ReceptionRoom) ReduceQueue() {
 	log.Println("a new queue waiting stop")
 }
 
-/// 挂号医生
+/// médecin pour reception
 type ReceptionDoctor struct {
 	sync.Mutex
-	WorkOrNot        bool                  // 是否工作
-	ID               int                   // 唯一id
-	status           int                   // 1 忙碌 0 空闲
-	QueueResponsable chan *patient.Patient // 负责的队列
-	Msgreturn        chan *ReceptionDoctor // 反馈信道
+	WorkOrNot        bool                  // s'il faut travailler
+	ID               int                   // identifiant unique
+	status           int                   // 1 occupé 0 libre
+	QueueResponsable chan *patient.Patient // file d'attente responsable
+	Msgreturn        chan *ReceptionDoctor // canal de rétroaction
 }
 
 func ( r *ReceptionDoctor ) Getstatus() int {
@@ -64,7 +64,7 @@ func ( r *ReceptionDoctor ) Getstatus() int {
 }
 
 func (rr *ReceptionRoom) HandlerRquest(p *patient.Patient) {
-	// 找到最合适的位置 然后放入
+	// Trouvez la position la plus appropriée et placez-la
 	rr.Lock()
 	m := rr.QueuesLength["Queue1"]
 	qq := "Queue1"
@@ -120,7 +120,7 @@ func (rd *ReceptionDoctor) HandlerPatientRequest(patient2 *patient.Patient) {
 	rd.status = 1
 	log.Println("ReceptionDoctor" + strconv.FormatInt(int64(rd.ID), 10) + " start dealing with patient " + strconv.FormatInt(int64(patient2.ID), 10))
 
-	// 模拟挂号时间 加入随机
+	// Simulez le temps d'enregistrement, ajoutez aléatoire
 	time.Sleep(time.Duration(rand.Int31n(3)+3) * time.Second)
 	patient2.Msg_receive_reception <- "ticket"
 

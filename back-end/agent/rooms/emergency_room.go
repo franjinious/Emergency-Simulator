@@ -7,23 +7,21 @@ import (
 	"time"
 )
 
-// 普通会诊室
-
 type EmergencyRoom struct {
 	sync.Mutex
-	Level  int // 病房的等级 病人只能使用等比自己低的病房
-	Status int // 0空闲 1占用
-	ID     int // 唯一ID
+	Level  int
+	Status int // 0 libre 1 occupé
+	ID     int // identifiant unique
 }
 
-// waitingRoom 在遍历过程中 确定病人的需求后
-// 向急诊室管理agent发送请求 判断有无对应类型的房间
+// salle d'attente détermine les besoins du patient pendant la traversée
+// Envoyer une demande à l'agent de gestion des urgences pour déterminer s'il existe un type de chambre correspondant
 type EmergencyRoomManager struct {
 	sync.Mutex
-	WorkNumber int                       // 工作的房间数量
-	RoomList   map[string]*EmergencyRoom // 所有的房间
-	MsgRequest chan int                  // 用于接收房间请求的信道 int 代表所需房间的等级
-	MsgReponse chan *EmergencyRoom       // 响应信道 用于返回可用的房间没有返回nil
+	WorkNumber int                       // nombre de pièces sur lesquelles travailler
+	RoomList   map[string]*EmergencyRoom // toutes les chambres
+	MsgRequest chan int                  // canal de réception des demandes de chambre int représente le niveau de la chambre souhaitée
+	MsgReponse chan *EmergencyRoom       // Le canal de réponse utilisé pour renvoyer les chambres disponibles ne renvoie pas nil
 }
 
 func (erm *EmergencyRoomManager) AddRoom(level int) {
@@ -101,7 +99,7 @@ func (erm *EmergencyRoomManager) check(LevelNeed int) {
 	erm.Lock()
 	var ans *EmergencyRoom = nil
 
-	// 依次检查每个房间的level
+	// Vérifier le niveau de chaque pièce à tour de rôle
 	for _, v := range erm.RoomList {
 		if v.Status == 0 && v.Level != -1 {
 			if ans == nil && v.Level >= LevelNeed {

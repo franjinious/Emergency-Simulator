@@ -12,13 +12,13 @@ import (
 // 管理所有的nurse
 type Nurse_manager struct {
 	sync.Mutex
-	PatientWaiting      int // 等待的病人数量
+	PatientWaiting      int                   // nombre de patients en attente
 	now_id              int
 	nurse_number        int
-	nurse_pool_busy     []*nurse              // 忙碌队列
-	nurse_pool_usable   []*nurse              // 空闲的护士队列
-	msg_nurse           chan *nurse           // 护士任务结束的通知信道
-	msg_patient         chan *patient.Patient // 病人请求判断情况的信道
+	nurse_pool_busy     []*nurse              // file d'attente occupée
+	nurse_pool_usable   []*nurse              // file d'attente infirmière inactive
+	msg_nurse           chan *nurse           // Canal de notification de la fin de la tâche de l'infirmière
+	msg_patient         chan *patient.Patient // Le canal par lequel le patient demande à juger de la situation
 
 }
 
@@ -35,7 +35,7 @@ func (n *Nurse_manager) GetfreeQueue() []*nurse {
 	return n.nurse_pool_usable
 }
 
-// 添加成功返回true 失败false 最大值为5
+// Renvoie vrai si ajouté avec succès, faux en cas d'échec, la valeur maximale est 5
 func (n *Nurse_manager) Add_patient() {
 	flag := false
 	for flag == false {
@@ -90,7 +90,7 @@ var (
 	once     sync.Once
 )
 
-// 单例模式
+// motif singleton
 func GetInstance(n int) *Nurse_manager {
 	once.Do(func() {
 		instance = &Nurse_manager{
@@ -116,10 +116,10 @@ func GetInstance(n int) *Nurse_manager {
 
 func (nm *Nurse_manager) handler_nurse_request(n *nurse) {
 	log.Println("Nurse center gets a nurse " + strconv.FormatInt(int64(n.ID), 10) + " free request")
-	// 处理nurse的请求
+	// Traiter la demande de l'infirmière
 	nm.Lock()
 	for i := 0; i < len(nm.nurse_pool_busy); i++ {
-		// 增加可用队列 减少忙碌队列
+		// Augmente la file d'attente disponible et réduit la file d'attente occupée
 		if nm.nurse_pool_busy[i] == n {
 			nm.nurse_pool_busy = append(nm.nurse_pool_busy[:i], nm.nurse_pool_busy[i+1:]...)
 			nm.nurse_pool_usable = append(nm.nurse_pool_usable, n)
@@ -135,8 +135,8 @@ func (nm *Nurse_manager) handler_patient_request(n *patient.Patient) {
 	nm.PatientWaiting++
 	nm.Unlock()
 	log.Println("Nurse center gets a new patient " + strconv.FormatInt(int64(n.ID), 10) + " request, now there are totally " + strconv.FormatInt(int64(nm.PatientWaiting), 10) + " waiting")
-	// 处理patient的请求
-	// 申请nurse资源
+	// Traiter la demande du patient
+	// Faire une demande de ressources infirmières
 
 	for {
 		nm.Lock()
@@ -150,7 +150,7 @@ func (nm *Nurse_manager) handler_patient_request(n *patient.Patient) {
 			nm.PatientWaiting--
 			nur.msg_recv <- n
 
-			// 结束
+			// Fin
 			nm.Unlock()
 			break
 		}

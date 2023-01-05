@@ -12,11 +12,11 @@ import (
 
 type WaitingRoom struct {
 	sync.Mutex
-	MsgRequest           chan *patient.Patient // 接受病人请求的信道 在监听到病人请求后 将其加入到等待队列中
-	QueuePatients        []*patient.Patient    // 所有等待病人的切片
-	EmergencyRoomRequest chan int              // 申请急诊室资源的信道
-	EmergencyRoomReponse chan *EmergencyRoom   // 急诊室资源的反馈信道
-	DoctorsRequest       chan int              // 申请医生的信道
+	MsgRequest           chan *patient.Patient // Le canal qui accepte la demande du patient, après avoir écouté la demande du patient, l'ajoute à la file d'attente
+	QueuePatients        []*patient.Patient    // tous les patients en attente
+	EmergencyRoomRequest chan int              // Canaux pour demander des ressources en salle d'urgence
+	EmergencyRoomReponse chan *EmergencyRoom   // Canal de rétroaction pour les ressources des salles d'urgence
+	DoctorsRequest       chan int              // Postuler pour la chaîne du médecin
 	DoctorsResponse      chan *doctor.Doctor
 	Alltime              map[string]float64
 }
@@ -58,11 +58,11 @@ func (wr *WaitingRoom) Run() {
 	}
 }
 
-// 遍历病人 寻找资源足够的病人进行治疗 高等级优先
-// 对于某一个病人
-// 请求急诊室管理类 申请急诊室资源
-// 请求医生管理类 申请医生资源
-// 可被处理的病人按优先级顺序执行
+// Parcourir les patients, rechercher des patients disposant de ressources suffisantes pour le traitement, priorité de haut niveau
+// pour un malade
+// Demander un cours de gestion des urgences Demander des ressources pour les urgences
+// Demander à la classe de gestion des médecins de demander des ressources médicales
+// Les patients pouvant être traités sont exécutés par ordre de priorité
 func (wr *WaitingRoom) work() {
 	for i := 0; i < len(wr.QueuePatients); i++ {
 		wr.DoctorsRequest <- wr.QueuePatients[i].Severity
@@ -70,7 +70,7 @@ func (wr *WaitingRoom) work() {
 		wr.EmergencyRoomRequest <- wr.QueuePatients[i].Severity
 		p2 := <-wr.EmergencyRoomReponse
 
-		// 如果两个资源同时都是可以获取的 则进行治疗
+		// Traite si les deux ressources sont disponibles en même temps
 		if p1 != nil && p2 != nil {
 			pp := wr.QueuePatients[i]
 			p1.Lock()
@@ -87,7 +87,7 @@ func (wr *WaitingRoom) work() {
 }
 
 func (wr *WaitingRoom) treat(r *EmergencyRoom, d *doctor.Doctor, p *patient.Patient) {
-	// 模拟治疗时间
+
 	log.Println("patient " + strconv.FormatInt(int64(p.ID), 10) + " start to be treat by doctor " + strconv.FormatInt(int64(d.ID), 10) + " in room " + strconv.FormatInt(int64(r.ID), 10))
 	time.Sleep(time.Duration(p.TimeForTreat) * time.Second)
 	p.Status = patient.Finish

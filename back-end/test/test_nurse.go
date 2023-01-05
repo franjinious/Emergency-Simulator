@@ -11,7 +11,7 @@ import (
 )
 
 func Test() {
-	h := agent.CreateHospital()
+	h := agent.CreateHospital("localhost","8082")
 	go h.Start()
 
 	//log.Println(h.NurseCenter.GetNurseNumber())
@@ -37,10 +37,10 @@ func Test() {
 func p(h *agent.Hospital) {
 	time.Sleep(3 * time.Second)
 
-	h.AcceptNewPatient(1, true, "111", 10)
-	h.AcceptNewPatient(1, true, "111", 10)
-	h.AcceptNewPatient(1, true, "111", 10)
-	h.AcceptNewPatient(1, true, "111", 10)
+	//h.AcceptNewPatient(1, true, "111", 10)
+	//h.AcceptNewPatient(1, true, "111", 10)
+	//h.AcceptNewPatient(1, true, "111", 10)
+	//h.AcceptNewPatient(1, true, "111", 10)
 
 	time.Sleep(50 * time.Second)
 }

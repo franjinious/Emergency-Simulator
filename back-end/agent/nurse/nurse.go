@@ -15,15 +15,15 @@ import (
 
 type nurse struct {
 	sync.Mutex
-	ID       int                   // 护士的唯一ID
-	Usable   bool                  // 当前是否空闲
-	p        *patient.Patient      // 当前正在判断情况的病人
-	manager  *Nurse_manager        // 管理类
-	msg_send chan *nurse           // 给管理类发送消息的信道
-	msg_recv chan *patient.Patient // 接受管理类的请求
+	ID       int                   // ID unique de l'infirmière
+	Usable   bool                  // Est-ce actuellement gratuit
+	p        *patient.Patient      // Patients actuellement sous jugement
+	manager  *Nurse_manager        // La gestion
+	msg_send chan *nurse           // Canal d'envoi de messages à la classe de gestion
+	msg_recv chan *patient.Patient // Accepter les demandes de classe de gestion
 }
 
-// 构造函数
+// Constructeur
 func NewNurse(id int, m *Nurse_manager) *nurse {
 	return &nurse{
 		ID:       id,
@@ -39,7 +39,7 @@ func (n *nurse) GetChan() chan *patient.Patient {
 	return n.msg_recv
 }
 
-// 接受新的病人
+// accepter de nouveaux patients
 func (n *nurse) TreatNewPatient(p *patient.Patient) error {
 	n.Lock()
 	if n.Usable != true {
@@ -56,14 +56,14 @@ func (n *nurse) SetPatient(patient2 *patient.Patient) {
 	n.p = patient2
 }
 
-// 设置是否空闲
+// libérer
 func (n *nurse) SetUsable(b bool) {
 	n.Lock()
 	n.Usable = b
 	n.Unlock()
 }
 
-// 设置病人的状态
+// définir le statut du patient
 func (n *nurse) SetPatientStatus(gravite int, time int) {
 	n.Lock()
 	n.p.SetSeverity(gravite)
@@ -71,16 +71,16 @@ func (n *nurse) SetPatientStatus(gravite int, time int) {
 	n.Unlock()
 }
 
-// 通知管理器 自己空闲 要求分配任务
+// Informez le responsable que vous êtes libre et demandez une affectation
 func (n *nurse) ticket() {
 	n.msg_send <- n
 }
 
-// 诊断病人
+// Diagnostiquer le patient
 func (n *nurse) judge(patient2 *patient.Patient) {
-	// 判断算法
+	// Algorithme de jugement
 
-	// sleep模拟处理时间
+	// temps de traitement de la simulation de sommeil
 	// n.Lock()
 	n.Lock()
 	patient2.SetStatus(patient.Being_judged_by_nurse)
@@ -89,10 +89,10 @@ func (n *nurse) judge(patient2 *patient.Patient) {
 	tt += 3
 	time.Sleep(time.Duration(tt) * time.Second)
 
-	// 严重程度 随机1-5
+	// sévérité
 	gra, _ := rand.Int(rand.Reader, big.NewInt(4))
 
-	// 时间 随机1-10
+	// temp
 	tim, _ := rand.Int(rand.Reader, big.NewInt(6))
 	n.Unlock()
 	if patient2.Severity == -1 {
@@ -110,7 +110,7 @@ func (n *nurse) judge(patient2 *patient.Patient) {
 func (nur *nurse) treat(n *patient.Patient) {
 	nur.SetPatient(n)
 	nur.SetUsable(false)
-	// 调用nurse的函数 设置patient的状态
+	// Appeler la fonction infirmière pour régler l'état du patient
 	nur.judge(n)
 	nur.ticket()
 }

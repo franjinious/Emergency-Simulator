@@ -9,23 +9,23 @@ import (
 
 type Patient struct {
 	sync.Mutex
-	ID                    int            // 病人唯一ID
-	Age                   int            // 年龄
-	Gender                bool           // 性别(0 男 1女)
-	Symptom               string         // 症状
-	Severity              int            // 症状等级 1-10
-	Tolerance             int            // 最大等待时间(超过离开/死亡)
-	TimeForTreat          int            // 预计需要处理的时间(分钟)
-	Status                patient_status // 病人当前的状态和进度
-	Msg_nurse             chan string    // 接受护士消息的信道
-	Msg_request_nurse     chan *Patient  // 请求护士的信道
-	Msg_request_reception chan *Patient  // 请求挂号的信道
-	Msg_receive_reception chan string    // 接受挂号的信道
-	Msg_request_waiting   chan *Patient  // 请求加入等待室候诊队列的信道
-	T                     time.Time      // 创建时间
+	ID                    int            // identifiant unique du patient
+	Age                   int            // âge
+	Gender                bool           // sexe (0 homme 1 femme)
+	Symptom               string         // symptôme
+	Severity              int            // échelle de symptômes 1-10
+	Tolerance             int            // temps d'attente maximum (dépassant les congés/décès)
+	TimeForTreat          int            // Temps de traitement estimé (minutes)
+	Status                patient_status // État actuel et progrès du patient
+	Msg_nurse             chan string    // canal pour recevoir les messages des infirmières
+	Msg_request_nurse     chan *Patient  // demande le canal de l'infirmière
+	Msg_request_reception chan *Patient  // canal pour demander l'enregistrement
+	Msg_receive_reception chan string    // canal qui acceptent l'inscription
+	Msg_request_waiting   chan *Patient  // Canal pour demander à rejoindre la file d'attente de la salle d'attente
+	T                     time.Time      // temps de creation
 }
 
-// 构造函数
+// Constructeur
 func NewPatient(id int, age int, gender bool, symptom string, severity int, tolerance int, timeForTreate int, c chan *Patient, d chan *Patient, c_w chan *Patient) *Patient {
 	return &Patient{
 		ID:                    id,
