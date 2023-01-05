@@ -194,6 +194,11 @@ L'utilisateur peut également augmenter ou supprimer la capacité de NurseCenter
 Dans page web, L'utilisateur peut clairement voir le nombre de médecins actifs à chaque niveau et le nombre de salles d'urgence à chaque niveau en temps réel.
 
 En calculant des temps d'attente de tous les patient pour les trois différentes stratégies d'allocation des ressources, on a constaté que la stratégie de l'"Ordre de priorité" présentait les temps d'attente moyens les plus faibles. Cependant, ce n'est pas toujours le cas dans la réalité, compte tenu de plusieurs raisons pratiques.
+<div align=center>
+<img src="./picture/resultat.png" style="zoom: 60%;"/>
+<img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
+</div>
+
 
 Vous trouverez ci-dessous le résultat de l'exécution de notre frontend et de notre backend：
 <div align=center>
@@ -208,7 +213,7 @@ Vous trouverez ci-dessous le résultat de l'exécution de notre frontend et de n
 - Peut comparer le temps de traitement des patients avec différentes sévérités sous différentes stratégies.
 
 ### Les Points Négatifs
-- Fonction imparfaite
+- Fonctions à enrichir
 
 ## 6. Conclusion et Futur
 Dans ce projet, on a pu construire un système de multi-agents et réaliser une simulation de scène réaliste. En même temps, la problématique que l'on a cherché à répondre a obtenu une réponse raisonable avec des résultats statistiques. Mais nous avons encore beaucoup de marge d'amélioration, comme ajouter des fonctions de recharge, recharger différents niveaux de patients, simuler la situation commerciale d'une salle d'urgence, etc.
