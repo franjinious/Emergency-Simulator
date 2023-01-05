@@ -121,7 +121,7 @@ Si tout vas bien, vous allez voir les informations suivantes
 
 ##### Agent Patient 
 
-1. L'agent le plus important est aussi l'agent ayant le plus de comportements, il a principalement les modèles de comportement suivants :
+L'agent le plus important est aussi l'agent ayant le plus de comportements, il a principalement les modèles de comportement suivants :
 
    1. Il attendra à l'entrée du bureau d'accueil de l'hôpital, expliquera sa situation, et attendra que l'infirmière lui donne un jugement préliminaire
    2. Faire la queue pour l'inscription
