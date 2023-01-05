@@ -42,7 +42,7 @@ Le processus de consultation suivante est automatisé. Ce processus comprend 4 �
 3. Il attend dans la salle d'attente pour son ordre.
 4. Le médecin consulte sa situation et le traite.
 
-* Calcul du temps d'attente de patient
+* Calcul du temps de traitement pour chaque patient
 
 
 #### d. Architecture
