@@ -121,12 +121,12 @@ Si tout vas bien, vous allez voir les informations suivantes
 
 ##### Agent Patient 
 
-1. L'agent le plus important est aussi l'agent ayant le plus de comportements, il a principalement les modèles de comportement suivants :
+L'agent le plus important est aussi l'agent ayant le plus de comportements, il a principalement les modèles de comportement suivants :
 
-   1. Il attendra à l'entrée du bureau d'accueil de l'hôpital, expliquera sa situation, et attendra que l'infirmière lui donne un jugement préliminaire
-   2. Faire la queue pour l'inscription
-   3. Faire la queue dans la salle d'attente pour que le médecin appelle
-   4. Traitement
+1. Il attendra à l'entrée du bureau d'accueil de l'hôpital, expliquera sa situation, et attendra que l'infirmière lui donne un jugement préliminaire
+2. Faire la queue pour l'inscription
+3. Faire la queue dans la salle d'attente pour que le médecin appelle
+4. Traitement
 
 ##### Agent Nurse et Agent NurseCenter
 
@@ -165,7 +165,7 @@ Ressources nécessaires pour les visites de patients :
 
 ## 4. Conception front-end
 Il s'agit d'une application Web construite avec Vue.js, qui est principalement utilisée pour gérer les données transmises du backend et les présenter. 
- 
+
 Nous avons utilisé la fonctionnalité de liaison de données de réponse de Vue.js pour réaliser une mise à jour des données en temps réel et utilise des composants de vue pour composer la mise en page. 
 
 En outre, il utilise également d'autres bibliothèques et plugins, tels qu'Axios et Vuex, pour réaliser l'acquisition et la gestion des données.
