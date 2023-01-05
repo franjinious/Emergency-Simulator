@@ -215,4 +215,4 @@ Vous trouverez ci-dessous le résultat de l'exécution de notre frontend et de n
 - Fonctions à enrichir
 
 ## 6. Conclusion et Futur
-Dans ce projet, on a pu construire un système de multi-agents et réaliser une simulation de scène réaliste. En même temps, la problématique que l'on a cherché à répondre a obtenu une réponse raisonable avec des résultats statistiques. Mais nous avons encore beaucoup de marge d'amélioration, comme ajouter des fonctions de recharge, recharger différents niveaux de patients, simuler la situation commerciale d'une salle d'urgence, etc.
+Dans ce projet, on a pu construire un système de multi-agents et réaliser une simulation de scène réaliste. En même temps, la problématique que l'on a cherché à répondre a obtenu une réponse raisonable avec des résultats statistiques. Mais nous avons encore beaucoup de marge d'amélioration, par exemple on peut encore ajouter des function de payer, le prix de différents niveaux de patients sont different. c'est pour mieux simuler la situation commerciale d'une salle d'urgence.
