@@ -205,7 +205,7 @@ Vous trouverez ci-dessous le résultat de l'exécution de notre frontend et de n
 ### Les Points Positifs
 - Peut voir de manière intuitive et interactive le processus d'arrivée des patients à l'hôpital pour un traitement d'urgence.
 - Peut personnaliser des paramètres selon les préférences des utilisateurs.
-- Peut compqrer le temps de traitement des patients avec différentes sévérités sous différentes stratégies.
+- Peut comparer le temps de traitement des patients avec différentes sévérités sous différentes stratégies.
 
 ### Les Points Négatifs
 - Fonction imparfaite
