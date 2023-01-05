@@ -195,8 +195,7 @@ Dans page web, L'utilisateur peut clairement voir le nombre de médecins actifs 
 
 En calculant des temps d'attente de tous les patient pour les trois différentes stratégies d'allocation des ressources, on a constaté que la stratégie de l'"Ordre de priorité" présentait les temps d'attente moyens les plus faibles. Cependant, ce n'est pas toujours le cas dans la réalité, compte tenu de plusieurs raisons pratiques.
 <div align=center>
-<img src="./picture/resultat.png" style="zoom: 60%;"/>
-<img src="./picture/resultat_backend.png" style="zoom: 60%;"/>
+<img src="./picture/temps de traitement moyen de différent stratégie.png" style="zoom: 60%;"/>
 </div>
 
 
